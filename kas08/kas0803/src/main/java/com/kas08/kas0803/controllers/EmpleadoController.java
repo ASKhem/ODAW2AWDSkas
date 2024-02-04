@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kas08.kas0803.domain.Departamento;
 import com.kas08.kas0803.domain.Empleado;
+import com.kas08.kas0803.dto.EmpleadoShowDTO;
+import com.kas08.kas0803.dto.EmpleadosAddOrEditDTO;
+import com.kas08.kas0803.services.DepartamentoService;
 import com.kas08.kas0803.services.EmpleadoService;
 
 import jakarta.validation.Valid;
@@ -23,6 +27,9 @@ public class EmpleadoController {
     @Autowired
     public EmpleadoService empleadoService;
 
+    @Autowired
+    public DepartamentoService departamentoService;
+
     @GetMapping({ "/", "/list", "empleados" })
     /*
         ResponseEntity<?> es una clase que nos permite devolver un objeto o un error, 
@@ -30,7 +37,8 @@ public class EmpleadoController {
     */
     public ResponseEntity<?> getList() {
         List<Empleado> empleados = empleadoService.obtenerTodos();
-        return ResponseEntity.ok(empleados);
+        List<EmpleadoShowDTO> empleadosDTO = empleadoService.convertEmpleadoToDto(empleados);
+        return ResponseEntity.ok(empleadosDTO);
         /*
          *  ResponseEntity.ok(empleados) devuelve un objeto de tipo ResponseEntity 
          * con el código de estado 200 (OK) y el objeto empleados como cuerpo de la respuesta.
@@ -44,27 +52,26 @@ public class EmpleadoController {
     }
 
     @PostMapping("/empleado")
-    public ResponseEntity<?> newEmpleado(@Valid @RequestBody Empleado newEmpleado){
+    public ResponseEntity<?> newEmpleado(@Valid @RequestBody EmpleadosAddOrEditDTO newEmpleado){
+        
         //requestBody es una anotación que indica que el parámetro se va a obtener del cuerpo de la petición.
-        Empleado empleado = empleadoService.añadir(newEmpleado);
-        return ResponseEntity.status(HttpStatus.CREATED).body(empleado);
+        Empleado empleado = empleadoService.añadir(empleadoService.addOrEditEmpleadoDTO(newEmpleado));
+        Departamento departamento = departamentoService.obtenerPorId(newEmpleado.getDepartamentoId());
+        empleado.setDepartamento(departamento);
+        return ResponseEntity.status(HttpStatus.CREATED).body(empleadoService.obtenerPorId(empleado.getId()));
         //CREATED código de estado 201 (CREATED)
     }
 
     @PutMapping("/empleado/{id}")
-    public ResponseEntity<?> showEdit(@Valid @RequestBody Empleado editEmpleado, @PathVariable Long id){
-        //comprobamos que existe el empleado
-        if(empleadoService.obtenerPorId(id)==null) {
-            //tipo de error 404
-            return ResponseEntity.notFound().build();
+    public ResponseEntity<?> showEdit(@Valid @RequestBody EmpleadosAddOrEditDTO editEmpleado){
+        Empleado empleado = empleadoService.obtenerPorId(editEmpleado.getId());
+        if(empleado==null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-        //controlar que sea el empleado
-        if(id != editEmpleado.getId()) {
-            //tipo de error 400
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
-        empleadoService.editar(editEmpleado);
-        return ResponseEntity.status(HttpStatus.OK).body(editEmpleado);
+        empleado = empleadoService.editar(empleadoService.addOrEditEmpleadoDTO(editEmpleado));
+        Departamento departamento = departamentoService.obtenerPorId(editEmpleado.getDepartamentoId());
+        empleado.setDepartamento(departamento);
+        return ResponseEntity.status(HttpStatus.OK).body(empleadoService.obtenerPorId(empleado.getId()));
     }
 
     @DeleteMapping("/empleado/{id}")
