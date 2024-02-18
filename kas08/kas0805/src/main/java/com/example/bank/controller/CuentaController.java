@@ -1,23 +1,29 @@
 package com.example.bank.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
+import com.example.bank.dtos.NewCuentaDto;
+import com.example.bank.exceptions.EmptyAccountsListException;
+import com.example.bank.exceptions.NotEmptyMovementsAccount;
+import com.example.bank.exceptions.NotFoundAccountException;
 import com.example.bank.model.Cuenta;
 import com.example.bank.service.CuentaService;
 import com.example.bank.service.MovimientoService;
 
-import jakarta.validation.Valid;
 
 
-
-@Controller
+@RestController
 @RequestMapping("/cuentas")
 public class CuentaController {
 
@@ -28,52 +34,45 @@ public class CuentaController {
     MovimientoService movimientoService;
 
     @GetMapping("/list")
-    public String listCuentas(Model model) {
-        model.addAttribute("cuentas", cuentaService.getCuentas());
-        return "accountsList";
+    public ResponseEntity<?> showCuentas(){
+        try{
+            return ResponseEntity.ok(cuentaService.getCuentas());
+        }catch(EmptyAccountsListException e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
     }
 
-    @GetMapping("/create")
-    public String createCuenta(Model model) {
-        model.addAttribute("cuenta", new Cuenta());
-        return "newAccount";
-    }
-
-    @PostMapping("/create/submit")
-    public String createCuentaSubmit(@Valid Cuenta cuenta, BindingResult bindingResult, Model model) {
+    @PostMapping("/create")
+    public ResponseEntity<?> createCuenta(@RequestBody NewCuentaDto newCuenta, BindingResult bindingResult){
+        Cuenta cuenta = cuentaService.convertDtoToCuenta(newCuenta);
         if (bindingResult.hasErrors()) {
-            return "newAccount";
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cuenta no válida");
         } else {
-            cuentaService.createCuenta(cuenta);
-            return "redirect:/cuentas/list";
-        }
-    }
-
-    @GetMapping("/{iban}/delete")
-    public String deleteCuenta(@PathVariable String iban) {
-        if(cuentaService.getCuenta(iban) != null){
-            cuentaService.deleteCuenta(iban);
-        }
-        return "redirect:/cuentas/list";
-    }
-
-    @GetMapping("/{iban}/edit")
-    public String editCuenta(Model model, @PathVariable String iban) {
-        model.addAttribute("cuenta", cuentaService.getCuenta(iban));
-        return "accountEdit";
-    }
-
-    @PostMapping("/edit/submit")
-    public String editCuentaSubmit(Cuenta cuenta, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "accountEdit";
-        } else {
-            cuentaService.editCuenta(cuenta);
-            return "redirect:/cuentas/list";
+            return ResponseEntity.status(HttpStatus.CREATED).body(cuentaService.createCuenta(cuenta));
         }
     }
 
 
+    @DeleteMapping("/{iban}/delete")
+    public ResponseEntity<?> deleteCuenta(@PathVariable String iban) {
+        boolean movimientos = movimientoService.getMovimientos(cuentaService.getCuenta(iban)).size() > 0;
+        try {
+            cuentaService.deleteCuenta(iban, movimientos);
+            return ResponseEntity.noContent().build();
+        } catch (NotEmptyMovementsAccount e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        } catch (NotFoundAccountException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
+    }
 
+    // @PutMapping("/edit")
+    // public ResponseEntity<?> editCuenta(@RequestBody @Valid Cuenta cuenta, BindingResult bindingResult) {
+    //     if (bindingResult.hasErrors()) {
+    //         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cuenta no válida");
+    //     } else {
+    //         return ResponseEntity.ok(cuentaService.editCuenta(cuenta));
+    //     }
+    // }
 
 }

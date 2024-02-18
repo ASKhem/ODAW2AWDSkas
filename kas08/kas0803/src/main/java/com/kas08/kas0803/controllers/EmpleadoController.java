@@ -51,7 +51,7 @@ public class EmpleadoController {
         return ResponseEntity.ok(empleado);
     }
 
-    @PostMapping("/empleado")
+    @PostMapping("/empleado/new")
     public ResponseEntity<?> newEmpleado(@Valid @RequestBody EmpleadosAddOrEditDTO newEmpleado){
         
         //requestBody es una anotación que indica que el parámetro se va a obtener del cuerpo de la petición.
@@ -62,7 +62,7 @@ public class EmpleadoController {
         //CREATED código de estado 201 (CREATED)
     }
 
-    @PutMapping("/empleado/{id}")
+    @PutMapping("/empleado/edit/{id}")
     public ResponseEntity<?> showEdit(@Valid @RequestBody EmpleadosAddOrEditDTO editEmpleado){
         Empleado empleado = empleadoService.obtenerPorId(editEmpleado.getId());
         if(empleado==null) {
@@ -74,13 +74,12 @@ public class EmpleadoController {
         return ResponseEntity.status(HttpStatus.OK).body(empleadoService.obtenerPorId(empleado.getId()));
     }
 
-    @DeleteMapping("/empleado/{id}")
+    @DeleteMapping("/empleado/delete/{id}")
     public ResponseEntity<?> showDelete(@PathVariable Long id){
         Empleado empleado = empleadoService.obtenerPorId(id);
         if(empleado==null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-
         empleadoService.borrar(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

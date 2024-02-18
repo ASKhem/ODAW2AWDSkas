@@ -9,4 +9,5 @@ import com.example.bank.model.Movimiento;
 
 public interface MovimientoRepository extends JpaRepository<Movimiento, Long>{
     List<Movimiento> findByCuenta(Cuenta cuenta);
+    Cuenta findByCuentaIBAN(String iban);
 }

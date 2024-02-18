@@ -22,22 +22,24 @@ public class EmpleadoServiceImplBD implements EmpleadoService {
         return repositorio.save(empleado);
     }
 
-    public List<Empleado> obtenerTodos() {
-        return repositorio.findAll();
-    }
-
     public Empleado obtenerPorId(Long id) {
-        return repositorio.findById(id).orElse(null);
+        if (id != null) {
+            return repositorio.findById(id).orElse(null);
+        }
+        return null;
     }
 
     public Empleado editar(Empleado empleado) {
-        String imagen = (empleado.getGenero() == Genero.HOMBRE)?"/empleadoFotoPerfil/empleadoM.png":"/empleadoFotoPerfil/empleadoF.png";
-        empleado.setImagen(imagen);
-        return repositorio.save(empleado);
+        if(empleado.getId()!=null) {
+            return repositorio.save(empleado);
+        }
+        return null;
     }
 
     public void borrar(Long id) {
-        repositorio.deleteById(id);
+        if (id != null) {
+            repositorio.deleteById(id);
+        }
     }
 
     public List<Empleado> obtenerEmpleadosSalarioMayor(double salario) {
@@ -46,5 +48,9 @@ public class EmpleadoServiceImplBD implements EmpleadoService {
 
     public List<Empleado> obtenerEmpleadoSalarioMayorMedia() {
         return repositorio.obtenerEmpleadoSalarioMayorMedia();
+    }
+
+    public List<Empleado> obtenerTodos() {
+        return repositorio.findAll();
     }
 }

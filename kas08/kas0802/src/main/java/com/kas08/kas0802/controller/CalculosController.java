@@ -1,5 +1,7 @@
 package com.kas08.kas0802.controller;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,22 +23,37 @@ public class CalculosController {
 
 
     @GetMapping("/primo/{num}")
-    public ResponseEntity<Boolean> showPrimo(@PathVariable Integer num){
-        return ResponseEntity.ok(calculosService.calcularPrimo(num));
+    public ResponseEntity<Map<?,?>> showPrimo(@PathVariable Integer num){
+        //crearemos un objeto de tipo Map para almacenar los datos que vamos a devolver
+        //en su 
+        Map<String, Object> response = new HashMap<>();
+        response.put("Numero", num);
+        response.put("Primo", calculosService.calcularPrimo(num));
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/hipotenusa/{X}/{Y}")
-    public ResponseEntity<?> showHipotenusa(@PathVariable Integer X, @PathVariable Integer Y){
-        return ResponseEntity.ok(calculosService.calcularHipotenusa(X, Y));
+    public ResponseEntity<Map<?,?>>  showHipotenusa(@PathVariable Integer X, @PathVariable Integer Y){
+        Map<String, Object> response = new HashMap<>();
+        response.put("X", X);
+        response.put("Y", Y);
+        response.put("Hipotenusa", calculosService.calcularHipotenusa(X, Y));
+        return ResponseEntity.ok(response);
     }
-
+    
     @GetMapping("/sinRepetidos/{X}")
-    public ResponseEntity<?> showSinRepetidos(@PathVariable Integer X){
-        return ResponseEntity.ok(calculosService.calcularRepetidos(X));
+    public ResponseEntity<Map<?,?>>  showSinRepetidos(@PathVariable Integer X){
+        Map<String, Object> response = new HashMap<>();
+        response.put("Números a generar", X);
+        response.put("Números generados", calculosService.calcularRepetidos(X));
+        return ResponseEntity.ok(response);
     }
-
+    
     @GetMapping("/divisores/{X}")
-    public ResponseEntity<?> showDivisores(@PathVariable Integer X){
-        return ResponseEntity.ok(calculosService.calculoDivisores(X));
+    public ResponseEntity<Map<?,?>>  showDivisores(@PathVariable Integer X){
+        Map<String, Object> response = new HashMap<>();
+        response.put("Número", X);
+        response.put("Divisores", calculosService.calculoDivisores(X));
+        return ResponseEntity.ok(response);
     }
 }

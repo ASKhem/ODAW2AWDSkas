@@ -25,7 +25,7 @@ public class EmpleadoController {
 
     @GetMapping({ "/", "/list", "empleados" })
     /*
-        ResponseEntity<?> es una clase que nos permite devolver un objeto o un error, 
+        ResponseEntity<?> es una clase que nos permite devolver un objeto o un error,
         en este caso, un objeto de tipo List<Empleado> o un error. 
     */
     public ResponseEntity<?> getList() {
@@ -43,7 +43,7 @@ public class EmpleadoController {
         return ResponseEntity.ok(empleado);
     }
 
-    @PostMapping("/empleado")
+    @PostMapping("/empleado/new")
     public ResponseEntity<?> newEmpleado(@Valid @RequestBody Empleado newEmpleado){
         //requestBody es una anotación que indica que el parámetro se va a obtener del cuerpo de la petición.
         Empleado empleado = empleadoService.añadir(newEmpleado);
@@ -51,7 +51,7 @@ public class EmpleadoController {
         //CREATED código de estado 201 (CREATED)
     }
 
-    @PutMapping("/empleado/{id}")
+    @PutMapping("/empleado/edit/{id}")
     public ResponseEntity<?> showEdit(@Valid @RequestBody Empleado editEmpleado, @PathVariable Long id){
         //comprobamos que existe el empleado
         if(empleadoService.obtenerPorId(id)==null) {
@@ -67,15 +67,15 @@ public class EmpleadoController {
         return ResponseEntity.status(HttpStatus.OK).body(editEmpleado);
     }
 
-    @DeleteMapping("/empleado/{id}")
+    @DeleteMapping("/empleado/delete/{id}")
     public ResponseEntity<?> showDelete(@PathVariable Long id){
         Empleado empleado = empleadoService.obtenerPorId(id);
         if(empleado==null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();//devuelve 404
         }
 
         empleadoService.borrar(id);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();//devuelve 204
     }
 
     @GetMapping("/listado1/{salario}")

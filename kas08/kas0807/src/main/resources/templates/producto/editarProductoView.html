@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: left; justify-content: center; align-items: center;
+        }
+        h1{text-align: center;}
+        #contenedorPrimario { 
+            background-color: rgb(231, 231, 231); margin: 10vw auto;
+            padding: 2.5vw; width: 50%; border-radius: 20px;
+        }
+        input{cursor: pointer;}
+        #seccionBotones {text-align: center;}
+        #seccionBotones input {
+            margin: 0 1vw; padding: 0.5vw 1vw; 
+            background-color: rgb(170, 170, 170);
+            color: white; border-radius: 10px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <form action="#" method="post" th:action="@{/productos/edit/submit}" th:object="${producto}">
+        <input type="text" id="id" name="id" th:field="*{id}" hidden><br>
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre" th:field="*{nombre}"><br>
+        <label for="precio">Precio:</label><br>
+        <input type="text" id="precio" name="precio" th:field="*{precio}"><br>
+        <input type="checkbox" id="enOferta" name="enOferta" th:field="*{enOferta}">
+        <label for="enOferta">En Oferta</label><br>
+        <p>Tipo IVA:</p>
+        <div th:each="elem : ${T(com.example.kas0301.domain.TipoIva).values}">
+            <input type="radio" name="opcion" th:value="${elem}" th:text="${elem}"
+            th:field="*{tipoIva}" />
+        </div>
+        <label>Categoria
+            <select name="categoria" th:field="*{categoria}">
+                <option th:each="categoria: ${categorias}" th:value="${categoria.id}" th:text="${categoria.nombre}"></option>
+            </select>
+        </label><br />
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuario</title>
+</head>
+<body>
+    <form th:action="@{/usuarios/edit/submit}" th:object="${usuario}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" th:field="*{nombre}">
+        </div>
+        <div>
+            <input type="hidden" id="fechaRegistro" th:field="*{fechaRegistro}">
+        </div>
+        <div>
+            <input type="submit" value="Guardar">
+        </div>
+    </form>
+    <a href="/usuarios">Volver a la lista de usuarios</a>
+</body>
+</html>
