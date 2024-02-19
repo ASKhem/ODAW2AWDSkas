@@ -23,7 +23,7 @@ public class Kas0901Application {
 			for(int i=0;i<4;i++){
 				double salario = Math.round((Math.random() * 1000 + 1000) * 100.0) / 100.0;
 				Genero genero = (i%2==0)?Genero.HOMBRE:Genero.MUJER;
-				String imagen = (i%2==0)?"/empleadoFotoPerfil/empleadoM.png":"/empleadoFotoPerfil/empleadoF.png";
+				String imagen = (i%2==0)?"/img/empleadoFotoPerfil/empleadoM.png":"/img/empleadoFotoPerfil/empleadoF.png";
 				empleadoService.añadir(new Empleado(0L,"empleado"+i, "correo"+i+"@gmail.com",salario, true, genero, imagen));
 			}
 		};

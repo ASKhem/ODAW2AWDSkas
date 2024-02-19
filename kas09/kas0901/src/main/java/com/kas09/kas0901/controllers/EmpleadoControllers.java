@@ -1,4 +1,4 @@
-package com.example.kas0901.controllers;
+package com.kas09.kas0901.controllers;
 
 import java.util.List;
 
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.kas0901.domain.Empleado;
-import com.example.kas0901.exceptions.NotFoundException;
-import com.example.kas0901.services.EmpleadoService;
+import com.kas09.kas0901.domain.Empleado;
+import com.kas09.kas0901.exceptions.NotFoundException;
+import com.kas09.kas0901.services.EmpleadoService;
 
 import jakarta.validation.Valid;
 

@@ -17,7 +17,7 @@ public class EmpleadoServiceImplBD implements EmpleadoService {
     EmpleadoRepository repositorio;
 
     public Empleado añadir(Empleado empleado) {
-        String imagen = (empleado.getGenero() == Genero.HOMBRE)?"/empleadoFotoPerfil/empleadoM.png":"/empleadoFotoPerfil/empleadoF.png";
+        String imagen = (empleado.getGenero() == Genero.HOMBRE)?"/img/empleadoFotoPerfil/empleadoM.png":"/img/empleadoFotoPerfil/empleadoF.png";
         empleado.setImagen(imagen);
         return repositorio.save(empleado);
     }

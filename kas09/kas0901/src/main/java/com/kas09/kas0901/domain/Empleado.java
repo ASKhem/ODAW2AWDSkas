@@ -31,5 +31,5 @@ public class Empleado {
     private boolean enActivo;
     private Genero genero;
     //añadimos una imagen para cada empleado por defecto
-    private String imagen = "/empleadoFotoPerfil/empleadoM.png";
+    private String imagen = "/img/empleadoFotoPerfil/empleadoM.png";
 }
