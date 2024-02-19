@@ -1,0 +1,47 @@
+#table {
+    background-color: rgb(230, 230, 230, 0.6);
+    width: 80%;
+    margin: 0 auto;
+    height: 27vw;
+    overflow: auto;
+    max-height: 500px;
+    border-radius: 20px;
+    padding-top: 20px;
+}
+table{
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 90%;
+    color: #6f83c5;
+    font-family: monospace;
+    font-size: 20px;
+    text-align: left;
+    width : 90%;
+    text-align: center; 
+    border-radius: 20px;
+}
+
+tr{
+    border-bottom: #000000 solid 2px;
+}
+ td{
+    padding: 10px;
+ }
+
+.botones{
+    margin: 10px auto;
+    width: 20%;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgba(214, 214, 214, 0.6);
+
+    border-radius: 20px;
+}
+
+.error{
+    color: red;
+    font-size:1.5em;
+    height: 3px;
+    text-align: center;
+}

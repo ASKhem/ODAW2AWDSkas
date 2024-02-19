@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Valoracion</title>
+</head>
+<body>
+    <h2>Nueva valoracion del usuario<p th:text="${usuario.nombre}"></p></h2>
+    <form th:action="@{/valoraciones/new/submit/{usuario}(usuario=${usuario.id})}" th:object="${valoracion}" method="post">
+        <div>
+            <label for="valoracion">Valoracion:</label>
+            <input type="text" id="valoracion" th:field="*{valoracion}">
+        </div>
+        <div>
+            <label for="comentario">Comentario: </label>
+            <textarea name="comentario" id="comentario" th:field="*{comentario}"></textarea>
+        </div>
+        <div>
+            <label for="producto">Producto:</label>
+            <select name="producto" id="producto" th:field="*{producto}">
+                <option th:each="producto : ${productos}" th:value="${producto.id}" th:text="${producto.nombre}"></option>
+            </select>
+        </div>
+        <div>
+            <input type="hidden" id="usuario" th:field="*{usuario}">
+        </div>
+        <div>
+            <input type="submit" value="Guardar">
+        </div>
+</body>
+</html>
