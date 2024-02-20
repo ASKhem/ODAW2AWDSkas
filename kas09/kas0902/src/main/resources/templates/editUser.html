@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User</title>
+    <link rel="stylesheet" href="/header.css"/>
+    <link rel="stylesheet" href="/form.css"/>
+    <link rel="stylesheet" href="/footer.css"/>
+    <link rel="stylesheet" href="/global.css"/>
+</head>
+<body>
+    <div th:insert="fragments/fragments.html :: cabecera"></div>
+    <h2>Editar Usuario</h2>
+    <form action="#" th:action="@{/users/edit/submit}" th:object="${user}" method="post">
+        <input type="text" th:field="*{id}" hidden/>
+        <div class="campo"><p>Usuario:</p><input type="text" th:field="*{nombre}" /></div>
+        <span class="error" th:errors="*{nombre}"></span>
+        <div class="campo"><p>Contraseña:</p><input type="text" th:field="*{password}" /></div>
+        <span class="error" th:errors="*{password}"></span>
+        <div class="campo">
+            <p>Rol:</p>
+            <select th:field="*{rol}">
+                <option value="USER">USER</option>
+                <option value="OWNER">OWNER</option>
+                <option value="ADMIN">ADMIN</option>
+            </select>
+        </div>
+        <div class="buttons"><input type="submit" value="Submit" />
+            <input type="reset" value="Reset" id="resetButton"/>
+        </div>
+</body>
+</html>
