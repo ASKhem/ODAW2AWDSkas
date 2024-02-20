@@ -34,6 +34,7 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+
     @Bean
     public UserDetailsService users(PasswordEncoder passwordEncoder) {
         UserDetails user = User.builder()
@@ -56,9 +57,9 @@ public class SecurityConfig {
         http.authorizeHttpRequests(
                 auth -> auth
                         .requestMatchers("/").permitAll()
-                        .requestMatchers("/new/**").hasAnyRole("USER", "ADMIN")
-                        .requestMatchers("/edit/**", "/delete/**").hasRole("ADMIN")
-                        .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                        .requestMatchers("/nuevo/**").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/editar/**", "/borrar/**").hasRole("ADMIN")
+                        .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()       
                         .requestMatchers("/h2-console/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .formLogin(formLogin -> formLogin

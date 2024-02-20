@@ -28,7 +28,7 @@
                 <tbody>
                     <tr th:each="empleado : ${listaEmpleados}">
                         <td>
-                            <img th:src="@{/img/{img}(img=${empleado.imagen})}" class="imgEmpleado">
+                            <img th:src="@{{img}(img=${empleado.imagen})}" class="imgEmpleado">
                         </td>
                         <td th:text="${empleado.id}">Id</td>
                         <td th:text="${empleado.nombre}">nombre</td>

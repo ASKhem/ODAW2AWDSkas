@@ -110,4 +110,10 @@ public class EmpleadoControllers {
         model.addAttribute("listaEmpleados", empleados);
         return "listadosView";
     }
+
+    @GetMapping("/accessError")
+    public String getMethodName() {
+        return "accessError";
+    }
+    
 }
