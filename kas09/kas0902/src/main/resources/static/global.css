@@ -1,4 +1,4 @@
-body{
+body {
     background-color: #f5f5f5;
     font-family: 'Open Sans', sans-serif;
     color: #000000;
@@ -8,17 +8,77 @@ body{
     background-image: url("/img/background_1.jpg");
 }
 
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 75vh;
+}
+
 a{
     text-decoration: none;
-    color: black;
+    color: rgb(255, 255, 255);
 }
 
 a:hover{
-    color: #ff7d7d;
+    color: rgb(255, 216, 132);
 }
 
 .textoIban{
     font-size: 1vw;
     font-weight: bold;
     color: #812626;
+}
+
+#lateral-socials{
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    height: 100vh;
+    background-color: #c4c4c4c7;
+    cursor: pointer;
+    position: fixed;
+    border-left: none;
+    position: fixed;
+    z-index: 2;
+    top: 60px;
+    transition: transform 0.3s ease-out;
+}
+h3{
+    color: #ffffff;
+    font-size: 1.5em;
+    margin: 20px 0;
+    padding: 0;
+
+}
+
+#espacio{
+    height: 80px;
+}
+
+#lateral-socials #fondo-menu-desplegable{
+    width: 65%;
+    height: 100%;
+}
+#menu-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: 100%;
+    background-color: #5e5e5e;
+    border-left: 1px solid #000000;
+}
+
+#lateral-socials ul{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.hide-lateral-socials{
+    transform: translateX(100%);
+    transition: transform 0.5s ease-out;
 }

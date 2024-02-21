@@ -49,7 +49,7 @@ public class CuentaController {
         }
     }
 
-    @GetMapping("/{iban}/delete")
+    @GetMapping("/delete/{iban}")
     public String deleteCuenta(@PathVariable String iban) {
         if(cuentaService.getCuenta(iban) != null){
             cuentaService.deleteCuenta(iban);
@@ -57,7 +57,7 @@ public class CuentaController {
         return "redirect:/cuentas/list";
     }
 
-    @GetMapping("/{iban}/edit")
+    @GetMapping("/edit/{iban}")
     public String editCuenta(Model model, @PathVariable String iban) {
         model.addAttribute("cuenta", cuentaService.getCuenta(iban));
         return "accountEdit";

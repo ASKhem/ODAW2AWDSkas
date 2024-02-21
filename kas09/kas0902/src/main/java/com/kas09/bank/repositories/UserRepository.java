@@ -6,4 +6,5 @@ import com.kas09.bank.model.Usuario;
 
 public interface UserRepository extends JpaRepository<Usuario, Long>{
     Usuario findUserById(Long id);
+    Usuario findUserByNombre(String nombre);
 }

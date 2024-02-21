@@ -8,26 +8,34 @@
     <link rel="stylesheet" href="/form.css"/>
     <link rel="stylesheet" href="/footer.css"/>
     <link rel="stylesheet" href="/global.css"/>
+    <link rel="stylesheet" href="/main-display-menu.css"/>
+    <script src="/main-display-menu.js"></script>
+    <link rel="icon" href="https://img.freepik.com/vector-premium/icono-edificio-banco-oscuridad_116137-4384.jpg" type="image/jpg">
 </head>
     <body>
         <div th:insert="fragments/fragments.html :: cabecera"></div>
-        <h2>Nuevo Usuario</h2>
-        <form action="#" th:action="@{/users/new/submit}" th:object="${user}" method="post">
-            <input type="text" th:field="*{id}" hidden/>
-            <div class="campo"><p>Usuario:</p><input type="text" th:field="*{nombre}" /></div>
-            <span class="error" th:errors="*{nombre}"></span>
-            <div class="campo"><p>Contraseña:</p><input type="text" th:field="*{password}" /></div>
-            <span class="error" th:errors="*{password}"></span>
-            <div class="campo">
-                <p>Rol:</p>
-                <select th:field="*{rol}">
-                    <option value="USER">USER</option>
-                    <option value="OWNER">OWNER</option>
-                    <option value="ADMIN">ADMIN</option>
-                </select>
-            </div>
-            <div class="buttons"><input type="submit" value="Submit" />
-                <input type="reset" value="Reset" id="resetButton"/>
-            </div>
+        <div id="espacio"></div>
+        <div th:insert="fragments/fragments.html :: menu-desplegable"></div>
+        <main>
+            <h2>Nuevo Usuario</h2>
+            <form action="#" th:action="@{/users/new/submit}" th:object="${user}" method="post">
+                <input type="text" th:field="*{id}" hidden/>
+                <div class="campo"><p>Usuario:</p><input type="text" th:field="*{nombre}" /></div>
+                <span class="error" th:errors="*{nombre}"></span>
+                <div class="campo"><p>Contraseña:</p><input type="text" th:field="*{password}" /></div>
+                <span class="error" th:errors="*{password}"></span>
+                <div class="campo">
+                    <p>Rol:</p>
+                    <select th:field="*{rol}">
+                        <option value="USER">USER</option>
+                        <option value="OWNER">OWNER</option>
+                        <option value="ADMIN">ADMIN</option>
+                    </select>
+                </div>
+                <div class="buttons"><input type="submit" value="Submit" />
+                    <input type="reset" value="Reset" id="resetButton"/>
+                </div>
+            </form>
+        </main>
     </body>
 </html>

@@ -24,21 +24,21 @@ public class MovimientoController {
     @Autowired
     CuentaService cuentaService;
     
-    @GetMapping("/{iban}/list")
+    @GetMapping("/list/{iban}")
     public String listMovimientos(@PathVariable String iban, Model model) {
         model.addAttribute("movimientos", movimientoService.getMovimientos(cuentaService.getCuenta(iban)));
         model.addAttribute("iban", iban);
         return "movementsList";
     }
 
-    @GetMapping("/{iban}/newMovement")
+    @GetMapping("/newMovement/{iban}")
     public String createMovimiento(@PathVariable String iban, Model model) {
         model.addAttribute("movimiento", new Movimiento());
         model.addAttribute("iban", iban);
         return "newMovement";
     }
 
-    @PostMapping("/{iban}/newMovement/submit")
+    @PostMapping("/newMovement/{iban}/submit")
     public String createMovimientoSubmit(@PathVariable String iban, @Valid Movimiento movimiento, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "newMovement";

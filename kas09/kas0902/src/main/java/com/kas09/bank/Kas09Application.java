@@ -26,19 +26,12 @@ public class Kas09Application {
 	@Bean
 	public CommandLineRunner initData(CuentaService cuentaService, MovimientoService movimientoService, UserService userService) {
 		return (args) -> {
-			Usuario user1 = new Usuario(0L, "admin1", "admin1234", Rol.ADMIN);
-			userService.createUser(user1);
-			Usuario user2 = new Usuario(0L, "user1", "user1234", Rol.USER);
-			userService.createUser(user2);
-			userService.createUser(user2);
-			Usuario user3 = new Usuario(0L, "owner1", "owner1234", Rol.OWNER);
-			userService.createUser(user3);
-			Usuario user4 = new Usuario(0L, "owner2", "owner1234", Rol.OWNER);
-			userService.createUser(user4);
-			Usuario user5 = new Usuario(0L, "admin2", "admin1234", Rol.ADMIN);
-			userService.createUser(user5);
-			Usuario user6 = new Usuario(0L, "user2", "user1234", Rol.USER);
-			userService.createUser(user6);
+			userService.createUser(new Usuario(0L, "admin1", "admin1234", Rol.ADMIN));
+			userService.createUser(new Usuario(0L, "user1", "user1234", Rol.USER));
+			userService.createUser(new Usuario(0L, "owner1", "owner1234", Rol.OWNER));
+			userService.createUser(new Usuario(0L, "owner2", "owner1234", Rol.OWNER));
+			userService.createUser(new Usuario(0L, "admin2", "admin1234", Rol.ADMIN));
+			userService.createUser(new Usuario(0L, "user2", "user1234", Rol.USER));
 
 			Random rand = new Random();
 			for (int i = 1; i <= 4; i++) {
