@@ -1,29 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista Cuentas</title>
-    <link rel="stylesheet" href="/header.css"/>
-    <link rel="stylesheet" href="/table.css"/>
-    <link rel="stylesheet" href="/footer.css"/>
-    <link rel="stylesheet" href="/global.css"/>
-    <link rel="stylesheet" href="/main-display-menu.css"/>
-    <script src="/main-display-menu.js"></script>
-    <link rel="icon" href="https://img.freepik.com/vector-premium/icono-edificio-banco-oscuridad_116137-4384.jpg" type="image/jpg">
+    <style>
+        body{background-color:#f5f5f5;font-family:'Open Sans',sans-serif;color:#000;line-height:1.5;margin:0;padding:0;background-image:url("https://img.freepik.com/vector-gratis/fondo-monocromatico-blanco-estilo-papel_52683-66443.jpg?t=st=1708551919~exp=1708555519~hmac=72bcbafd957bfb23250c8c21e35df8e4598d4f70e48b971998cd38c6de292c0a&w=740"); background-size: cover; background-repeat: no-repeat;}
+        main{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:90vh}
+        a{text-decoration:none;color:#fff;transition:0.25s}
+        a:hover{color:#ffa200}
+        .textoIban{font-size:1vw;font-weight:bold;color:#812626}
+        #lateral-socials{display:flex;justify-content:space-between;width:100vw;height:100vh;background-color:#c4c4c4c7;cursor:pointer;position:fixed;border-left:none;z-index:2;top:60px;transition:transform 0.3s ease-out}
+        h3{color:#fff;font-size:1.5em;margin:0  0 20px 0;padding:0}
+        #espacio{height:80px}
+        #lateral-socials #fondo-menu-desplegable{width:65%;height:100%}
+        #menu-container{display:flex;flex-direction:column;align-items:center;width:400px;height:100%;background-color:#5e5e5e;border-left:1px solid #000}
+        #lateral-socials ul{width:70%;display:flex;flex-direction:column}
+        .hide-lateral-socials{transform:translateX(100%);transition:transform 0.5s ease-out}
+        header{background-color:#333;color:#fff;display:flex;justify-content:space-between;align-items:center;width:100%;position:absolute;z-index:1;padding:5px 0;top:0;left:0}
+        .logo{min-width:400px}
+        header>div:nth-of-type(odd){margin:0 50px}
+        h1,h2{text-align:center;padding:0;margin:0;font-size:1.5em}
+        nav a{display:flex;color:#fff;text-align:center;text-decoration:none;margin-left:3vw}
+        ul{list-style:none}
+        li{display:inline-block;padding:10px}
+        nav a:hover{background-color:#ddd;color:#333}
+        header>div:first-child,#panel2{width:150px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+        .sesion{width:100px;display:flex;justify-content:space-between}
+        .sesion a{color:#fff}
+        .sesion a:hover{color:#ffa200}
+        #hamburguer-menu{display:flex;flex-direction:column;gap:5px}
+        .line{width:32px;height:2px;background-color:#fff}
+        #hamburguer-menu:hover{cursor:pointer}
+        #hamburguer-menu:hover .line{background-color:#ffa200}
+        #hamburguer-menu:active .line{scale:0.9}
+        #imagen-logo{width:50px;height:50px;border-radius:10px}
+        #tableAccounts{background-color:rgba(255,255,255,0.733);width:80%;margin:0 auto;padding:50px 20px 30px 20px;width:800px;border-radius:20px;padding-top:20px;margin-top:20px}
+        table{margin:0 auto;border-collapse:collapse;width:90%;color:#000;font-family:monospace;font-size:20px;text-align:left;width:90%;text-align:center;border-radius:20px}
+        table a{color:#002975}
+        thead{color:#fff;background-color:#333}
+        tr{border-bottom:#000 solid 2px}
+        td{padding:10px}
+        .buttonType2{display:inline-flex;margin:5vh 0 10vh 15vw;text-align:center}
+        .buttonType2 a{color:#fff;width:15vw;padding:0.5vw;background-color:rgb(4,65,4);border:1px solid rgb(4,65,4);margin-bottom:3em;border-radius:0.3em}
+        #icon{width:20px}
+        .contraseña{display:flex;align-items:center;justify-content:center;gap:20px}
+        .contraseña p{margin:0;padding:0;display:flex;align-items:center}
+        #icon:hover{cursor:pointer}
+        #login-link{color:#ffefce}
+        #login-link:hover{color:#ffa200}
+        #logout-link{color:#b8b8b8}
+        #logout-link:hover{color:#f00}
+    </style>
+    <link rel="icon" href="https://img.freepik.com/vector-premium/icono-edificio-banco-oscuridad_116137-4384.jpg"
+        type="image/jpg">
 </head>
+
 <body>
     <div th:insert="fragments/fragments.html :: cabecera"></div>
-    <div id="espacio"></div>
     <div th:insert="fragments/fragments.html :: menu-desplegable"></div>
     <main>
         <h2>Cuentas</h2>
         <div id="tableAccounts">
-            <table><thead><tr><th>IBAN</th><th>Alias</th><th>Saldo</th></tr></thead>
+            <table>
+                <thead>
+                    <tr>
+                        <th>IBAN</th>
+                        <th>Alias</th>
+                        <th>Saldo</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
                 <tbody>
                     <tr th:each="cuenta : ${cuentas}">
-                        <td th:text="${cuenta.IBAN}"></td><td th:text="${cuenta.alias}"></td><td th:text="${cuenta.saldo}"></td>
-                        <td><a th:href="@{/movimientos/{iban}/list(iban=${cuenta.IBAN})}">Movimientos</a></td>
+                        <td th:text="${cuenta.IBAN}"></td>
+                        <td th:text="${cuenta.alias}"></td>
+                        <td th:text="${cuenta.saldo}"></td>
+                        <td><a th:href="@{/movimientos/list/{iban}(iban=${cuenta.IBAN})}">Movimientos</a></td>
                         <td><a th:href="@{/cuentas/edit/{iban}(iban=${cuenta.IBAN})}">Editar</a></td>
                         <td><a th:href="@{/cuentas/delete/{iban}(iban=${cuenta.IBAN})}">Borrar</a></td>
                     </tr>
@@ -31,6 +87,17 @@
             </table>
         </div>
     </main>
-    <div th:insert="fragments/fragments.html :: pie"></div>
+    <script>
+        window.onload = function () {
+            let desplegar = document.getElementById("hamburguer-menu");
+            let contenedor = document.getElementById("fondo-menu-desplegable");
+            desplegar.addEventListener("click", function () {
+                if (document.getElementById("lateral-socials").classList.contains("hide-lateral-socials")) {document.getElementById("lateral-socials").classList.remove("hide-lateral-socials")} else {
+                    document.getElementById("lateral-socials").classList.add("hide-lateral-socials")}
+            });
+            contenedor.addEventListener("mouseenter", function () {document.getElementById("lateral-socials").classList.add("hide-lateral-socials");});
+        }
+    </script>
 </body>
+
 </html>

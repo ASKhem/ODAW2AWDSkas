@@ -72,8 +72,4 @@ public class CuentaController {
             return "redirect:/cuentas/list";
         }
     }
-
-
-
-
 }

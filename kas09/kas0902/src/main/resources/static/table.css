@@ -1,18 +1,18 @@
 #tableAccounts {
-    background-color: rgb(230, 230, 230, 0.6);
+    background-color: rgba(255, 255, 255, 0.733);
     width: 80%;
     margin: 0 auto;
-    height: 27vw;
-    overflow: auto;
-    max-height: 400px;
+    padding: 50px 20px 30px 20px;
+    width: 800px;
     border-radius: 20px;
     padding-top: 20px;
+    margin-top: 20px;
 }
 table{
     margin: 0 auto;
     border-collapse: collapse;
     width: 90%;
-    color: #6f83c5;
+    color: #000000;
     font-family: monospace;
     font-size: 20px;
     text-align: left;
@@ -21,12 +21,17 @@ table{
     border-radius: 20px;
 }
 table a{
-    color: #6f83c5;
+    color: #002975;
 }
+thead{
+    color: white;
+    background-color: #333333;
+}
+
 tr{
     border-bottom: #000000 solid 2px;
 }
- td{
+td{
     padding: 10px;
 }
 
@@ -46,3 +51,22 @@ tr{
     border-radius: 0.3em;
 }
 
+#icon{
+    width: 20px
+}
+.contraseña{
+   display: flex;
+   align-items: center;
+    justify-content: center;
+   gap: 20px;
+}
+.contraseña p{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+#icon:hover{
+    cursor: pointer;
+}

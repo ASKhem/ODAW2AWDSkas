@@ -65,9 +65,10 @@ header>div:first-child , #panel2{
     cursor: pointer;
 }
 
-#hamburguer-menu:hover .line{
-    background-color: rgb(255, 216, 132);
+#hamburguer-menu:hover .line {
+    background-color: rgb(255, 174, 0)
 }
+
 #hamburguer-menu:active .line  {
     scale: 0.9;
 }
@@ -77,3 +78,8 @@ header>div:first-child , #panel2{
     height: 50px;
     border-radius: 10px;
 }
+
+#login-link{color:#ffefce}
+#login-link:hover{color:#ffa200}
+#logout-link{color:#b8b8b8}
+#logout-link:hover{color:#f00}

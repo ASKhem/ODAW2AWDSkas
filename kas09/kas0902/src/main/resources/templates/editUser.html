@@ -21,9 +21,7 @@
         <form action="#" th:action="@{/users/edit/submit}" th:object="${user}" method="post">
             <input type="text" th:field="*{id}" hidden/>
             <div class="campo"><p>Usuario:</p><input type="text" th:field="*{nombre}" /></div>
-            <span class="error" th:errors="*{nombre}"></span>
-            <div class="campo"><p>Contraseña:</p><input type="text" th:field="*{password}" /></div>
-            <span class="error" th:errors="*{password}"></span>
+            <input type="text" th:field="*{password}" hidden/>
             <div class="campo">
                 <p>Rol:</p>
                 <select th:field="*{rol}">
@@ -35,6 +33,7 @@
             <div class="buttons"><input type="submit" value="Submit" />
                 <input type="reset" value="Reset" id="resetButton"/>
             </div>
+            <span th:if="${error}" th:text="${error}" class="error"></span>
         </form>
     </main>
 </body>

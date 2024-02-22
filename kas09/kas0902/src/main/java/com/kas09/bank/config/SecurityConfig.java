@@ -29,29 +29,28 @@ public class SecurityConfig {
                 return new BCryptPasswordEncoder();
         }
 
-
+        @Bean
         public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-                http.headers(headersConfigurer -> headersConfigurer
-                        .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));
-                http.authorizeHttpRequests(
-                        auth -> auth
-                                .requestMatchers("/cuentas/list", "/movimientos/list").permitAll()
-                                .requestMatchers("/users/**").hasRole("ADMIN")
-                                .requestMatchers("/cuentas/**").hasAnyRole("ADMIN", "OWNER")
-                                .requestMatchers("/cuentas/create", "/cuentas/edit", "/cuentas/delete").hasRole("OWNER")
-                                .requestMatchers("/movimientos/**").hasAnyRole("ADMIN", "OWNER", "USER")
-                                .requestMatchers("/movimientos/create", "/movimientos/edit", "/movimientos/delete").hasAnyRole("ADMIN", "OWNER", "USER")
-                                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()       
-                                .requestMatchers("/h2-console/**").hasRole("ADMIN")
-                                .anyRequest().authenticated())
+        http.headers(
+        headersConfigurer -> headersConfigurer
+        .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));
+        http.authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/", "/cuentas/list", "/movimientos/list/**").permitAll()
+                        .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                        .requestMatchers("movimientos/**").hasRole("USER")
+                        .requestMatchers("/cuentas/**", "/movimientos/**").hasAnyRole("ADMIN", "OWNER")
+                        .requestMatchers("/users/**").hasRole("ADMIN")
+                        .anyRequest().authenticated())
                         .formLogin(formLogin -> formLogin
                                 .defaultSuccessUrl("/cuentas/list", true)
                                 .permitAll())
                         .logout(logout -> logout
+                                .logoutSuccessUrl("/cuentas/list")
                                 .permitAll())
                         // .csrf(csrf -> csrf.disable())
                         .httpBasic(Customizer.withDefaults());
-                http.exceptionHandling(exceptions -> exceptions.accessDeniedPage("/accessError"));
+                http.exceptionHandling(exceptions -> exceptions.accessDeniedPage("/errorPage"));
                 return http.build();
             }
+        
 }

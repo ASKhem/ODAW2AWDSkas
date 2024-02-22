@@ -23,7 +23,8 @@
                     <tbody>
                         <tr th:each="user : ${users}">
                             <td th:text="${user.id}"></td><td th:text="${user.nombre}"></td>
-                            <td th:text="${user.password}"></td>
+                            <!-- <td th:text="${user.password}"></td> -->
+                            <td class="contraseña"><p>**********</p><img id="icon" src="https://cdn-icons-png.flaticon.com/128/159/159604.png"></td>
                             <td th:text="${user.rol}"></td>
                             <td><a th:href="@{/users/edit/{id}(id=${user.id})}">Editar</a></td>
                             <td><a th:href="@{/users/delete/{id}(id=${user.id})}">Borrar</a></td>

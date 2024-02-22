@@ -37,7 +37,9 @@ public class UserController {
 
     @PostMapping("/new/submit")
     public String createUserSubmit(@Valid Usuario user, BindingResult bindingResult, Model model) {
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("user", user);
+            model.addAttribute("error", "Campos incorrectos. Por favor, rellene los campos correctamente.");
             return "newUser";
         }else{
             userService.createUser(user);
