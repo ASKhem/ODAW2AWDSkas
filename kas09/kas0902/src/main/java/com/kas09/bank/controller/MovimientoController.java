@@ -38,14 +38,14 @@ public class MovimientoController {
         return "newMovement";
     }
 
-    @PostMapping("/newMovement/{iban}/submit")
+    @PostMapping("/newMovement/submit/{iban}")
     public String createMovimientoSubmit(@PathVariable String iban, @Valid Movimiento movimiento, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "newMovement";
         }else{
             movimientoService.createMovimiento(cuentaService.getCuenta(iban),movimiento);
             cuentaService.updateSaldo(cuentaService.getCuenta(iban), movimiento.getCantidad());
-            return "redirect:/movimientos/" + iban + "/list";
+            return "redirect:/movimientos/list/"+ iban;
         }
     }
 }

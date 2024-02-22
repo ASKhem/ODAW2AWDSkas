@@ -18,7 +18,7 @@
     <div th:insert="fragments/fragments.html :: menu-desplegable"></div>
     <main>
         <h2>Nuevo Movimiento para la cuenta:<p th:text="${iban}" class="textoIban"></p></h2>
-        <form th:action="@{/movimientos/newMovement/{iban}/submit(iban = ${iban})}" th:object="${movimiento}" method="post">
+        <form th:action="@{/movimientos/newMovement/submit/{iban}(iban = ${iban})}" th:object="${movimiento}" method="post">
             <input type="hidden" th:field="*{cuenta}"/>
             <div class="campo"><p>Cantidad:</p><input type="text" th:field="*{cantidad}" /></div>
             <span class="error" th:errors="*{cantidad}"></span>
