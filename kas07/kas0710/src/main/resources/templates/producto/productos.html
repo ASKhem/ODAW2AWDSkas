@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="stylesheet" href="EstiloPredefinido.css">
+    <style>
+        body {
+            text-align: center;
+        }
+
+        img {
+            width: 40%;
+            height: 20%;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid #000000;
+        }
+
+        thead {
+            background-color: #ffdede;
+            text-align: center;
+            font-weight: bold;
+        }
+        input{
+            cursor: pointer;margin-top: 20px;width: 6vw;
+            height: 2vw; background-color: #dddddd;
+        }
+        tr,
+        td {
+            border: 1px solid #000000;
+        }
+        td{
+            padding: 7px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Supermercado</h1>
+        <img src="/img/supermercado.jpg" alt="Imagen de supermercado">
+        <select id="select" onChange="changeCategory();">
+            <option value="0">Todas</option>
+            <option th:each="cat : ${categorias}"
+                    th:value="${cat.id}" th:text="${cat.nombre}"
+                    th:selected="${cat.id} == ${categoriaSeleccionada.id} ? true : false">
+            </option>
+        </select>
+        
+        <script>
+        function changeCategory(){
+            const select = document.getElementById("select");
+            if (select.value == 0) window.location.href = "/productos";
+            else window.location.href = "/productos/porCateg/"+select.value;
+        }
+        </script>
+        <h2>Categoría: <span th:text="${categoriaSeleccionada.nombre}">default</span></h2>
+        <h2>Productos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Nombre</td>
+                    <td>Precio</td>
+                    <td>Oferta</td>
+                    <td>TipoIva</td>
+                    <td>Categoria</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="producto : ${productos}">
+                    <td th:text="${producto.id}"></td>
+                    <td th:text="${producto.nombre}"></td>
+                    <td th:text="${producto.precio}"></td>
+                    <td th:text="${producto.enOferta ? 'Yes' : 'No'}"></td>
+                    <td th:text="${producto.tipoIva}"></td>
+                    <td th:text="${producto.categoria.nombre}"></td>
+                    <td><a th:href="@{/productos/edit(id=${producto.id})}">Editar</a></td>
+                    <td><a th:href="@{/productos/delete(id=${producto.id})}">Eliminar</a></td>
+                    <td><a th:href="@{/valoraciones/producto/{id}(id=${producto.id})}">Ver valoraciones</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <form action="/productos/new">
+            <input type="submit" value="Añadir" />
+        </form>
+        <a th:href="@{/usuarios}">Lista usuarios</a>
+        <a th:href="@{/categorias}">Lista categorias</a>
+</body>
+
+</html>

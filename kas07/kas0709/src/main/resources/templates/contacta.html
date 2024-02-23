@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contacta</title>
+    <link rel="stylesheet" href="/contacta.css">
+</head>
+<body>
+    <h1>Contacta</h1>
+    <main class="pagina-contacto">
+        <div>
+            <img src="/img/Contacto.jpg" alt="logoContanto">
+            <h2>Contacto</h2>
+            <p>Email: khemwirtzt@gmail.com</p>
+            <p>Teléfono: +34675889968</p>
+            <p>Dirección: Calle orzan</p>
+        </div>
+    </main>
+    <h2>Formulario Consultas o Quejas:</h2>
+    <div th:if="!${enviar}">
+        <form action="#" method="post" th:action="@{/contacta/submit}" th:object="${consultaForm}">
+            <label>Nombre: 
+                <input type="text" id="name" th:field="*{name}" placeholder="Nombre">
+            </label>
+            <p class="formularioError" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+            <label>Correo: 
+                <input type="email" id="correo" th:field="*{correo}" placeholder="Correo">
+            </label>
+            <p class="formularioError"  th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></p>
+            <label>Escribe aquí: 
+                <textarea type="text" id="comentario" th:field="*{comentario}" placeholder="comentario"></textarea>
+            </label>
+            <p class="formularioError"  th:if="${#fields.hasErrors('comentario')}" th:errors="*{comentario}"></p>
+            
+            <label>Tipo: 
+                <select name="tipo" size="3" th:field="*{tipo}">
+                    <option value="Queja">Queja</option>
+                    <option value="Consulta">Consulta</option>
+                    <option value="Otro">Otros</option>
+                </select>
+            </label>
+            <p class="formularioError"  th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"></p>
+            <label>
+                <input type="checkbox" id="aceptaCondiciones" th:field="*{aceptaCondiciones}" /> Acepto los términos y condiciones
+            </label>
+            <p class="formularioError"  th:if="${#fields.hasErrors('aceptaCondiciones')}" th:errors="*{aceptaCondiciones}"></p>
+            <p class="formularioError"  th:text="${errorMensaje}"></p>
+            <input type="submit" value="enviar"/>
+        </form>
+        <form action="#" method="post" th:action="@{/contacta/reset}" th:object="${consultaForm}">
+            <input type="submit" value="reset" />
+        </form>
+    </div>
+    <div th:if="${enviar}">
+        <p style="color:blue" th:text="${enviar}"></p>
+        <th:block>
+            <h2>Consulta Procesada</h2>
+            <p>Nombre: <span th:text="${consultaForm.name}"></span></p>
+            <p>Correo: <span th:text="${consultaForm.correo}"></span></p>
+            <p>Tipo consulta: <span th:text="${consultaForm.tipo}"></span></p>
+            <p>Consulta Realizada: <span th:text="${consultaForm.comentario}"></span></p>
+        </th:block>
+    </div>
+</body>
+</html>

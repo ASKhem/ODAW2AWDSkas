@@ -1,0 +1,10 @@
+.filteredSearch {
+    margin: 0 auto; width: 70vw; background-color: rgb(61, 61, 61);
+    color: white; border-radius: 1vw; padding: 1vw; display: flex;
+    justify-content: space-between; align-items: center; padding: 1vw 2vw 1vw 2vw;
+}
+.filteredSearch a {
+    display:flex;color: #fff; text-align: center;
+    text-decoration: none;margin-left: 3vw;
+}
+.filteredSearch a:hover {background-color: #ddd;color: #333;}

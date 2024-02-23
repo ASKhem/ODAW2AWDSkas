@@ -1,0 +1,95 @@
+form {
+    margin: 0 auto;
+    width: 30vw;
+    padding: 1em;
+    border: 1px solid #c7c7c7;
+    background-color: rgb(230, 230, 230, 0.7);
+    border-radius: 1em;
+    height: 60vh;
+    padding: 2em;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+form table{
+    margin: 0 auto;
+}
+form p{
+    display: flex;
+    font-style: bold;
+    width: 10vw;
+}
+
+input[type="text"]{
+    margin: 0 auto;
+    margin-bottom: 1em;
+    padding: 0.5em;
+    border-radius: 0.3em;
+    border: 1px solid #c7c7c7;
+    width: 18vw;
+    height: 2vw;
+}
+
+input[type="submit"], #resetButton{
+    margin: 0 auto;
+    background-color: rgb(4, 65, 4);
+    margin-bottom: 3em;
+    border-radius: 0.3em;
+    border: 1px solid  rgb(4, 65, 4);
+    color: white;
+}
+input[type="submit"]{
+    cursor: pointer;
+    width: 15vw;
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+}
+
+#resetButton{
+    color: rgb(255, 255, 255);
+    background-color: #333333;
+    cursor: pointer;
+    text-align: center;
+    padding: 0.7em 3.3em 0.7em 3.3em;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+}
+select{
+    margin-left: 3.5em;
+    margin-bottom: 1em;
+    padding: 0.5em;
+    border-radius: 0.3em;
+    border: 1px solid #c7c7c7;
+    width: 73%;
+    
+}
+
+.error{
+    color: red;
+    font-size: 0.8em;
+    height: 3px;
+}
+
+.campo{
+    display: inline-flex;
+    align-items: baseline;
+}
+
+.campoRadio{
+    font-size: 1vw;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 10vw;
+}
+
+.campoRadio input{
+    margin-right: 1.2vw;
+}

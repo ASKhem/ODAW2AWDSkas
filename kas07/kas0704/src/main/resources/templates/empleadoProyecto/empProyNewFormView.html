@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/global.css">
+    <link rel="stylesheet" href="/form.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div th:insert="~{fragments/fragments.html :: cabecera}"></div>
+    <main>
+        <h2>Empleado/Proyecto Nueva relación</h2>
+        <form method="post" action="#" th:action="@{/emplProy/new/submit}" th:object="${empleadoProyectoForm}">
+            <div class="campo">
+                <p>Empleado:</p>
+                <select name="list1" th:field="*{empleado}">
+                    <option value="0">select option</option> <!--opcion por defecto-->
+                    <option th:each="empleado:${listaEmpleados}" th:value="${empleado.id}" th:text="${empleado.nombre}">
+                    </option>
+                </select>
+            </div>
+            <div class="campo">
+                <p>Proyecto:</p>
+                <select name="list2" th:field="*{proyecto}">
+                    <option value="0">select option</option> <!--opcion por defecto-->
+                    <option th:each="proyecto:${listaProyectos}" th:value="${proyecto.id}" th:text="${proyecto.nombre}">
+                    </option>
+                </select>
+            </div>
+            <div class="campo">
+                <p>Puesto:</p>
+                <input type="text" id="puesto" th:field="*{puesto}" /></label><br />
+            </div>
+            <div class="boton">
+                <input type="submit" value="Enviar" />
+            </div>
+        </form>
+    </main>
+    <div th:insert="~{fragments/fragments.html :: pie}"></div>
+</body>
+
+</html>

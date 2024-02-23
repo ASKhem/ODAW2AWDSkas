@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fragmentos</title>
+</head>
+<body>
+    <header class="main-header" th:fragment="cabecera">
+        <div class="logo">
+            <h1>KAS MANAGEMENT</h1>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a th:href="@{/}">INICIO</a></li>
+                <li><a th:href="@{/empleados}">EMPLEADOS HOME</a></li>
+                <li><a th:href="@{/depto/list}">DEPARTAMENTOS HOME</a></li>
+                <li><a th:href="@{/categorias/list}">CATEGORIAS HOME</a></li>
+                <li><a th:href="@{/empleados/nuevo}">NUEVO EMPLEADO</a></li>
+                <li><a th:href="@{/depto/new}">NUEVO DEPARTAMENTO</a></li>
+                <li><a th:href="@{/categorias/new}">NUEVA CATEGORIA</a></li>
+            </ul>
+        </nav>
+    </header>
+    <footer class="main-footer" th:fragment="pie">
+        <p>© 2023 KAS MANAGEMENT</p>
+    </footer>
+</body>
+</html>

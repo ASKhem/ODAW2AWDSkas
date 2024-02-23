@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Paciente</title>
+    <link rel="stylesheet" href="/header.css"/>
+    <link rel="stylesheet" href="/form.css"/>
+    <link rel="stylesheet" href="/footer.css"/>
+    <link rel="stylesheet" href="/global.css"/>
+</head>
+<body>
+    <div th:insert="fragments/fragments.html :: cabecera"></div>
+    <h2>New Paciente</h2>
+    <form th:action="@{/newPaciente/submit}" th:object="${newPaciente}" method="post">
+        <div class="campo">
+            <p>dni:</p><input type="text" th:field="*{dni}" placeholder="00000000N"/></p>
+        </div>
+        <div class="campo">
+            <p>Nombre:</p><input type="text" th:field="*{nombre}"/></p>
+        </div>
+        <div class="campo">
+            <p>Fecha Nacimiento:</p><input type="text" th:field="*{fechaNacimiento}" placeholder="AAAA-MM-DD"/></p>
+        </div><br>
+        
+        <div class="campo">
+            <p>Motivo de la visita</p>
+            <div class="campoRadio">
+                <P>Consulta:</P><input type="radio" name="button1" value="1" text="Consulta" th:field="*{tipoPaciente}"/>
+                <P>Receta:</P><input type="radio" name="button1" value="2" text="Receta" th:field="*{tipoPaciente}"/>
+                <p>Revision:</p><input type="radio" name="button1" value="3" text="Revision" th:field="*{tipoPaciente}"/>
+            </div>
+        </div><br>
+        <div class="campo">
+            <p>Motivo consulta:</p><input type="text" id="motivoConsulta" th:field="*{motivoConsulta}"/>
+        </div>
+        <div class="campo">
+            <p>Medicamentos:</p><input type="text" id="medicamentos" placeholder="1-10" th:field="*{listaMedicamentos}"/>
+        </div>
+        <div class="campo">
+            <p>Fech Visit Anterior:</p><input type="text" id="fechaVisitaAnterior" placeholder="AAAA-MM-DD" th:field="*{fechaUltimaRevision}"/>
+        </div>
+        <div class="buttons">
+            <input type="submit" value="Nuevo" />
+            <input type="reset" value="Resetear" id="resetButton"/>
+        </div>
+    </form>
+    <div th:insert="fragments/fragments.html :: pie"></div>
+</body>
+</html>

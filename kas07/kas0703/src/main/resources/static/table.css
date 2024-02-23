@@ -1,0 +1,37 @@
+#tableContainer{
+    background-color: rgb(230, 230, 230, 0.6);
+    padding: 0.5vw;
+    width: 90vw;
+    height: 55vh;
+    margin: 0 auto;
+    margin-bottom: 1vw;
+    display: flex;
+    border-radius: 1vw;
+    overflow: auto; 
+}
+
+#tableContainer table {
+    font-family: monospace;
+    margin: 0 auto;
+    border-collapse: collapse;
+    font-size: 1.25vw;
+    text-align: center; 
+    height: 55vh;
+    width: 85vw;
+}
+
+#tableContainer th{
+    color:#094413;
+    padding: 0.5vw;
+}
+#tableContainer tr{
+    height: 8vh;
+    padding: 0.5vw;
+    border-bottom: #000000 solid 2px;
+}
+#tableContainer td{
+    padding: 0.5vw;
+    color: #4a66c2;
+}
+
+

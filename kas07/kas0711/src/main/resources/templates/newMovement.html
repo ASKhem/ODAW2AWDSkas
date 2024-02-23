@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/header.css"/>
+    <link rel="stylesheet" href="/form.css"/>
+    <link rel="stylesheet" href="/footer.css"/>
+    <link rel="stylesheet" href="/global.css"/>
+</head>
+<body>
+    <div th:insert="fragments/fragments.html :: cabecera"></div>
+    <h2>Nuevo Movimiento para la cuenta:<p th:text="${iban}" class="textoIban"></p></h2>
+    <form th:action="@{/movimientos/{iban}/newMovement/submit(iban = ${iban})}" th:object="${movimiento}" method="post">
+        <input type="hidden" th:field="*{cuenta}"/>
+        <div class="campo"><p>Cantidad:</p><input type="text" th:field="*{cantidad}" /></div>
+        <span class="error" th:errors="*{cantidad}"></span>
+        <div class="buttons">
+            <input type="submit" value="Submit" />
+            <input type="reset" value="Reset" id="resetButton"/>
+        </div>
+    </form>
+    <div th:insert="fragments/fragments.html :: pie"></div>
+</body>
+</html>

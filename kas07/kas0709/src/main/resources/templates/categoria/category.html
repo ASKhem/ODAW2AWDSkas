@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categoria</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
+            border: 1px solid #000000;
+        }
+
+        thead {
+            background-color: #ffdede;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        input {
+            cursor: pointer;
+            margin-top: 20px;
+            width: 6vw;
+            height: 2vw;
+            background-color: #dddddd;
+        }
+
+        tr,
+        td {
+            border: 1px solid #000000;
+        }
+
+        td {
+            padding: 7px;
+        }
+    </style>
+</head>
+
+<body>
+        <h2>Categorias</h2>
+        <table>
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Nombre</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="categoria : ${categorias}">
+                    <td th:text="${categoria.id}"></td>
+                    <td th:text="${categoria.nombre}"></td>
+                    <td><a th:href="@{/categorias/edit(id=${categoria.id})}">Editar</a></td>
+                    <td><a th:href="@{/categorias/delete/{id}(id=${categoria.id})}">Eliminar</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <form action="/categorias/new">
+            <input type="submit" value="Añadir" />
+        </form>
+        <span th:text="${error}"></span>
+</body>
+
+</html>

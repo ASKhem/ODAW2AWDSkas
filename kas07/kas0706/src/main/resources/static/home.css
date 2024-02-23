@@ -1,0 +1,55 @@
+main{
+    padding: 2vw
+}
+#contenedor1{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+h2{
+    font-size: 4vw !important;
+    margin: 0;
+    padding: 0;
+}
+main #homeTitle{
+    font-size: 10vw;
+}
+#left, #right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1vw;
+}
+#left{
+    margin: 4.5vh 5vw 0 10vw;
+    width: 40vw;
+    height: 50vh;
+    border-radius: 1vw;
+}
+
+#left img{
+    width: 31vw;
+    height: 51vh;
+    border-radius: 2vw;
+}
+
+#right{
+    flex-direction: column;
+    justify-content: center;
+    width: 50vw;
+    height:60vh;
+    margin: 0 10vw 0 0;
+}
+
+#right .seccionListado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    margin: 1vw;
+    height: 10vh;
+    font-size:2.5vw;
+    background-color: rgb(224, 224, 224, 0.8);
+    border-radius: 1vw;
+}

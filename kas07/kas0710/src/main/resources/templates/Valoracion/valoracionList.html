@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Valoraciones</title>
+</head>
+<body>
+    <h1 th:if="${usuario}">Lista de Valoraciones del usuario <span th:text="${usuario.nombre}"></span></h1>
+    <h1 th:if="${producto}">Lista de Valoraciones del producto <span th:text="${producto.nombre}"></span></h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Valoracion</th>
+                <th>Producto</th>
+            </tr>
+        </thead>
+        <tbody th:each="valoracion : ${valoraciones}">
+            <tr>
+                <td th:text="${valoracion.id}"></td>
+                <td th:text="${valoracion.valoracion}"></td>
+                <td th:text="${valoracion.producto.nombre}"></td>
+                <td th:text="${valoracion.comentario}"></td>
+                <td>
+                    <a th:href="@{/valoraciones/delete/{id}(id=${valoracion.id})}">Borrar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/productos">Volver a productos</a>
+    <a href="/usuarios">Volver a usuarios</a>
+</body>
+</html>

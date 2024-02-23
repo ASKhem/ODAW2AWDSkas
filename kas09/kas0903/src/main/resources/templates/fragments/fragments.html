@@ -28,7 +28,7 @@
                 <div class="line"></div>
                 <div class="line"></div>
             </div>
-            <div id="user-name"><span th:text="${username}"></span></div>
+            <div id="user-name" sec:authorize="isAuthenticated()"><span th:text="${username}"></span></div>
         </div>
     </header>
     <header class="main-header" th:fragment="cabecera2">

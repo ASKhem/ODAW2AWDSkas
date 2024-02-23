@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="EstiloPredefinido.css">
+</head>
+
+<body>
+    <div style="display: inline-flex; width: 90%;">
+        <h1>Mi Sitio Web</h1>
+        <h2 style="padding-left: 10%;">
+            <span th:text="${fecha}"></span>
+        </h2>
+        <b style="padding-left:10%; margin-top: 5%;"><span th:text="${mensajeBienvenida}"></span></b>
+    </div>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Inicio</a></li>s
+                <li><a href="/quienes-somos">Quiénes Somos</a></li>
+                <li><a href="/productos">Productos</a></li>
+                <li><a th:href="@{/contacta}">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <img src="/img/logoCasa.png" alt="LogoCasa">
+    </main>
+</body>
+
+</html>

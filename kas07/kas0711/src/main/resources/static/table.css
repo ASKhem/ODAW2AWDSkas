@@ -1,0 +1,46 @@
+#tableAccounts {
+    background-color: rgb(230, 230, 230, 0.6);
+    width: 80%;
+    margin: 0 auto;
+    height: 27vw;
+    overflow: auto;
+    max-height: 400px;
+    border-radius: 20px;
+    padding-top: 20px;
+}
+table{
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 90%;
+    color: #6f83c5;
+    font-family: monospace;
+    font-size: 20px;
+    text-align: left;
+    width : 90%;
+    text-align: center; 
+    border-radius: 20px;
+}
+
+tr{
+    border-bottom: #000000 solid 2px;
+}
+ td{
+    padding: 10px;
+}
+
+.buttonType2{
+    display: inline-flex;
+    margin: 5vh 0 10vh 15vw;
+    text-align: center;
+}
+
+.buttonType2 a{
+    color: white;
+    width: 15vw;
+    padding: 0.5vw;
+    background-color: rgb(4, 65, 4);
+    border: 1px solid  rgb(4, 65, 4);
+    margin-bottom: 3em;
+    border-radius: 0.3em;
+}
+
