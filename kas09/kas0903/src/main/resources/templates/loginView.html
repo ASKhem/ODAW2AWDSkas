@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="icon" href="https://img.freepik.com/vector-premium/icono-edificio-banco-oscuridad_116137-4384.jpg" type="image/jpg">
+    <style>
+        body{background-color:#ececec;font-family:'Open Sans',sans-serif;color:#000;line-height:1.5;margin:0;padding:0;}
+        main{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:80vh; margin-top: 50px}
+        a{text-decoration:none;color:#fff;transition:0.25s}
+        a:hover{color:#ffa200}
+        .textoIban{font-size:1vw;font-weight:bold;color:#812626}
+        #lateral-socials{display:flex;justify-content:space-between;width:100vw;height:100vh;background-color:#c4c4c4c7;cursor:pointer;position:fixed;border-left:none;z-index:0;top:65px;transition:transform 0.3s ease-out}
+        h3{color:#fff;font-size:1.5em;margin:0  0 20px 0;padding:0}
+        #espacio{height:80px}
+        #lateral-socials #fondo-menu-desplegable{width:65%;height:100%}
+        #menu-container{display:flex;flex-direction:column;align-items:center;width:400px;height:100%;background-color:#5e5e5e;border-left:1px solid #000}
+        #lateral-socials ul{width:70%;display:flex;flex-direction:column}
+        .hide-lateral-socials{transform:translateX(100%);transition:transform 0.5s ease-out}
+        header{background-color:#333;color:#fff;display:flex;justify-content:space-between;align-items:center;width:100%;position:absolute;z-index:1;padding:5px 0;top:0;left:0}
+        .logo{min-width:400px}
+        header>div:nth-of-type(odd){margin:0 50px}
+        h1,h2{text-align:center;padding:0;margin:0;font-size:1.5em}
+        nav a{display:flex;color:#fff;text-align:center;text-decoration:none;margin-left:3vw}
+        ul{list-style:none}
+        li{display:inline-block;padding:10px}
+        nav a:hover{background-color:#ddd;color:#333}
+        header>div:first-child,#panel2{width:150px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+        .sesion{width:100px;display:flex;justify-content:space-between}
+        .sesion a{color:#fff}
+        .sesion a:hover{color:#ffa200}
+        #hamburguer-menu{display:flex;flex-direction:column;gap:5px}
+        .line{width:32px;height:2px;background-color:#fff}
+        #hamburguer-menu:hover{cursor:pointer}
+        #hamburguer-menu:hover .line{background-color:#ffa200}
+        #hamburguer-menu:active .line{scale:0.9}
+        #imagen-logo{width:50px;height:50px;border-radius:10px}
+        #tableAccounts{background-color:rgba(255,255,255,0.733);width:80%;margin:0 auto;padding:50px 20px 30px 20px;width:800px;border-radius:20px;padding-top:20px;margin-top:20px}
+        table{margin:0 auto;border-collapse:collapse;width:90%;color:#000;font-family:monospace;font-size:20px;text-align:left;width:90%;text-align:center;border-radius:20px}
+        table a{color:#002975}
+        thead{color:#fff;background-color:#333}
+        tr{border-bottom:#000 solid 2px}
+        td{padding:10px}
+        .buttonType2{display:inline-flex;margin:5vh 0 10vh 15vw;text-align:center}
+        .buttonType2 a{color:#fff;width:15vw;padding:0.5vw;background-color:rgb(4,65,4);border:1px solid rgb(4,65,4);margin-bottom:3em;border-radius:0.3em}
+        #icon{width:20px}
+        .contraseña{display:flex;align-items:center;justify-content:center;gap:20px}
+        .contraseña p{margin:0;padding:0;display:flex;align-items:center}
+        #icon:hover{cursor:pointer}
+        #login-link{color:#ffefce}
+        #login-link:hover{color:#ffa200}
+        #logout-link{color:#b8b8b8}
+        #logout-link:hover{color:#f00}
+        .form{
+        background: hsla(0, 0%, 81%, 0.534);
+        border-radius: 10px;
+        padding: 10px;
+        margin-top: 10px;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 350px;
+        min-height: 400px;
+        border: 1px solid #ffa200;
+    }
+
+    .form-content{
+        margin: 10px 0px 10px 0px;
+        width: 325px;
+    }
+
+    .form-content p{
+        margin: 0;
+        font: 800 1.10em "Oswald", sans-serif;
+        color: black;
+        margin-bottom: 5px;
+    }
+
+    .form-content input{
+        background: linear-gradient(to bottom right, hsla(249, 73%, 46%, 0.1),hsla(226, 76%, 47%, 0.1), hsla(226, 66%, 45%, 0.1));
+        width: 100%;
+        border: none;
+        padding: 10px 0 0px 0;
+        border-bottom: 1px solid #ffa200;
+        outline: none;
+        margin-bottom: 20px;
+        font-size: 1em;
+        color:rgb(0, 0, 0);
+    }
+
+    .form-botton input{
+        background: hsl(120, 100%, 8%);
+        width: 100%;
+        height: 40px;
+        outline: none;
+        padding: 10px;
+        color:rgb(255, 255, 255);
+        cursor: pointer;
+        border: 1px solid rgba(14, 14, 14, 0.1);
+    }
+
+    .form-botton input:hover{
+        color: #ffa200;
+        border-color: #ffa200;
+    }
+
+    .optional-login button{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 325px;
+        height: 40px;
+        margin-top: 20px;
+        background-color: hsla(0, 0%, 100%, 0.6);
+        border: 1px solid rgba(14, 14, 14, 0.1);
+    }
+    .optional-login img{
+        margin-left: 25px;
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+
+    }
+    .optional-login{
+        text-decoration: none;
+    }
+
+    .optional-login button:hover{
+        border-color: #ffa200;
+    }
+
+    .optional-login p{
+        margin-right: 80px;
+        color: rgb(0, 0, 0);
+        font: 700 1em "Oswald", sans-serif;
+    }
+
+    .text{
+        color: #ffa200;
+        font: 700 0.75em "Oswald", sans-serif;
+        margin-top: 20px;
+    }
+
+    .text a{
+        color: rgb(228, 233, 255);
+        text-decoration: none;
+    }
+
+    .form-error{
+        color: rgb(255, 0, 0);
+        font: 700 0.9em "Oswald", sans-serif;
+        margin-top: 10px;
+    }
+    .error{
+        color: rgb(255, 0, 0);
+        font: 700 0.9em "Oswald", sans-serif;
+    }
+    </style>
+</head>
+    <body>
+        <div th:insert="fragments/fragments.html :: cabecera"></div>
+        <div th:insert="fragments/fragments.html :: menu-desplegable"></div>
+        <main>
+            <div class="form">
+                <h1>Login</h1>
+                <div th:if="${param.error}" class="error">Datos incorrectos</div>
+                <div th:if="${param.logout}">Te has desconectado</div>
+                <form th:action="@{/login}" method="post">
+                    <div class="form-content">
+                        <p>Username:</p>
+                        <input type="text" name="username" placeholder="Username" class="form-control" id="username">
+                    </div>
+                    <div class="form-content">
+                        <p>Password:</p>
+                        <input type="password"   name="password" placeholder="Password" class="form-control" id="password">
+                    </div>
+                    <div class="form-botton">
+                        <input type="submit" value="Login"/>
+                    </div>
+                </form>
+            </div>
+            <!-- <span sec:authentication="name"></span> -->
+        </main>
+    </body>
+    <script>
+        window.onload = function () {
+            let desplegar = document.getElementById("hamburguer-menu");
+            let contenedor = document.getElementById("fondo-menu-desplegable");
+            desplegar.addEventListener("click", function () {
+                if (document.getElementById("lateral-socials").classList.contains("hide-lateral-socials")) {
+                    document.getElementById("lateral-socials").classList.remove("hide-lateral-socials")
+                } else{
+                    document.getElementById("lateral-socials").classList.add("hide-lateral-socials")
+                }
+            });
+
+            contenedor.addEventListener("mouseenter", function () {
+                document.getElementById("lateral-socials").classList.add("hide-lateral-socials");
+            });
+        }
+    </script> 
+</html>

@@ -1,0 +1,124 @@
+header {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    padding: 5px 0;
+    top: 0;
+    left: 0
+}
+
+.logo {
+    min-width: 400px
+}
+
+header>div:nth-of-type(odd) {
+    margin: 0 50px
+}
+
+h1,
+h2 {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    font-size: 1.5em
+}
+
+nav a {
+    display: flex;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 3vw
+}
+
+ul {
+    list-style: none
+}
+
+li {
+    display: inline-block;
+    padding: 10px
+}
+
+nav a:hover {
+    background-color: #ddd;
+    color: #333
+}
+
+header>div:first-child,
+#panel2 {
+    width: 210px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px
+}
+
+.sesion a {
+    color: #fff
+}
+
+.sesion a:hover {
+    color: #ffa200
+}
+
+#hamburguer-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px
+}
+
+.line {
+    width: 32px;
+    height: 2px;
+    background-color: #fff
+}
+
+#hamburguer-menu:hover {
+    cursor: pointer
+}
+
+#hamburguer-menu:hover .line {
+    background-color: #ffa200
+}
+
+#hamburguer-menu:active .line {
+    scale: 0.9
+}
+
+#imagen-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px
+}
+
+#icon:hover {
+    cursor: pointer
+}
+
+#login-link {
+    color: #ffefce
+}
+
+#login-link:hover {
+    color: #ffa200
+}
+
+#logout-link {
+    color: #b8b8b8
+}
+
+#logout-link:hover {
+    color: #f00
+}
+
+#user-name {
+    display: flex;
+    align-items: center;
+    gap: 10px
+}

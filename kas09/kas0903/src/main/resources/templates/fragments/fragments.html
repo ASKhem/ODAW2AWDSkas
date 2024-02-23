@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fragmentos</title>
+</head>
+<body>
+    <header class="main-header" th:fragment="cabecera">
+        <div>
+            <a th:href="@{/cuentas/list}"><img id="imagen-logo" src="https://img.freepik.com/vector-premium/icono-edificio-banco-oscuridad_116137-4384.jpg" alt="Logo de la empresa"></a>
+        </div>
+        <div class="logo">
+            <h1>KASBANK MANAGEMENT</h1>
+        </div>
+        <div id="panel2">
+            <span class="sesion">
+                <div sec:authorize="!isAuthenticated()">
+                    <a th:href="@{/login}" id="login-link">Login</a>
+                </div>
+                <div sec:authorize="isAuthenticated()">
+                    <a th:href="@{/logout}" id="logout-link">Logout</a>
+                </div>
+            </span>
+
+            <div id="hamburguer-menu">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <div id="user-name"><span th:text="${username}"></span></div>
+        </div>
+    </header>
+    <header class="main-header" th:fragment="cabecera2">
+        <div>
+            <a th:href="@{/cuentas/list}"><img id="imagen-logo" src="https://img.freepik.com/vector-premium/icono-edificio-banco-oscuridad_116137-4384.jpg" alt="Logo de la empresa"></a>
+        </div>
+        <div class="logo">
+            <h1>KASBANK MANAGEMENT</h1>
+        </div>
+        <div id="panel2">
+            <div id="hamburguer-menu">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+    </header>
+    <aside id="lateral-socials" th:fragment="menu-desplegable" class="hide-lateral-socials">
+        <div id="fondo-menu-desplegable"></div>
+        <div id="menu-container">
+            <h3>MENU</h3>
+            <ul>
+                <li><a th:href="@{/cuentas/list}">HOME</a></li>
+                <li><hr/></li>
+                <li><a th:href="@{/cuentas/list}">LISTA CUENTAS</a></li>
+                <li><a th:href="@{/cuentas/create}">NUEVA CUENTA</a></li>
+                <li><hr/></li>
+                <li><a th:href="@{/users/list}">LISTA USUARIOS</a></li>
+                <li><a th:href="@{/users/new}">NUEVO USUARIO</a></li>
+            </ul>
+        </div>
+    </aside>
+    <footer class="main-footer" th:fragment="pie">
+        <p>© 2023 KASBANK MANAGEMENT</p>
+    </footer>
+</body>
+</html>
