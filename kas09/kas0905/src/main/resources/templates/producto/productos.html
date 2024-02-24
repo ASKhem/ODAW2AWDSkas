@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zapatillas</title>
+    <link rel="icon" href="https://img.freepik.com/vector-premium/icono-edificio-banco-oscuridad_116137-4384.jpg" type="image/jpg">
+    <div th:insert="fragments/fragments.html :: estilos"></div>
+    <div th:insert="fragments/fragments.html :: scripts"></div>
+</head>
+
+<body>
+    <div th:insert="fragments/fragments.html :: cabecera"></div>
+    <div th:insert="fragments/fragments.html :: menu-desplegable"></div>
+    <main>
+        <h2>Lista Productos</h2>
+        <div id="tableAccounts">
+            <div class="campo">
+                <p>Categoria:</p>
+                <select id="select" onChange="changeCategory();">
+                    <option value="0">Todas</option>
+                    <option th:each="cat : ${categorias}" th:value="${cat.id}" th:text="${cat.nombre}"
+                        th:selected="${cat.id} == ${categoriaSeleccionada.id} ? true : false">
+                    </option>
+                </select>
+            </div>
+            <table>
+                <thead>
+                    <th>
+                        <td>ID</td>
+                        <td>Nombre</td>
+                        <td>Precio</td>
+                        <td>Oferta</td>
+                        <td>TipoIva</td>
+                        <td>Categoria</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </th>
+                </thead>
+                <tbody>
+                    <tr th:each="producto : ${productos}">
+                        <td th:text="${producto.id}"></td>
+                        <td th:text="${producto.nombre}"></td>
+                        <td th:text="${producto.precio}"></td>
+                        <td th:text="${producto.enOferta ? 'Yes' : 'No'}"></td>
+                        <td th:text="${producto.tipoIva}"></td>
+                        <td th:text="${producto.categoria.nombre}"></td>
+                        <td><a th:href="@{/productos/edit(id=${producto.id})}">Editar</a></td>
+                        <td><a th:href="@{/productos/delete(id=${producto.id})}">Eliminar</a></td>
+                        <td><a th:href="@{/valoraciones/producto/{id}(id=${producto.id})}">Ver valoraciones</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="display: flex; align-self: center; gap: 30px; margin-top: 30px;">
+                <a th:href="@{/productos/new}" style="color: white;">Añadir Producto</a>
+                <a th:href="@{/valoraciones/new}" style="color: white;">Añadir valoracion</a>
+            </div>
+
+        </div>
+
+        <script>
+            function changeCategory() {
+                const select = document.getElementById("select");
+                if (select.value == 0) window.location.href = "/productos";
+                else window.location.href = "/productos/porCateg/" + select.value;
+            }
+        </script>
+    </main>
+</body>
+
+</html>

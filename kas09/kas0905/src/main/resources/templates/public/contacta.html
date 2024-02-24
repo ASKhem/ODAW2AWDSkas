@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contacta</title>
+    <div th:insert="fragments/fragments.html :: estilos"></div>
+    <div th:insert="fragments/fragments.html :: scripts"></div>
+    <link rel="icon" href="https://img.freepik.com/vector-premium/icono-edificio-banco-oscuridad_116137-4384.jpg" type="image/jpg">
+</head>
+
+<body>
+    <div th:insert="fragments/fragments.html :: cabecera"></div>
+    <div th:insert="fragments/fragments.html :: menu-desplegable"></div>
+    <main class="pagina-contacto">
+        <h2>Contacto</h2>
+        <div id="info">
+            <p>Email: khemwirtzt@gmail.com</p>
+            <p>Teléfono: +34675889968</p>
+            <p>Dirección: Calle orzan</p>
+        </div>
+        <div>
+            <div th:if="!${enviar}" class="form-t1">
+                <h2>Formulario de contacto</h2>
+                <form action="#" method="post" th:action="@{/public/contacta/submit}" th:object="${consultaForm}">
+                    <div class="campo">
+                        <p>Nombre: </p>
+                        <input type="text" id="name" th:field="*{name}" placeholder="Nombre">
+                    </div>
+                    <p class="formularioError" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                    <div class="campo">
+                        <p>Correo: </p>
+                        <input type="email" id="correo" th:field="*{correo}" placeholder="Correo">
+                    </div>
+                    <p class="error" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></p>
+                    <div class="campo">
+                        <p>Consulta: </p>
+                        <textarea type="text" id="comentario" th:field="*{comentario}" placeholder="comentario"></textarea>
+                    </div>
+                    <p class="error" th:if="${#fields.hasErrors('comentario')}" th:errors="*{comentario}"></p>
+                    <div class="campo">
+                        <p>Tipo: </p>
+                        <select name="tipo" th:field="*{tipo}">
+                            <option value="Queja">Queja</option>
+                            <option value="Consulta">Consulta</option>
+                            <option value="Otro">Otros</option>
+                        </select>
+                    <p class="error" th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"></p>
+                    </div> 
+                    <div class="campo">
+                        <p>Aceptar los términos y condiciones</p>
+                        <input type="checkbox" id="aceptaCondiciones" th:field="*{aceptaCondiciones}" />
+                    </div>
+                    <p class="error" th:if="${#fields.hasErrors('aceptaCondiciones')}" th:errors="*{aceptaCondiciones}"></p>
+                    <p class="errorr" th:text="${errorMensaje}"></p>
+                    <div class="buttons">
+                        <input type="submit" value="Submit" />
+                        <input type="reset" value="Reset" id="resetButton"/>
+                    </div>
+                </form>
+            </div>
+            <div th:if="${enviar}" class="form-t1">
+                <p style="color:rgb(0, 145, 43)" th:text="${enviar}"></p>
+                <th:block>
+                    <h2>Consulta Procesada</h2>
+                    <p>Nombre: <span th:text="${consultaForm.name}"></span></p>
+                    <p>Correo: <span th:text="${consultaForm.correo}"></span></p>
+                    <p>Tipo consulta: <span th:text="${consultaForm.tipo}"></span></p>
+                    <p>Consulta Realizada: <span th:text="${consultaForm.comentario}"></span></p>
+                </th:block>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

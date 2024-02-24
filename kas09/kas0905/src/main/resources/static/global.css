@@ -1,0 +1,102 @@
+body {
+    background-color: #000000;
+    font-family: 'Open Sans', sans-serif;
+    background-image: url("https://media.gq-magazin.de/photos/654c9dda0c249c246925dcf9/16:9/w_2560%2Cc_limit/22806-MaseratiMC20Notte.jpg");
+    background-size: cover;
+    color: #000;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    transition: 0.25s
+}
+
+a:hover {
+    color: #afafaf
+}
+
+.textoIban {
+    font-size: 1vw;
+    font-weight: bold;
+    color: #812626
+}
+
+#lateral-socials {
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000c7;
+    cursor: pointer;
+    position: fixed;
+    border-left: none;
+    z-index: 0;
+    top: 65px;
+    transition: transform 0.3s ease-out
+}
+
+h2{
+    margin-top: 50px;
+    color: white;
+}
+h3 {
+    color: #fff;
+    font-size: 1.5em;
+    margin: 0 0 20px 0;
+    padding: 0;
+    margin-top: 70px;
+}
+
+#espacio {
+    height: 80px
+}
+
+#lateral-socials #fondo-menu-desplegable {
+    width: 100%;
+    height: 100%
+}
+
+#fondo-menu-desplegable {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    border-left: 1px solid #919191
+}
+
+#menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: 100%;
+    background-color: #000000;
+    border-left: 1px solid #919191
+}
+
+#lateral-socials ul {
+    width: 70%;
+    display: flex;
+    flex-direction: column
+}
+
+.hide-lateral-socials {
+    transform: translateX(100%);
+    transition: transform 0.5s ease-out
+}
+

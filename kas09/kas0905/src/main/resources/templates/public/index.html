@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="icon" href="https://img.freepik.com/vector-premium/icono-edificio-banco-oscuridad_116137-4384.jpg" type="image/jpg">
+    <div th:insert="fragments/fragments.html :: estilos"></div>
+    <div th:insert="fragments/fragments.html :: scripts"></div>
+</head>
+
+<body>
+
+    <div th:insert="fragments/fragments.html :: cabecera"></div>
+    <div th:insert="fragments/fragments.html :: menu-desplegable"></div>
+    <main class="main2">
+        <h2 id="slogan-index">THE FUTURE OF AUTOMOTION</h2>
+        <div id="tableAccounts">
+            <div class="option-secition">
+                <a th:href="@{/public/aboutUs}">
+                    <div class="option-main">
+                        <p>Sobre Nosotros</p>
+                    </div>
+                </a>
+                <a th:href="@{/public/contact}">
+                    <div class="option-main">
+                        <p>Contactanos</p>
+                    </div>
+                </a>
+            </div>
+            <div class="option-secition">
+                <a th:href="@{/public/productos/list}">
+                    <div class="option-main">
+                        <p>Productos</p>
+                    </div>
+                </a>
+                <a th:href="@{/public/categorias/list}">
+                    <div class="option-main">
+                        <p>Categorias</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

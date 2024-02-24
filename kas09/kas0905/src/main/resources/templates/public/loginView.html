@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="icon" href="https://img.freepik.com/vector-premium/icono-edificio-banco-oscuridad_116137-4384.jpg" type="image/jpg">
+    <div th:insert="fragments/fragments.html :: estilos"></div>
+    <div th:insert="fragments/fragments.html :: scripts"></div>
+</head>
+    <body>
+        <div th:insert="fragments/fragments.html :: cabecera"></div>
+        <div th:insert="fragments/fragments.html :: menu-desplegable"></div>
+        <main>
+            <div class="form-t1">
+                <div th:if="${param.error}" class="error">Datos incorrectos</div>
+                <div th:if="${param.logout}">Te has desconectado</div>
+                <form th:action="@{/login}" method="post">
+                    <div class="campo">
+                        <p>Username:</p>
+                        <input type="text" name="username" placeholder="Username" class="form-control" id="username">
+                    </div>
+                    <div class="campo">
+                        <p>Password:</p>
+                        <input type="password"   name="password" placeholder="Password" class="form-control" id="password">
+                    </div>
+                    <div class="campo">
+                        <input type="submit" value="Login"/>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </body>
+</html>

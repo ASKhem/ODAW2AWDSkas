@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>categorias</title>
+    <div th:insert="fragments/fragments.html :: estilos"></div>
+    <div th:insert="fragments/fragments.html :: scripts"></div>
+    <link rel="icon" href="https://img.freepik.com/vector-premium/icono-edificio-banco-oscuridad_116137-4384.jpg" type="image/jpg">
+</head>
+
+<body>
+    <div th:insert="fragments/fragments.html :: cabecera"></div>
+    <div id="espacio"></div>
+    <div th:insert="fragments/fragments.html :: menu-desplegable"></div>
+    <main>
+        <h2>Lista Categorias</h2>
+        <div id="tableAccounts">
+            <table>
+                <thead>
+                    <th>
+                        <td>ID</td>
+                        <td>Nombre</td>
+                        <td></td>
+                        <td></td>
+                    </th>
+                </thead>
+                <tbody>
+                    <tr th:each="categoria : ${categorias}">
+                        <td th:text="${categoria.id}"></td>
+                        <td th:text="${categoria.nombre}"></td>
+                        <td><a th:href="@{/categorias/edit(id=${categoria.id})}">Editar</a></td>
+                        <td><a th:href="@{/categorias/delete/{id}(id=${categoria.id})}">Eliminar</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <span th:text="${error}"></span>
+            <form action="/categorias/new" class="form-t2">
+                <input type="submit" value="Añadir" />
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>
