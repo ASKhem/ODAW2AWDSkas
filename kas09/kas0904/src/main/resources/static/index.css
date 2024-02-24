@@ -1,0 +1,40 @@
+#tableAccounts {
+    justify-content: center;
+    flex-direction: column;
+    width: 800px;
+    color: white;
+}
+
+.option-secition {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+ h2{
+    text-align: center;
+    color: white;
+    font-size: 2em;
+    margin: 0;
+    padding: 0;
+ }
+
+.option-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px;
+    padding: 20px;
+    width: 300px;
+    height: 100px;
+    border-radius: 10px;
+    background-color: #1a1a1a;
+    box-shadow: 0 0 10px #000;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.option-main p{
+    font-size: 1.5em;
+}
+.main2{
+    margin-top: 0;
+}

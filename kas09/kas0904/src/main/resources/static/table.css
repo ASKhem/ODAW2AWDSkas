@@ -1,0 +1,77 @@
+#tableAccounts {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 80%;
+    margin: 0 auto;
+    padding: 50px 20px 30px 20px;
+    width: 1200px;
+    border-radius: 20px;
+    padding-top: 20px;
+    margin-top: 20px;
+    border: 2px solid #ffffff69;
+}
+
+table{
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 90%;
+    color: #ffffff;
+    font-family: monospace;
+    font-size: 20px;
+    text-align: left;
+    width: 95%;
+    text-align: center; 
+    border-radius: 20px;
+}
+
+table a{
+    color: #e4e4e4;
+    
+}
+
+thead{
+    color: white;
+    background-color: #333333;
+}
+
+tr{
+    border-bottom: #ffffffab solid 2px;
+}
+td{
+    padding: 10px;
+}
+
+.buttonType2{
+    display: inline-flex;
+    margin: 5vh 0 10vh 15vw;
+    text-align: center;
+}
+
+.buttonType2 a{
+    color: white;
+    width: 15vw;
+    padding: 0.5vw;
+    background-color: rgb(4, 65, 4);
+    border: 1px solid  rgb(4, 65, 4);
+    margin-bottom: 3em;
+    border-radius: 0.3em;
+}
+
+#icon{
+    width: 20px
+}
+.contraseña{
+   display: flex;
+   align-items: center;
+    justify-content: center;
+   gap: 20px;
+}
+.contraseña p{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+#icon:hover{
+    cursor: pointer;
+}

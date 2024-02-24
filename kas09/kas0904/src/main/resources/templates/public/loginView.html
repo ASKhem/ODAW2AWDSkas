@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="icon" href="https://img.freepik.com/vector-premium/icono-edificio-banco-oscuridad_116137-4384.jpg" type="image/jpg">
+</head>
+    <body>
+        <div th:insert="fragments/fragments.html :: cabecera"></div>
+        <div th:insert="fragments/fragments.html :: menu-desplegable"></div>
+        <main>
+            <div class="form">
+                <h1>Login</h1>
+                <div th:if="${param.error}" class="error">Datos incorrectos</div>
+                <div th:if="${param.logout}">Te has desconectado</div>
+                <form th:action="@{/login}" method="post">
+                    <div class="form-content">
+                        <p>Username:</p>
+                        <input type="text" name="username" placeholder="Username" class="form-control" id="username">
+                    </div>
+                    <div class="form-content">
+                        <p>Password:</p>
+                        <input type="password"   name="password" placeholder="Password" class="form-control" id="password">
+                    </div>
+                    <div class="form-botton">
+                        <input type="submit" value="Login"/>
+                    </div>
+                </form>
+            </div>
+            <!-- <span sec:authentication="name"></span> -->
+        </main>
+    </body>
+    <script>
+        window.onload = function () {
+            let desplegar = document.getElementById("hamburguer-menu");
+            let contenedor = document.getElementById("fondo-menu-desplegable");
+            desplegar.addEventListener("click", function () {
+                if (document.getElementById("lateral-socials").classList.contains("hide-lateral-socials")) {
+                    document.getElementById("lateral-socials").classList.remove("hide-lateral-socials")
+                } else{
+                    document.getElementById("lateral-socials").classList.add("hide-lateral-socials")
+                }
+            });
+
+            contenedor.addEventListener("mouseenter", function () {
+                document.getElementById("lateral-socials").classList.add("hide-lateral-socials");
+            });
+        }
+    </script> 
+</html>

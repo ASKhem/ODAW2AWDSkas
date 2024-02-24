@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fragmentos</title>
+</head>
+<body>
+    <header class="main-header" th:fragment="cabecera">
+        <div class="logo">
+            <a th:href="@{/productos}"><img id="imagen-logo" src="https://i.pinimg.com/736x/cc/95/9f/cc959f7f7c555394e6f3a2bb7ab0a292.jpg" alt="Logo de la empresa"></a>
+        </div>
+        <div>
+            <h1>KAS AUTOMOTION STORE</h1>
+        </div>
+        <div id="panel2">
+            <span class="sesion">
+                <div sec:authorize="!isAuthenticated()">
+                    <a th:href="@{/public/login}" id="login-link">Login</a>
+                </div>
+                <div sec:authorize="isAuthenticated()">
+                    <a th:href="@{/logout}" id="logout-link">Logout</a>
+                </div>
+            </span>
+            <div id="hamburguer-menu">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <div id="user-name" sec:authorize="isAuthenticated()"><span th:text="${username}"></span></div>
+        </div>
+    </header>
+    <header class="main-header" th:fragment="cabecera2">
+        <div>
+            <a th:href="@{/productos}"><img id="imagen-logo" src="https://i.pinimg.com/736x/cc/95/9f/cc959f7f7c555394e6f3a2bb7ab0a292.jpg"></a>
+        </div>
+        <div class="logo">
+            <h1>KASTORE</h1>
+        </div>
+        <div id="panel2">
+            <div id="hamburguer-menu">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+    </header>
+    <aside id="lateral-socials" th:fragment="menu-desplegable" class="hide-lateral-socials">
+        <div id="fondo-menu-desplegable">
+            <img src="https://i.gifer.com/88n1.gif" alt="Imagen de fondo del menú desplegable">
+        </div>
+        <div id="menu-container">
+            <h3>MENU</h3>
+            <ul>           
+                <li><a th:href="@{/public/index}">HOME</a></li>
+                <li><hr/></li>
+                <li><a th:href="@{/public/productos/list}">LISTA PRODUCTOS</a></li>
+                <li><a th:href="@{/public/categorias/list}">LISTA CATEGORIAS</a></li>
+                <li> <a th:href="@{/usuarios/list}">LISTA USUARIOS</a></li>
+                <li><hr/></li>
+                <li><a th:href="@{/public/aboutUs}">Sobre Nosotros</a></li>
+                <li><a th:href="@{/public/contact}">Contactanos</a></li>
+            </ul>
+        </div>
+    </aside>
+    <footer class="main-footer" th:fragment="pie">
+        <p>© 2023 KASBANK MANAGEMENT</p>
+    </footer>
+</body>
+</html>

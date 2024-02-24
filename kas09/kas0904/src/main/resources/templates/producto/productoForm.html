@@ -5,66 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADD PRODUCTO</title>
-    <style>
-        body {
-            text-align: left;
-            justify-content: center;
-            align-items: center;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        #contenedorPrimario {
-            background-color: rgb(231, 231, 231);
-            margin: 10vw auto;
-            padding: 2.5vw;
-            width: 50%;
-            border-radius: 20px;
-        }
-
-        input {
-            cursor: pointer;
-        }
-
-        #seccionBotones {
-            text-align: center;
-        }
-
-        #seccionBotones input {
-            margin: 0 1vw;
-            padding: 0.5vw 1vw;
-            background-color: rgb(170, 170, 170);
-            color: white;
-            border-radius: 10px;
-
-        }
-    </style>
+    <link rel="stylesheet" href="/header.css" />
+    <link rel="stylesheet" href="/form.css" />
+    <link rel="stylesheet" href="/table.css" />
+    <link rel="stylesheet" href="/global.css" />
+    <link rel="stylesheet" href="/main-display-menu.css" />
+    <script src="/main-display-menu.js"></script>
+    <link rel="icon" href="https://img.freepik.com/vector-premium/icono-edificio-banco-oscuridad_116137-4384.jpg"
+        type="image/jpg">
 </head>
 
 <body>
-    <h2>Producto Form</h2>
-    <form action="#" method="post" th:action="@{/productos/new/submit}" th:object="${producto}">
-        <input type="text" id="id" name="id" th:field="*{id}" hidden><br>
-        <label for="nombre">Nombre:</label><br>
-        <input type="text" id="nombre" name="nombre" th:field="*{nombre}"><br>
-        <label for="precio">Precio:</label><br>
-        <input type="text" id="precio" name="precio" th:field="*{precio}"><br>
-        <input type="checkbox" id="enOferta" name="enOferta" th:field="*{enOferta}">
-        <label for="enOferta">En Oferta</label><br>
-        <p>Tipo IVA:</p>
-        <div th:each="elem : ${T(com.example.kas0301.domain.TipoIva).values}">
-            <input type="radio" name="opcion" th:value="${elem}" th:text="${elem}"
-            th:field="*{tipoIva}" />
+    <div th:insert="fragments/fragments.html :: cabecera"></div>
+    <div th:insert="fragments/fragments.html :: menu-desplegable"></div>
+    <main>
+        <h2>Formulario Producto</h2>
+        <div class="form-t1">
+            <form action="#" method="post" th:action="@{/productos/new/submit}" th:object="${producto}">
+                <input type="text" id="id" name="id" th:field="*{id}" hidden><br>
+                <div class="campo">
+                    <p>Nombre:</p>
+                    <input type="text" id="nombre" name="nombre" th:field="*{nombre}"><br>
+                </div>
+                <div class="campo">
+                   <p>Precio</p>
+                    <input type="text" id="precio" name="precio" th:field="*{precio}"><br>
+                </div>
+                <div class="campo">
+                    <p>En Oferta:</p>
+                    <input type="checkbox" id="enOferta" name="enOferta" th:field="*{enOferta}">
+                </div>
+                <div class="campo">
+                    <p>Tipo IVA:</p>
+                    <div th:each="elem : ${T(com.kas09.store.domain.TipoIva).values}">
+                        <input type="radio" name="opcion" th:value="${elem}" th:text="${elem}" th:field="*{tipoIva}" />
+                    </div>
+                </div>
+                <div class="campo">
+                    <p>Categoria</p>
+                    <select name="categoria" th:field="*{categoria}">
+                        <option th:each="categoria: ${categorias}" th:value="${categoria.id}"th:text="${categoria.nombre}"></option>
+                    </select>
+                </div>
+                <div  class="buttons">
+                    <input type="submit" value="Submit">
+                    <input type="reset" value="Reset">
+                </div>
+            </form>
         </div>
-        <label>Categoria
-            <select name="categoria" th:field="*{categoria}">
-                <option th:each="categoria: ${categorias}" th:value="${categoria.id}" th:text="${categoria.nombre}"></option>
-            </select>
-        </label><br />
-        <input type="submit" value="Submit">
-    </form>
+    </main>
 </body>
 
 </html>

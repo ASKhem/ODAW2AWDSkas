@@ -4,9 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class MainController {
-    @GetMapping({"", "/", "/index"})
-    public String index() {
-        return "index";
+public class PrivateController {
+    
+    @GetMapping("/logout")
+    public String logout() {
+        return "logout";
     }
 }

@@ -30,18 +30,21 @@ public class KasStore {
     @Bean
     public CommandLineRunner initData(ProductoService productoService, CategoriaService categoriaService, UsuarioService usuarioService, ValoracionService valoracionService) {
         return (args) -> {
-            Categoria cat1 = new Categoria(0L, "Categoria 1");
-            Categoria cat2 = new Categoria(0L, "Categoria 2");
-            Categoria cat3 = new Categoria(0L, "Categoria 3");
+            Categoria cat1 = new Categoria(1L,"Categoria 1");
+            Categoria cat2 = new Categoria(2L, "Categoria 2");
+            Categoria cat3 = new Categoria(3L, "Categoria 3");
             categoriaService.createCategoria(cat1);
             categoriaService.createCategoria(cat2);
             categoriaService.createCategoria(cat3);
             productoService.save(new Producto(0L, "Producto 1", false, TipoIva.NORMAL, 100.0, cat1));
             productoService.save(new Producto(0L, "Producto 2", true, TipoIva.REDUCIDO, 50.0, cat2));
             productoService.save(new Producto(0L, "Producto 3", false, TipoIva.SUPERREDUCIDO, 25.0, cat3));
-            usuarioService.createUsuario(new Usuario(0L, "Usuario 1", LocalDate.now()));
-            usuarioService.createUsuario(new Usuario(0L, "Usuario 2", LocalDate.now()));
-            usuarioService.createUsuario(new Usuario(0L, "Usuario 3", LocalDate.now()));
+            usuarioService.createUsuario(new Usuario(1L, "Usuario 1", LocalDate.now()));
+            System.out.println(usuarioService.getUsuarios());
+            usuarioService.createUsuario(new Usuario(2L, "Usuario 2", LocalDate.now()));
+            System.out.println(usuarioService.getUsuarios());
+            usuarioService.createUsuario(new Usuario(3L, "Usuario 3", LocalDate.now()));
+            System.out.println(usuarioService.getUsuarios());
             valoracionService.createValoracion(new Valoracion(0L, usuarioService.findById(1L), productoService.findById(1L), 5, "Comentario 1"));
             valoracionService.createValoracion(new Valoracion(0L, usuarioService.findById(2L), productoService.findById(2L), 4, "Comentario 2"));
             valoracionService.createValoracion(new Valoracion(0L, usuarioService.findById(3L), productoService.findById(3L), 3, "Comentario 3"));

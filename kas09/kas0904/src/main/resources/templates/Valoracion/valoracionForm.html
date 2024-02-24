@@ -4,29 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nueva Valoracion</title>
+    <link rel="stylesheet" href="/header.css" />
+    <link rel="stylesheet" href="/form.css" />
+    <link rel="stylesheet" href="/table.css" />
+    <link rel="stylesheet" href="/global.css" />
+    <link rel="stylesheet" href="/main-display-menu.css" />
+    <script src="/main-display-menu.js"></script>
+    <link rel="icon" href="https://img.freepik.com/vector-premium/icono-edificio-banco-oscuridad_116137-4384.jpg"
+        type="image/jpg">
 </head>
+
 <body>
+    <div th:insert="fragments/fragments.html :: cabecera"></div>
+    <div th:insert="fragments/fragments.html :: menu-desplegable"></div>
+    <main>
     <h2>Nueva valoracion del usuario<p th:text="${usuario.nombre}"></p></h2>
+    <div class="form-t1">
     <form th:action="@{/valoraciones/new/submit/{usuario}(usuario=${usuario.id})}" th:object="${valoracion}" method="post">
-        <div>
-            <label for="valoracion">Valoracion:</label>
+        <div class="campo">
+            <p>Valoracion:</p>
             <input type="text" id="valoracion" th:field="*{valoracion}">
         </div>
-        <div>
-            <label for="comentario">Comentario: </label>
+        <div class="campo">
+            <p for="comentario">Comentario: </p>
             <textarea name="comentario" id="comentario" th:field="*{comentario}"></textarea>
         </div>
-        <div>
-            <label for="producto">Producto:</label>
+        <div class="campo">
+            <p for="producto">Producto:</p>
             <select name="producto" id="producto" th:field="*{producto}">
                 <option th:each="producto : ${productos}" th:value="${producto.id}" th:text="${producto.nombre}"></option>
             </select>
         </div>
-        <div>
-            <input type="hidden" id="usuario" th:field="*{usuario}">
-        </div>
-        <div>
-            <input type="submit" value="Guardar">
+        <input type="hidden" id="usuario" th:field="*{usuario}">
+        <div  class="buttons">
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
         </div>
 </body>
 </html>

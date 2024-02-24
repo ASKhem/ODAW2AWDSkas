@@ -4,35 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista Usuarios</title>
+    <link rel="stylesheet" href="/header.css"/>
+    <link rel="stylesheet" href="/form.css"/>
+    <link rel="stylesheet" href="/table.css"/>
+    <link rel="stylesheet" href="/footer.css"/>
+    <link rel="stylesheet" href="/global.css"/>
+    <link rel="stylesheet" href="/main-display-menu.css"/>
+    <script src="/main-display-menu.js"></script>
+    <link rel="icon" href="https://img.freepik.com/vector-premium/icono-edificio-banco-oscuridad_116137-4384.jpg" type="image/jpg">
 </head>
+
 <body>
-    <h1>Lista de Usuarios</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Fecha Resitros</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody th:each="usuario : ${usuarios}">
-            <tr>
-                <td th:text="${usuario.id}"></td>
-                <td th:text="${usuario.nombre}"></td>
-                <td th:text="${usuario.fechaRegistro}"></td>
-                <td>
-                    <a th:href="@{/usuarios/edit/{id}(id=${usuario.id})}">Editar</a>
-                    <a th:href="@{/usuarios/delete/{id}(id=${usuario.id})}">Borrar</a>
-                    <a th:href="@{/valoraciones/usuario/{id}(id=${usuario.id})}">Ver valoraciones</a>
-                    <a th:href="@{/valoraciones/new/{usuario}(usuario=${usuario.id})}">Crear valoracion</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <a href="/usuarios/new">Crear nuevo usuario</a>
-    <a href="/valoraciones/new"></a>
-    <a href="/productos">Volver a productos</a>
-    <a href="/categorias">Volver a categorias</a>
+    <div th:insert="fragments/fragments.html :: cabecera"></div>
+    <div th:insert="fragments/fragments.html :: menu-desplegable"></div>
+    <main>
+        <h2>Lista de Usuarios</h2>
+        <div id="tableAccounts">
+            <table>
+                <thead>
+                    <th>
+                        <td>ID</td>
+                        <td>Nombre</td>
+                        <td>Fecha Regitro</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </th>
+                </thead>
+                <tbody>
+                    <tr th:each="usuario : ${usuarios}">
+                        <td th:text="${usuario.id}"></td>
+                        <td th:text="${usuario.nombre}"></td>
+                        <td th:text="${usuario.fechaRegistro}"></td>
+                        <td><a th:href="@{/usuarios/edit/{id}(id=${usuario.id})}">Editar</a><td>
+                        <td><a th:href="@{/usuarios/delete/{id}(id=${usuario.id})}">Borrar</a></td>
+                        <td><a th:href="@{/valoraciones/usuario/{id}(id=${usuario.id})}">Ver valoraciones</a></td>
+                        <td><a th:href="@{/valoraciones/new/{usuario}(usuario=${usuario.id})}">Crear valoracion</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
 </body>
 </html>
