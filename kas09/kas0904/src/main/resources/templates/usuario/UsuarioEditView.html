@@ -5,14 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Usuario</title>
-    <link rel="stylesheet" href="/header.css" />
-    <link rel="stylesheet" href="/form.css" />
-    <link rel="stylesheet" href="/table.css" />
-    <link rel="stylesheet" href="/global.css" />
-    <link rel="stylesheet" href="/main-display-menu.css" />
-    <script src="/main-display-menu.js"></script>
-    <link rel="icon" href="https://img.freepik.com/vector-premium/icono-edificio-banco-oscuridad_116137-4384.jpg"
-        type="image/jpg">
+    <div th:insert="fragments/fragments.html :: estilos"></div>
+    <div th:insert="fragments/fragments.html :: scripts"></div>
+    <link rel="icon" href="https://img.freepik.com/vector-premium/icono-edificio-banco-oscuridad_116137-4384.jpg" type="image/jpg">
 </head>
 
 <body>
@@ -27,6 +22,7 @@
                     <p for="nombre">Nombre:</p>
                     <input type="text" id="nombre" th:field="*{nombre}">
                 </div>
+                <input type="password" id="contrasena" th:field="*{password}" hidden>
                 <input type="hidden" id="fechaRegistro" th:field="*{fechaRegistro}">
                 <div class="buttons">
                     <input type="submit" value="Submit">

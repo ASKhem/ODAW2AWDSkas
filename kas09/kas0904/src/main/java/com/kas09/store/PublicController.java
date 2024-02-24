@@ -14,6 +14,8 @@ import com.kas09.store.domain.ConsultaForm;
 import com.kas09.store.services.CategoriaService;
 import com.kas09.store.services.ProductoService;
 
+import jakarta.validation.Valid;
+
 
 @Controller
 @RequestMapping("/public")
@@ -40,17 +42,12 @@ public class PublicController {
     }
 
     @PostMapping("/contacta/submit")
-    public String submitConsulta(@ModelAttribute("consultaForm") ConsultaForm consultaForm, BindingResult result, Model model) {
+    public String submitConsulta(@ModelAttribute @Valid ConsultaForm consultaForm, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "public/contacta";
         }
         model.addAttribute("enviar", "Tu consulta ha sido enviada con éxito.");
         return "public/contacta";
-    }
-
-    @GetMapping("/login")
-    public String login() {
-        return "public/loginView";
     }
 
     @GetMapping("/categorias/list")

@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 
 import com.kas09.store.domain.Categoria;
 import com.kas09.store.domain.Producto;
+import com.kas09.store.domain.Rol;
 import com.kas09.store.domain.TipoIva;
 import com.kas09.store.domain.Usuario;
 import com.kas09.store.domain.Valoracion;
@@ -39,11 +40,11 @@ public class KasStore {
             productoService.save(new Producto(0L, "Producto 1", false, TipoIva.NORMAL, 100.0, cat1));
             productoService.save(new Producto(0L, "Producto 2", true, TipoIva.REDUCIDO, 50.0, cat2));
             productoService.save(new Producto(0L, "Producto 3", false, TipoIva.SUPERREDUCIDO, 25.0, cat3));
-            usuarioService.createUsuario(new Usuario(1L, "Usuario 1", LocalDate.now()));
+            usuarioService.createUsuario(new Usuario(0L,"user1", LocalDate.now(), "1234", Rol.USER));
             System.out.println(usuarioService.getUsuarios());
-            usuarioService.createUsuario(new Usuario(2L, "Usuario 2", LocalDate.now()));
+            usuarioService.createUsuario(new Usuario(0L, "manager1", LocalDate.now(), "1234", Rol.MANAGER));
             System.out.println(usuarioService.getUsuarios());
-            usuarioService.createUsuario(new Usuario(3L, "Usuario 3", LocalDate.now()));
+            usuarioService.createUsuario(new Usuario(0L, "admin1", LocalDate.now(), "1234", Rol.ADMIN));
             System.out.println(usuarioService.getUsuarios());
             valoracionService.createValoracion(new Valoracion(0L, usuarioService.findById(1L), productoService.findById(1L), 5, "Comentario 1"));
             valoracionService.createValoracion(new Valoracion(0L, usuarioService.findById(2L), productoService.findById(2L), 4, "Comentario 2"));

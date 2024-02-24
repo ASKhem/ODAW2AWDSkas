@@ -43,9 +43,9 @@ public class ValoracionController {
         return "valoracion/valoracionList";
     }
 
-    @GetMapping("/new/{id}") //crear una valoracion
-    public String nuevaValoracion(@PathVariable Long id, Model model) {
-        Usuario usuario = usuarioService.findById(id);
+    @GetMapping("/new") //crear una valoracion
+    public String nuevaValoracion(Model model) {
+        Usuario usuario = usuarioService.findUserByNombre(usuarioService.getCurrentUserName());
         model.addAttribute("usuario", usuario);
         model.addAttribute("productos", productoService.getProductos());
         model.addAttribute("valoracion", new Valoracion());
