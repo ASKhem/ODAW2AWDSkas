@@ -54,6 +54,6 @@ public class UsuarioController {
     @GetMapping("/delete/{id}")
     public String borrarUsuario(@PathVariable long id) {
         usuarioService.deleteUsuario(id);
-        return "redirect:/usuarios";
+        return "redirect:/usuarios/list";
     }
 }
