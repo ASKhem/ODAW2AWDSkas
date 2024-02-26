@@ -22,6 +22,14 @@
                     <p for="nombre">Nombre:</p>
                     <input type="text" id="nombre" th:field="*{nombre}">
                 </div>
+                <div class="campo">
+                    <p>Rol: </p>
+                    <select id="rol" th:field="*{rol}">
+                        <option value="USER">Usuario</option>
+                        <option value="MANAGER">Manager</option>
+                        <option value="ADMIN">Administrador</option>
+                    </select>
+                </div>
                 <input type="password" id="contrasena" th:field="*{password}" hidden>
                 <input type="hidden" id="fechaRegistro" th:field="*{fechaRegistro}">
                 <div class="buttons">

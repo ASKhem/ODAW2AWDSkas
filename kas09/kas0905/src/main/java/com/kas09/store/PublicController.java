@@ -13,6 +13,7 @@ import com.kas09.store.domain.Categoria;
 import com.kas09.store.domain.ConsultaForm;
 import com.kas09.store.services.CategoriaService;
 import com.kas09.store.services.ProductoService;
+import com.kas09.store.services.UsuarioService;
 
 import jakarta.validation.Valid;
 
@@ -24,6 +25,8 @@ public class PublicController {
     CategoriaService categoriaService;
     @Autowired
     ProductoService productoService;
+    @Autowired
+    UsuarioService usuarioService;
 
     @GetMapping({"home", "/", "/index"})
     public String getHomePage() {

@@ -33,7 +33,7 @@ public class UsuarioController {
     }
 
     @PostMapping("/new/submit")
-    public String crearUsuario(@Valid Usuario usuario, Model model) {
+    public String crearUsuario(@Valid Usuario usuario) {
         usuarioService.createUsuario(usuario);
         return "redirect:/usuarios/list";
     }

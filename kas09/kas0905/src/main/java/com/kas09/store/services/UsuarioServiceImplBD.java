@@ -11,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.core.Authentication;
 
+import com.kas09.store.domain.Rol;
 import com.kas09.store.domain.Usuario;
 import com.kas09.store.repositories.UsuarioRepository;
 
@@ -49,6 +50,9 @@ public class UsuarioServiceImplBD implements UsuarioService {
     public Usuario updateUsuario(Usuario usuario) {
         String passCrypted = passwordEncoder.encode(usuario.getPassword());
         usuario.setPassword(passCrypted);
+        if(usuario.getRol() == null) {
+            usuario.setRol(Rol.USER);
+        }
         try {
             return repository.save(usuario);
         } catch (DataIntegrityViolationException e) {

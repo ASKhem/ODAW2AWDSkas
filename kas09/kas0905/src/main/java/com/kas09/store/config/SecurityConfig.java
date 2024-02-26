@@ -35,7 +35,7 @@ public class SecurityConfig {
                 http.headers(headersConfigurer -> headersConfigurer
                                 .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));
                 http.authorizeHttpRequests(auth -> auth
-                                .requestMatchers("/public/**").permitAll()
+                                .requestMatchers("/public/**", "/registro/nuevo", "/registro/nuevo/submit").permitAll()
                                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                                 .requestMatchers("/valoraciones/list/**", "/valoraciones/new/**", "/valoraciones/producto/**", "/valoraciones/usuario/**").hasAnyRole("USER", "ADMIN", "MANAGER")
                                 .requestMatchers("/productos/**", "/categorias/**", "/valoraciones/**").hasAnyRole("ADMIN", "MANAGER")
@@ -44,9 +44,10 @@ public class SecurityConfig {
                                 .anyRequest().authenticated())
                                 .formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer
                                                 .loginPage("/login") // mapping par mostrar formulario de login
-                                                .loginProcessingUrl("/login") // ruta post de /signin
+                                                .loginProcessingUrl("/login")
                                                 .failureUrl("/login?error") // vuelve a signin con mensaje de error
                                                 .defaultSuccessUrl("/public/home", true).permitAll())
+                                                .rememberMe(Customizer.withDefaults())
                                 .logout((logout) -> logout
                                                 .logoutSuccessUrl("/public/home").permitAll())
                                 // .csrf(csrf -> csrf.disable())

@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Error404</title>
     <div th:insert="fragments/fragments.html :: estilos"></div>
     <div th:insert="fragments/fragments.html :: scripts"></div>
-    <link rel="icon" href="https://img.freepik.com/vector-premium/icono-edificio-banco-oscuridad_116137-4384.jpg" type="image/jpg">
+    <link rel="icon" href="https://img.freepik.com/vector-premium/icono-edificio-banco-oscuridad_116137-4384.jpg"
+        type="image/jpg">
 </head>
+
 <body>
     <div th:insert="fragments/fragments.html :: cabecera"></div>
     <div th:insert="fragments/fragments.html :: menu-desplegable"></div>
     <main>
-        <h2>¿Estás seguro de que quieres desconectarte?</h2>
-        <div id="form-t1">
-            <form th:action="@{/logout}" method="post">
-                <div class="form-botton">
-                    <input type="submit" value="Logout" />
-                </div>
-            </form>
+        <div class="form-t1">
+            <h2>Error 404</21>
+            <p>La página que buscas no existe</p>
+            <a th:href="@{/public/home}" style="font-size: 20px;">Volver al inicio</a>
         </div>
     </main>
+
 </body>
 
 </html>

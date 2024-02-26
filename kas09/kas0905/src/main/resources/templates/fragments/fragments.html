@@ -15,11 +15,9 @@
         </div>
         <div id="panel2">
             <span class="sesion">
-                <div sec:authorize="!isAuthenticated()">
+                <div sec:authorize="!isAuthenticated()" style="display: flex; gap: 20px">
+                    <a th:href="@{registro/nuevo}" id="login-link">Registrarse</a>
                     <a th:href="@{/login}" id="login-link">Login</a>
-                </div>
-                <div sec:authorize="hasAnyRole('ADMIN','USER','MANAGER')">
-                    <a th:href="@{/logout}" id="logout-link">Logout</a>
                 </div>
             </span>
             <div id="hamburguer-menu">
@@ -28,6 +26,12 @@
                 <div class="line"></div>
             </div>
             <div id="user-name" sec:authorize="isAuthenticated()"><span th:text="${username}"></span></div>
+            <div id="menuUserOption" sec:authorize="hasAnyRole('ADMIN','USER','MANAGER')">
+                <p>USER MENU</p>
+                <a th:href="@{/logout}" id="logout-link">Logout</a>
+                <a th:href="@{ruta_editar_perfil}" id="edit-profile-link">Editar perfil</a>
+                <a th:href="@{ruta_cambiar_contraseña}" id="change-password-link">Cambiar contraseña</a>
+            </div>
         </div>
     </header>
     <header class="main-header" th:fragment="cabecera2">
@@ -87,6 +91,7 @@
         main h2 { font-size: 2em; color: #fff; text-align: center; margin: 0; padding: 0; }
         #info { background-color: rgba(0, 0, 0, 0.733); color: rgb(255, 255, 255); font-size: 14px; margin: 0 auto; padding: 50px 20px 30px 20px; width: 500px; border-radius: 20px; display: block; margin-top: 30px; }
         #info h2 { font-size: 2em; }
+        
         .form-t1 h2 { color: #fff; text-align: center; margin: 0; padding: 0; }
         .form-t2 { margin: 0 auto; display: block; padding: 10px; margin-top: 50px; display: flex; flex-direction: column; }
         .campo { display: flex; align-items: center; margin: 15px; }
@@ -142,6 +147,19 @@
         .contraseña { display: flex; align-items: center; justify-content: center; gap: 20px; }
         .contraseña p { margin: 0; padding: 0; display: flex; align-items: center; }
         #icon:hover { cursor: pointer; }
+        #menuUserOption:hover { cursor: pointer; }
+        #menuUserOption{
+            display: none;
+            position: absolute;
+            flex-direction: column;
+            width: 150px;
+            gap: 5px;
+            padding: 10px;
+            top: 80px;
+            right: 0;
+            background-color: black;
+        }
+        #user-name:hover{cursor: pointer;}
         </style>
     </div>
     <div id="scripts" th:fragment="scripts">
@@ -149,11 +167,21 @@
             window.onload = function () {
                 let desplegar = document.getElementById("hamburguer-menu");
                 let contenedor = document.getElementById("fondo-menu-desplegable");
+                let desplegar2 = document.getElementById("user-name");
+                let contenedor2 = document.getElementById("menuUserOption");
                 desplegar.addEventListener("click", function () {
                     if (document.getElementById("lateral-socials").classList.contains("hide-lateral-socials")) {
                         document.getElementById("lateral-socials").classList.remove("hide-lateral-socials")
                     } else{
                         document.getElementById("lateral-socials").classList.add("hide-lateral-socials")
+                    }
+                });
+
+                desplegar2.addEventListener("click", function () {
+                    if (contenedor2.style.display === "flex" || contenedor2.style.display === "") {
+                        contenedor2.style.display = "none";
+                    } else{
+                        contenedor2.style.display = "flex";
                     }
                 });
 

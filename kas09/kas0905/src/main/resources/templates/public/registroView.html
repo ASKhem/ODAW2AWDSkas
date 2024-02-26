@@ -1,47 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuevo usuario</title>
+    <title>Registrarse</title>
     <div th:insert="fragments/fragments.html :: estilos"></div>
     <div th:insert="fragments/fragments.html :: scripts"></div>
-    <link rel="icon" href="https://img.freepik.com/vector-premium/icono-edificio-banco-oscuridad_116137-4384.jpg"
-        type="image/jpg">
+    <link rel="icon" href="https://img.freepik.com/vector-premium/icono-edificio-banco-oscuridad_116137-4384.jpg" type="image/jpg">
 </head>
 
 <body>
     <div th:insert="fragments/fragments.html :: cabecera"></div>
     <div th:insert="fragments/fragments.html :: menu-desplegable"></div>
     <main>
-        <h2>Nuevo Usuario</h2>
+        <h2>Registrarse</h2>
         <div class="form-t1">
-            <form th:action="@{/usuarios/new/submit}" th:object="${usuario}" method="post">
-                <input type="hidden" th:field="*{id}">
+            <form th:action="@{registro/nuevo/submit}" th:object="${usuario}" method="post">
                 <div class="campo">
                     <p>Nombre: </p>
                     <input type="text" id="nombre" th:field="*{nombre}">
                 </div>
-                <input type="hidden" id="fechaRegistro" th:field="*{fechaRegistro}">
                 <div class="campo">
                     <p>contraseña: </p>
                     <input type="password" id="contrasena" th:field="*{password}">
                 </div>
-                <div class="campo">
-                    <p>Rol: </p>
-                    <select id="rol" th:field="*{rol}">
-                        <option value="USER">Usuario</option>
-                        <option value="MANAGER">Manager</option>
-                        <option value="ADMIN">Administrador</option>
-                    </select>
-                </div>
+                <select id="rol" th:field="*{rol}" hidden><option value="USER">Usuario</option></select>
                 <div  class="buttons">
-                    <input type="submit" value="Submit">
+                    <input type="submit" value="Registrarse">
                 </div>
             </form>
         </div>
     </main>
 </body>
-
 </html>

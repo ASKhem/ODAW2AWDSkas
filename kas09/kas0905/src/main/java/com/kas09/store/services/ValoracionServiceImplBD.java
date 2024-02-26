@@ -23,8 +23,12 @@ public class ValoracionServiceImplBD implements ValoracionService{
         return repository.save(Valoracion);
     }
 
-    public void deleteValoracion(Valoracion Valoracion) {
-        repository.delete(Valoracion);  
+    public Boolean deleteValoracion(Valoracion Valoracion, String currentUsername) {
+        if(Valoracion.getUsuario().getNombre().equals(currentUsername)){
+            repository.delete(Valoracion);
+            return true;
+        }
+        return false;
     }
 
     public List<Valoracion> findByUsuario(Usuario usuario) {
@@ -42,5 +46,6 @@ public class ValoracionServiceImplBD implements ValoracionService{
     public Valoracion updateValoracion(Valoracion Valoracion) {
         return repository.save(Valoracion);
     }
+
     
 }

@@ -35,7 +35,7 @@
                         <td th:text="${valoracion.producto.nombre}"></td>
                         <td th:text="${valoracion.comentario}"></td>
                         <td>
-                            <a th:href="@{/valoraciones/delete/{id}(id=${valoracion.id})}">Borrar</a>
+                            <a th:if="${valoracion.usuario.nombre} == ${#authentication.name}" th:href="@{/valoraciones/delete/{id}(id=${valoracion.id})}">Borrar</a>
                         </td>
                     </tr>
                 </tbody>

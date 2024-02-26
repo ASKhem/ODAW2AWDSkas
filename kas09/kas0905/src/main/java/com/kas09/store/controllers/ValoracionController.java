@@ -64,7 +64,8 @@ public class ValoracionController {
     @GetMapping("/delete/{id}") //borrar una valoracion
     public String borrarValoracion(@PathVariable Long id) {
         Usuario usuario = valoracionService.findById(id).getUsuario();
-        valoracionService.deleteValoracion(valoracionService.findById(id));
+        //añadido para que solo el usuario que ha creado la valoracion pueda borrarla
+        valoracionService.deleteValoracion(valoracionService.findById(id), usuarioService.getCurrentUserName());
         return "redirect:/valoraciones/usuario/"+usuario.getId();
     }
 
