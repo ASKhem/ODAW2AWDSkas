@@ -1,0 +1,53 @@
+version: '3'
+services:
+  mysqlserver:
+    image: mysql:latest
+    container_name: mysqlcontainer
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: empleadodb
+    volumes:
+      - mysqlvol:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - mynetwork
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmincontainer
+    environment:
+      PMA_HOST: mysqlserver
+      PMA_PORT: 3306
+    ports:
+      - "9001:80"
+    networks:
+      - mynetwork
+    depends_on:
+      - mysqlserver
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: proy1006eimg
+    container_name: appcontainer
+    environment:
+      MYSQL_HOST: mysqlserver
+    ports:
+      - "9000:80"
+    networks:
+      - mynetwork
+    depends_on:
+      - mysqlserver
+
+networks:
+  mynetwork:
+    driver: bridge
+
+volumes:
+  mysqlvol:
+    driver: local
+    name: mysqlvol
