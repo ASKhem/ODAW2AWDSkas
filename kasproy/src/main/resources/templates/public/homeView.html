@@ -12,29 +12,24 @@
 <body>
     <header th:replace="~{/public/fragments/mainFragments.html :: header}"></header>
     <aside th:replace="~{/public/fragments/mainFragments.html :: lateral-socials}"></aside>
-    <main></main>
-    <script>
-        window.onload = function () {
-            let desplegar = document.getElementsByClassName("arrow")[0];
-            desplegar.addEventListener("click", function () {
-                if (document.getElementById("lateral-socials").classList.contains("hide-lateral-socials")) {
-                    document.getElementById("lateral-socials").classList.remove("hide-lateral-socials")
-                    document.getElementById("arrow-image").setAttribute("src", "/img/public/main/lateral-socials/arrow2.png")
-                } else{
-
-                    document.getElementById("arrow-image").setAttribute("src", "/img/public/main/lateral-socials/arrow.png")
-                    document.getElementById("lateral-socials").classList.add("hide-lateral-socials")
-                }
-                
-            });
-            var video = document.querySelector('video');
-            var source = document.querySelector('source');
-
-            video.muted = true;
-            video.play();
-            video.loop = true;
-        }
-    </script>
+    <main>
+        <section id="section-1" class="section-main">
+            <video src="/video/video-presentation.mp4"></video>
+            <div>
+                <h2>THE BEST PC BUILDERS</h2>
+                <h2>CHOOSE THE COMPONENTS, WE BUILD IT FOR YOU</h2>
+                <p>
+                    At our company, we're known for our top-notch PC builds. With carefully selected components,
+                    tailored to your needs, our skilled team crafts personalized computing experiences. Offering
+                    competitive prices and uncompromising quality, we deliver performance and reliability in every
+                    build.
+                </p>
+                <button>BUILD NOW</button>
+            </div>
+        </section>
+    </main>
+    <footer th:replace="~{/public/fragments/mainFragments.html :: footer}"></footer>
+    <script src="/js/lateral-socials.js"></script>
 </body>
 
 </html>

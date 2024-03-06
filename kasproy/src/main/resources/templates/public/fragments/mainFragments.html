@@ -11,6 +11,8 @@
         <link rel="stylesheet" th:href="@{/css/public/header.css}">
         <link rel="stylesheet" th:href="@{/css/public/main.css}">
         <link rel="stylesheet" th:href="@{/css/public/displayableMenu.css}">
+        <link rel="stylesheet" th:href="@{/css/public/footer.css}">
+        <link rel="stylesheet" th:href="@{/css/public/general.css}">
     </div>
 
     <div th:fragment="public-scripts">
@@ -72,5 +74,50 @@
         <div id="lateral-socials2" class="arrow"><a><img id="arrow-image" src="/img/public/main/lateral-socials/arrow2.png" alt="facebook"></a></div>
     </aside>
 
+    <footer th:fragment="footer">
+        <div id="partnership-band"></div>
+        <div id="footer-content">
+            <div id="footer-content1">
+                <div class="footer-type1">
+                    <h3>OUR SERVICES</h3>
+                    <ul>
+                        <li><a href="#">Build a PC</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Customize</a></li>
+                        <li><a href="#">PC of the year</a></li>
+                    </ul>
+                </div>
+                <div class="footer-type1">
+                    <h3>ABOUT US</h3>
+                    <ul>
+                        <li><a href="#">About PC ALL</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Work with us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of use</a></li>
+                    </ul>
+                </div>
+                <div class="footer-type1">
+                    <h3>HELP</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Order Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-type2">
+                    <h3>PAYMENT METHODS</h3>
+                    <div>
+                        <img class="card-icon" src="/img/public/footer/visa.png" alt="visa">
+                        <img class="card-icon" src="/img/public/footer/paypal.png" alt="visa">
+                        <img class="card-icon" src="/img/public/footer/googlepay.png" alt="visa">
+                        <img class="card-icon" src="/img/public/footer/applepay.png" alt="visa">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p>© 2024 PC ALL. All rights reserved</p>
+    </footer>
 </body>
 </html>

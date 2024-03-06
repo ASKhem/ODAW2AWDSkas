@@ -3,10 +3,10 @@ window.onload = function () {
     desplegar.addEventListener("click", function () {
         if (document.getElementById("lateral-socials").classList.contains("hide-lateral-socials")) {
             document.getElementById("lateral-socials").classList.remove("hide-lateral-socials")
-            document.getElementById("arrow-image").setAttribute("src", "/src/assets/img/socials/arrow2.png")
+            document.getElementById("arrow-image").setAttribute("src", "/img/public/main/lateral-socials/arrow2.png")
         } else{
 
-            document.getElementById("arrow-image").setAttribute("src", "/src/assets/img/socials/arrow.png")
+            document.getElementById("arrow-image").setAttribute("src", "/img/public/main/lateral-socials/arrow.png")
             document.getElementById("lateral-socials").classList.add("hide-lateral-socials")
         }
         
