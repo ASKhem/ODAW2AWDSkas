@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <link rel="icon" href="/img/public/header/icono.png" type="image/jpg">
+    <div th:insert="~{/public/fragments/mainFragments.html :: public-styles}"></div>
+</head>
+
+<body>
+    <header th:replace="~{/public/fragments/mainFragments.html :: header}"></header>
+    <aside th:replace="~{/public/fragments/mainFragments.html :: lateral-socials}"></aside>
+    <main></main>
+    <script>
+        window.onload = function () {
+            let desplegar = document.getElementsByClassName("arrow")[0];
+            desplegar.addEventListener("click", function () {
+                if (document.getElementById("lateral-socials").classList.contains("hide-lateral-socials")) {
+                    document.getElementById("lateral-socials").classList.remove("hide-lateral-socials")
+                    document.getElementById("arrow-image").setAttribute("src", "/img/public/main/lateral-socials/arrow2.png")
+                } else{
+
+                    document.getElementById("arrow-image").setAttribute("src", "/img/public/main/lateral-socials/arrow.png")
+                    document.getElementById("lateral-socials").classList.add("hide-lateral-socials")
+                }
+                
+            });
+            var video = document.querySelector('video');
+            var source = document.querySelector('source');
+
+            video.muted = true;
+            video.play();
+            video.loop = true;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fragmentos</title>
+</head>
+<body>
+    <div th:fragment="public-styles">
+        <link rel="stylesheet" th:href="@{/css/public/header.css}">
+        <link rel="stylesheet" th:href="@{/css/public/main.css}">
+        <link rel="stylesheet" th:href="@{/css/public/displayableMenu.css}">
+    </div>
+
+    <div th:fragment="public-scripts">
+        <script th:src="@{/js/displayable-menu.js}"></script>
+    </div>
+
+    <header th:fragment="header">
+        <div id="upper-container">
+            <ul id="header-div">
+                <li id="logo-container">
+                    <img src="/img/public/header/logo.png" alt="logo" id="logo">
+                </li>
+                <li id="movement-text-container">
+                    <nav id="header-nav">
+                        <ul>
+                            <li class="na" id="pc-maker">BUILD A PC</li>
+                            <li class="na" id="store">GALLERY</li>
+                            <li class="na" id="home">ABOUT US</li>
+                        </ul>
+                    </nav>
+                <li id="menu2">
+                    <ul id="user-option-list">
+                        <li class="mo" id="home">
+                            <a href="#" id="login-link">LOGIN</a>
+                        </li>
+                        <li class="mo normal" id="home">
+                            <img src="/img/public/header/home.png" alt="send-box-logo" id="home" class="smallt2">
+                        </li>
+                        <li class="mo normal" id="nest">
+                            <img src="/img/public/header/carrito.png" alt="item-nest" id="carrito" class="small">
+                        </li>
+                        <li class="mo normal" id="help">
+                            <img src="/img/public/header/help.png" alt="help-icon" id="help" class="small">
+                        </li>
+                        <li class="no" id="profile-view"><a href="/public/login.html">
+                            <img src="/img/public/header/profile.png" alt="profile-logo" id="profile"/></a></li>
+                        <li>
+                            <div id="hamburguer-menu">
+                                <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <aside id="lateral-socials" th:fragment="lateral-socials">
+        <div id="lateral-socials1">
+            <a href="#"><img src="/img/public/main/lateral-socials/facebook.png" alt="facebook"></a>
+            <a href="#"><img src="/img/public/main/lateral-socials/instagram.png" alt="instagram"></a>
+            <a href="#"><img src="/img/public/main/lateral-socials/whatsapp.png" alt="whatsapp"></a>
+            <a href="#"><img src="/img/public/main/lateral-socials/youtube.png" alt="youtube"></a>
+            <a href="#"><img src="/img/public/main/lateral-socials/x.png" alt="x"></a>
+            <a href="#"><img src="/img/public/main/lateral-socials/phone.png" alt="youtube"></a>
+        </div>
+        <div id="lateral-socials2" class="arrow"><a><img id="arrow-image" src="/img/public/main/lateral-socials/arrow2.png" alt="facebook"></a></div>
+    </aside>
+
+</body>
+</html>

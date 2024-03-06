@@ -1,0 +1,81 @@
+#menu-display-container{
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 900;
+    overflow-y:scroll;
+    /* scrollbar-width: none; */
+    transform: translateY(-110%);
+    transition: transform 0.2s ease-out;
+    overflow-y: auto;
+    top: 70px;
+    background-color: rgba(175, 193, 252, 0.562);
+    color:white;
+    font-size: 1.2em;
+}
+
+#menu-display-container.show{
+    transform: translateY(0);
+}
+
+#menu-display-container::-webkit-scrollbar{
+    display: none;
+}
+#display-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-width: 800px;
+    width:90%;
+    height: 200px;
+    background-color: rgb(0, 20, 85);
+}
+
+#display-content div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    min-width: 700px;
+    height: 50px;
+    cursor: pointer;
+    margin-left: 130px;
+}
+
+#display-content div a{
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    width: 200px;
+}
+
+#display-content div a:hover{
+    transition: 0.3s;
+    color: #ff5e00;
+}
+
+.lateral-type1, .lateral-type2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 5%;
+    height: 200px;
+    cursor: pointer;
+    background-color: rgb(0, 20, 85);
+}
+
+.icon-menu{
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
