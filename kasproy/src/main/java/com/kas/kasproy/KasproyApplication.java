@@ -32,7 +32,7 @@ public class KasproyApplication {
 			user1.setPassword("usuario1234");
 			user1.setEmail("usuario1@gmail.com");
 			user1.setRol(Rol.COSTUMER);
-			user1.setCesta(new ArrayList<>());
+			user1.setSaved(new ArrayList<>());
 
 			Usuario user2 = new Usuario();
 			user2.setNombre("admin1");
@@ -40,7 +40,7 @@ public class KasproyApplication {
 			user2.setPassword("admin1234");
 			user2.setEmail("admin1@gmail.com");
 			user2.setRol(Rol.ADMIN);
-			user2.setCesta(new ArrayList<>());
+			user2.setSaved(new ArrayList<>());
 
 			Usuario user3 = new Usuario();
 			user3.setNombre("editor1");
@@ -48,7 +48,7 @@ public class KasproyApplication {
 			user3.setPassword("editor1234");
 			user3.setEmail("editor1@gmail.com");
 			user3.setRol(Rol.EDITOR);
-			user3.setCesta(new ArrayList<>());
+			user3.setSaved(new ArrayList<>());
 
 			usuarioService.createUsuario(user1);
 			usuarioService.createUsuario(user2);

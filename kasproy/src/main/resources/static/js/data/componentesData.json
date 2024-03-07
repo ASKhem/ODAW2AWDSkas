@@ -1,0 +1,202 @@
+{
+    "processor": {
+      "brands": {
+        "amd": {
+          "models": {
+            "ryzen-3": {
+              "price": 150
+            },
+            "ryzen-5": {
+              "price": 250
+            },
+            "ryzen-7": {
+              "price": 350
+            },
+            "ryzen-9": {
+              "price": 450
+            }
+          }
+        },
+        "intel": {
+          "models": {
+            "i3": {
+              "price": 180
+            },
+            "i5": {
+              "price": 270
+            },
+            "i7": {
+              "price": 370
+            },
+            "i9": {
+              "price": 470
+            }
+          }
+        }
+      }
+    },
+    "motherboard": {
+      "brands": {
+        "asus": {
+          "models": {
+            "rog-strix": {
+              "price": 200
+            },
+            "prime": {
+              "price": 150
+            }
+          }
+        },
+        "msi": {
+          "models": {
+            "gaming-pro-carbon": {
+              "price": 180
+            },
+            "maga": {
+              "price": 160
+            }
+          }
+        },
+        "gigabyte": {
+          "models": {
+            "aorus": {
+              "price": 220
+            },
+            "gaming-x": {
+              "price": 190
+            }
+          }
+        }
+      }
+    },
+    "ram": {
+      "brands": {
+        "corsair": {
+          "models": {
+            "vengeance": {
+              "price": 100
+            }
+          }
+        },
+        "kingston": {
+          "models": {
+            "hyperx": {
+              "price": 90
+            }
+          }
+        },
+        "gskill": {
+          "models": {
+            "ripjaws": {
+              "price": 110
+            }
+          }
+        }
+      }
+    },
+    "storage": {
+      "brands": {
+        "seagate": {
+          "models": {
+            "barracuda": {
+              "price": 80
+            }
+          }
+        },
+        "western-digital": {
+          "models": {
+            "blue": {
+              "price": 85
+            }
+          }
+        },
+        "kingston": {
+          "models": {
+            "a2000": {
+              "price": 90
+            }
+          }
+        }
+      }
+    },
+    "graphics-card": {
+      "brands": {
+        "nvidia": {
+          "models": {
+            "rtx-3060": {
+              "price": 400
+            },
+            "rtx-3070": {
+              "price": 500
+            },
+            "rtx-3080": {
+              "price": 700
+            }
+          }
+        },
+        "amd": {
+          "models": {
+            "rx-6700": {
+              "price": 450
+            },
+            "rx-6800": {
+              "price": 550
+            },
+            "rx-6900": {
+              "price": 750
+            }
+          }
+        }
+      }
+    },
+    "power-supply": {
+      "brands": {
+        "corsair": {
+          "models": {
+            "txm-series": {
+              "price": 100
+            }
+          }
+        },
+        "evga": {
+          "models": {
+            "supernova": {
+              "price": 110
+            }
+          }
+        },
+        "seasonic": {
+          "models": {
+            "focus-gold": {
+              "price": 120
+            }
+          }
+        }
+      }
+    },
+    "case": {
+      "brands": {
+        "nzxt": {
+          "models": {
+            "h510": {
+              "price": 80
+            }
+          }
+        },
+        "corsair": {
+          "models": {
+            "icue-220t": {
+              "price": 90
+            }
+          }
+        },
+        "thermaltake": {
+          "models": {
+            "view-51": {
+              "price": 100
+            }
+          }
+        }
+      }
+    }
+  }
