@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUILD PC</title>
+    <link rel="icon" href="/img/public/header/icono.png" type="image/jpg">
+    <div th:insert="~{/public/fragments/mainFragments.html :: public-styles}"></div>
+</head>
+
+<body>
+    <header th:replace="~{/public/fragments/mainFragments.html :: header}"></header>
+    <aside th:replace="~{/public/fragments/mainFragments.html :: lateral-socials}"></aside>
+    <main>
+        <section id="section-1" class="section-main">
+            <h2>CHOOSE YOUR COMPONENTS</h2>
+            <form action="/build-pc" method="post">
+                <div>
+                    <label for="cpu">CPU</label>
+                    <input type="text" id="cpu" name="cpu" required>
+                </div>
+                <div>
+                    <label for="gpu">GPU</label>
+                    <input type="text" id="gpu" name="gpu" required>
+                </div>
+                <div>
+                    <label for="ram">RAM</label>
+                    <input type="text" id="ram" name="ram" required>
+                </div>
+                <div>
+                    <label for="storage">STORAGE</label>
+                    <input type="text" id="storage" name="storage" required>
+                </div>
+                <div>
+                    <label for="motherboard">MOTHERBOARD</label>
+                    <input type="text" id="motherboard" name="motherboard" required>
+                </div>
+                <div>
+                    <label for="psu">PSU</label>
+                    <input type="text" id="psu" name="psu" required>
+                </div>
+                <div>
+                    <label for="case">CASE</label>
+                    <input type="text" id="case" name="case" required>
+                </div>
+                <div>
+                    <label for="cooling">COOLING</label>
+                    <input type="text" id="cooling" name="cooling" required>
+                </div>
+                <button type="submit">BUILD</button>
+            </form>
+        </section>
+    </main>
+    <footer th:replace="~{/public/fragments/mainFragments.html :: footer}"></footer>
+    <script src="/js/lateral-socials.js"></script>
+</html>
