@@ -7,5 +7,5 @@ import com.kas.kasproy.model.user.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
-
+    Usuario findByNombre(String nombre);
 }

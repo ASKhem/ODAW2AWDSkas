@@ -9,10 +9,11 @@
 <body>
     <div th:fragment="public-styles">
         <link rel="stylesheet" th:href="@{/css/public/header.css}">
-        <link rel="stylesheet" th:href="@{/css/public/main.css}">
         <link rel="stylesheet" th:href="@{/css/public/displayableMenu.css}">
         <link rel="stylesheet" th:href="@{/css/public/footer.css}">
         <link rel="stylesheet" th:href="@{/css/public/general.css}">
+        <link rel="stylesheet" th:href="@{/css/public/table.css}">
+        <link rel="stylesheet" th:href="@{/css/public/form.css}">
     </div>
 
     <div th:fragment="public-scripts">
@@ -35,11 +36,13 @@
                     </nav>
                 <li id="menu2">
                     <ul id="user-option-list">
-                        <li class="mo" id="home">
+                        <li class="mo" id="login">
                             <a href="#" id="login-link">LOGIN</a>
                         </li>
                         <li class="mo normal" id="home">
-                            <img src="/img/public/header/home.png" alt="send-box-logo" id="home" class="smallt2">
+                            <a href="/public/home">
+                                <img src="/img/public/header/home.png" alt="send-box-logo" id="home" class="smallt2">
+                            </a>
                         </li>
                         <li class="mo normal" id="nest">
                             <img src="/img/public/header/carrito.png" alt="item-nest" id="carrito" class="small">

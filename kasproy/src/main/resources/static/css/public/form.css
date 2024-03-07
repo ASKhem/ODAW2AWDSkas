@@ -1,0 +1,121 @@
+.form-t1{
+    background-color: rgba(0, 0, 0, 0.733);
+    margin: 0 auto;
+    padding: 50px 20px 30px 20px;
+    width: 500px;
+    border-radius: 20px;
+    display: block;
+    margin: 50px 0;
+    color: white;
+}
+
+#info{
+    background-color: rgba(0, 0, 0, 0.733);
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    margin: 0 auto;
+    padding: 50px 20px 30px 20px;
+    width: 500px;
+    border-radius: 20px;
+    display: block;
+    margin-top: 30px;
+}
+#info h2{
+    font-size: 2em;
+
+}
+.form-t1 h2{
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.form-t2{
+    margin: 0 auto;
+    display: block;
+    padding: 10px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+.campo{
+    display: flex;
+    align-items: center;
+    margin: 15px;
+}
+
+.campo div{
+    display: flex;
+    font-size: 13px;
+    margin-right: 5px;
+    align-items: center;
+}
+
+.campo div input{
+    display: flex;
+    align-items: center;
+}
+
+form p{
+    margin: 0;
+    padding: 0;
+    min-width: 150px;
+    font-size: 14px;
+}
+
+textarea{
+    width: 300px;
+    padding: 5px;
+    border: 1px solid #000000;
+    font-size: 16px;
+}
+
+input{
+    border: none;
+    outline:none;
+    border-radius: 5px;
+}
+input[type="text"], input[type="password"], input[type="email"]{
+    width: 300px;
+    padding: 5px;
+    border-bottom: 1px solid #000000;
+    font-size: 16px;
+}
+
+input[type=text]:focus, input[type=password]:focus{
+    background-color: rgb(196, 222, 255);
+}
+
+select{
+    width: 150px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    gap: 20px;
+
+}
+input[type="submit"], input[type="reset"]{
+    width: 150px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}
+
+.error{
+    color: red;
+    font-size: 14px;
+    margin: 5px;
+    padding: 0;
+}

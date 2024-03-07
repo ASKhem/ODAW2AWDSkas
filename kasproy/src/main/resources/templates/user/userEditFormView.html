@@ -11,34 +11,23 @@
 <body>
     <header th:replace="~{/public/fragments/mainFragments.html :: header}"></header>
     <main>
-        <h2>Nuevo Usuario</h2>
+        <h2>Editar Usuario</h2>
         <div class="form-t1">
-            <form th:action="@{/usuarios/new/submit}" th:object="${usuario}" method="post">
+            <form th:action="@{/usuarios/edit/submit}" th:object="${usuario}" method="post">
                 <div class="campo">
-                    <p>USUARIO: </p>
+                    <p for="nombre">Nombre:</p>
                     <input type="text" id="nombre" th:field="*{nombre}">
                 </div>
                 <div class="campo">
                     <p>EMAIL: </p>
                     <input type="text" id="correo" th:field="*{email}">
                 </div>
-                <div class="campo">
-                    <p>CONTRASEÑA: </p>
-                    <input type="password" id="contrasena" th:field="*{password}">
-                </div>
-                <div class="campo">
-                    <p>ROL: </p>
-                    <select id="rol" th:field="*{rol}">
-                        <option value="COSTUMER">COSTUMER</option>
-                        <option value="EDITOR">EDITOR</option>
-                        <option value="ADMIN">ADMIN</option>
-                    </select>
-                </div>
-                <div  class="buttons">
+                <div class="buttons">
                     <input type="submit" value="Submit">
                 </div>
             </form>
         </div>
     </main>
     <footer th:replace="~{/public/fragments/mainFragments.html :: footer}"></footer>
+    <script src="/js/lateral-socials.js"></script>
 </html>

@@ -31,11 +31,25 @@ body{
 }
 
 main{
-    min-height: 90vh;
+    min-height: 93vh;
     width: 75%;
     min-width: 1100px;
-    background-color: #f0f0f0fd;
+    /* background-color: #040038a1; */
     margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    font-size: 3em;
+    margin: 0.25em;
+    margin-top: 40px;
+    font-size: bold;
+    font-family: 'Console', monospace;
+    text-align: left;
+    margin-left: 0;
+    color: white;
 }
 
 #cookie-notice {

@@ -29,7 +29,6 @@ public class Pedido {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private Usuario usuario;
 
     @OneToOne(cascade = CascadeType.ALL)

@@ -1,21 +1,15 @@
-package com.kas.kasproy.model.product;
+package com.kas.kasproy.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
+@EqualsAndHashCode
 @NoArgsConstructor
-@Entity
-public class Ordenador {
-    @Id
-    @GeneratedValue
-    private Long id;
-    
+@AllArgsConstructor
+public class OrdenadorNewDto {
     private String caja;
     private String placa;
     private String procesador;
@@ -25,5 +19,4 @@ public class Ordenador {
     private Integer modulosAlmacenamiento;
     private String fuente;
     private String tarjeta;
-
 }
