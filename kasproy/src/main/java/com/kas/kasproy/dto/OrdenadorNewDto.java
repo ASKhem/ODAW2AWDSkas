@@ -14,9 +14,7 @@ public class OrdenadorNewDto {
     private String placa;
     private String procesador;
     private String ram;
-    private Integer modulosRam;
     private String almacenamiento;
-    private Integer modulosAlmacenamiento;
     private String fuente;
     private String tarjeta;
 }

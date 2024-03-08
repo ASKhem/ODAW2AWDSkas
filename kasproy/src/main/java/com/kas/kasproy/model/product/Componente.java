@@ -2,6 +2,7 @@ package com.kas.kasproy.model.product;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,17 +12,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Ordenador {
+public class Componente {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    private String caja;
-    private String placa;
-    private String procesador;
-    private String ram;
-    private String almacenamiento;
-    private String fuente;
-    private String tarjeta;
-
+    private String nombre;
+    private String precio;
 }

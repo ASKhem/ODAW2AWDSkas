@@ -12,6 +12,7 @@ import com.kas.kasproy.model.Pedido;
 import com.kas.kasproy.model.product.Ordenador;
 import com.kas.kasproy.model.user.Rol;
 import com.kas.kasproy.model.user.Usuario;
+import com.kas.kasproy.services.componente.ComponenteService;
 import com.kas.kasproy.services.ordenador.OrdenadorService;
 import com.kas.kasproy.services.pedido.PedidoService;
 import com.kas.kasproy.services.usuario.UsuarioService;
@@ -24,8 +25,9 @@ public class KasproyApplication {
 	}
 
 	@Bean
-	public CommandLineRunner initData(UsuarioService usuarioService, PedidoService pedidoService, OrdenadorService ordenadorService) {
+	public CommandLineRunner initData(UsuarioService usuarioService, PedidoService pedidoService, OrdenadorService ordenadorService, ComponenteService componenteService) {
 		return (args) -> {
+			System.out.println("Componentes: " + componenteService.getComponentes());
 			Usuario user1 = new Usuario();
 			user1.setNombre("usuario1");
 			user1.setFechaRegistro(LocalDate.now());
@@ -56,7 +58,7 @@ public class KasproyApplication {
 
 			System.out.println("Usuarios creados: " + usuarioService.getUsuarios());
 
-			Ordenador ordenador1 = new Ordenador(1L, "caja1", "placa1", "procesador1", "ram1", 2, "almacenamiento1", 1, "fuente1", "tarjeta1");
+			Ordenador ordenador1 = new Ordenador(1L, "caja1", "placa1", "procesador1", "ram1", "almacenamiento1", "fuente1", "tarjeta1");
 			ordenadorService.createOrdenador(ordenador1);
 			
 			Pedido pedido1 = new Pedido(1L, user1, ordenador1, 2000.0D);
