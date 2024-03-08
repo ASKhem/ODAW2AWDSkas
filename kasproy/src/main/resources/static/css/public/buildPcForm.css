@@ -37,7 +37,6 @@ main {
 }
 
 #info{
-    width: 80%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -49,7 +48,7 @@ main {
     border-bottom: 1px solid #474747;
     background-color: transparent;
     outline: none;
-    width: 30px;
+    width: 60px;
 }
 
 .form-section{
@@ -93,7 +92,7 @@ main {
     display: flex;
     align-items: center;
     width: 90%;
-    gap: 50px;
+    gap: 20px;
 }
 
 .buttons button{
@@ -140,4 +139,8 @@ hr {
     height: 2px;
     background: #cacaca;
     border: none;
+}
+
+input{
+    color: white;
 }
