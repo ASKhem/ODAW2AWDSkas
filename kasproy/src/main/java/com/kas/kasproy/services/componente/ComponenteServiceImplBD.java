@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.kas.kasproy.model.product.Componente;
 import com.kas.kasproy.repositories.ComponenteRepository;
 
+
 @Service
 public class ComponenteServiceImplBD implements ComponenteService{
     @Autowired
@@ -22,11 +23,32 @@ public class ComponenteServiceImplBD implements ComponenteService{
     public Componente createComponente(Componente componente){
         return componenteRepository.save(componente);
     }
+
     public void deleteComponente(Long id){
         componenteRepository.deleteById(id);
     }
     public Componente updateComponente(Long id, Componente componente){
-        componente.setId(id);
         return componenteRepository.save(componente);
     }
+
+    public List<Componente> getComponentesByCategoria(String categoria) {
+        return componenteRepository.findByCategoria(categoria);
+    }
+
+    public List<Componente> getComponentesPaginados(int pageNum, List<Componente> componentes){
+        int pageSize = 10;
+        int start = pageNum * pageSize;
+        int end = Math.min((start + pageSize), componentes.size()); // Corrección aquí
+        if(start < end){
+            return componentes.subList(start, end);
+        }
+        return null;
+    }
+
+    public int getNumPages(List<Componente> componentes){
+        int pageSize = 10;
+        return (int) Math.ceil((double) componentes.size() / pageSize);
+    }
+
+
 }

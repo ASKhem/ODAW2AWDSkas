@@ -18,4 +18,5 @@ public class Componente {
     private Long id;
     private String nombre;
     private String precio;
+    private String categoria;
 }

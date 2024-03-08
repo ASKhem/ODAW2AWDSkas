@@ -1,8 +1,5 @@
 package com.kas.kasproy.model;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import com.kas.kasproy.model.product.Ordenador;
 import com.kas.kasproy.model.user.Usuario;
 

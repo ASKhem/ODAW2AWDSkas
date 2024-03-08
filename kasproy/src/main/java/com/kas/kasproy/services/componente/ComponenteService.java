@@ -10,5 +10,8 @@ public interface ComponenteService {
     public Componente createComponente(Componente componente);
     public void deleteComponente(Long id);
     public Componente updateComponente(Long id, Componente componente);
+    public List<Componente> getComponentesByCategoria(String categoria);
+    public List<Componente> getComponentesPaginados(int pageNum, List<Componente> componentes);
+    public int getNumPages(List<Componente> componentes);
 }
 

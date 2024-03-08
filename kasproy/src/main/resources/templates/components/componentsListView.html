@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Components List</title>
+    <link rel="icon" href="/img/public/header/icono.png" type="image/jpg">
+    <div th:insert="~{/public/fragments/mainFragments.html :: public-styles}"></div>
+    <link rel="stylesheet" th:href="@{/css/public/table.css}">
+</head>
+
+<body>
+    <header th:replace="~{/public/fragments/mainFragments.html :: header}"></header>
+    <main>
+        <h2>Lista de componentes</h2>
+        <form action="#" class="form-t2" id="category-form">
+            <select id="category" name="category" th:field="*{categoria}">
+                <option value="all">Todos</option>
+                <option value="procesador">Procesadores</option>
+                <option value="tarjeta">Tarjetas gráficas</option>
+                <option value="ram">Memorias RAM</option>
+                <option value="placa">Placas base</option>
+                <option value="almacenamiento">Almacenamiento</option>
+                <option value="fuente">Fuentes de alimentación</option>
+                <option value="caja">Cajas</option>
+            </select>
+            <input type="submit" value="Filtrar" />
+        </form>
+        <script>
+            window.onload = function () {
+                let category = document.getElementById('category');
+                let form = document.getElementById('category-form');
+                category.addEventListener('change', function () {
+                    form.action = '/componentes/list/' + category.value + '/0';
+                });
+            }
+
+        </script>
+
+        <div id="tableAccounts">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Categoria</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="componente : ${componentes}">
+                        <td th:text="${componente.id}"></td>
+                        <td th:text="${componente.nombre}"></td>
+                        <td th:text="${componente.precio}"></td>
+                        <td th:text="${componente.categoria}"></td>
+                        <td><a th:href="@{/components/edit/{id}(id=${componente.id})}">Editar</a></td>
+                        <td><a th:href="@{/components/delete/{id}(id=${componente.id})}">Borrar</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <tfoot>
+                    <tr>
+                        <td colspan="5">
+                            <div th:unless="${categoria == 'all'}">
+                                <ul class="pagination">
+                                    <li><a th:href="@{/componentes/list/{categoria}/{page}(categoria=${categoria}, page=${pagAnterior})}"
+                                            id="before">Anterior</a></li>
+                                    <li th:each="i : ${#numbers.sequence(0, pagFinal)}" id="pages">
+                                        <a th:href="@{/componentes/list/{categoria}/{page}(categoria=${categoria}, page=${i})}"
+                                            th:text="${i + 1}" th:class="${page == i ? 'active' : ''}"></a>
+                                    </li>
+                                    <li><a th:href="@{/componentes/list/{categoria}/{page}(categoria=${categoria}, page=${pagSiguiente})}"
+                                            id="next">Siguiente</a></li>
+                                </ul>
+                            </div>
+                            <div th:unless="${categoria != 'all'}">
+                                <ul class="pagination">
+                                    <li><a th:href="@{/componentes/list/all/{page}(page=${pagAnterior})}"
+                                            id="before">Anterior</a></li>
+                                    <li th:each="i : ${#numbers.sequence(0, pagFinal)}" id="pagess">
+                                        <a th:href="@{/componentes/list/all/{page}(page=${i})}" th:text="${i + 1}"
+                                            th:class="${page == i ? 'active' : ''}"></a>
+                                    </li>
+                                    <li><a th:href="@{/componentes/list/all/{page}(page=${pagSiguiente})}"
+                                            id="next">Siguiente</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            <form th:action="@{/componentes/new}" class="form-t2">
+                <input type="submit" value="Añadir" />
+            </form>
+        </div>
+    </main>
+    <footer th:replace="~{/public/fragments/mainFragments.html :: footer}"></footer>
+
+</html>

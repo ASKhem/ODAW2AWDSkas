@@ -23,7 +23,6 @@ public class PedidoController {
     public String submitPedido( @ModelAttribute OrdenadorNewDto ordenadorNewDto){
         System.out.println(ordenadorService.convertToOrdenador(ordenadorNewDto));
         return "redirect:/public/home";
-
     }
     
 }
