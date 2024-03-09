@@ -1,5 +1,8 @@
 package com.kas.kasproy.model;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import com.kas.kasproy.model.product.Ordenador;
 import com.kas.kasproy.model.user.Usuario;
 
@@ -34,4 +37,6 @@ public class Pedido {
 
     @NotNull
     private Double precio;
+
+    private LocalDateTime fechaPedido;
 }

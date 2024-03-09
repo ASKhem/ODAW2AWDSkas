@@ -1,17 +1,18 @@
 package com.kas.kasproy;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.kas.kasproy.dto.UsuarioNewDto;
+import com.kas.kasproy.dto.UsuarioNewStandardDto;
 import com.kas.kasproy.model.Pedido;
 import com.kas.kasproy.model.product.Ordenador;
 import com.kas.kasproy.model.user.Rol;
-import com.kas.kasproy.model.user.Usuario;
 import com.kas.kasproy.services.componente.ComponenteService;
 import com.kas.kasproy.services.ordenador.OrdenadorService;
 import com.kas.kasproy.services.pedido.PedidoService;
@@ -28,31 +29,10 @@ public class KasproyApplication {
 	public CommandLineRunner initData(UsuarioService usuarioService, PedidoService pedidoService, OrdenadorService ordenadorService, ComponenteService componenteService) {
 		return (args) -> {
 			System.out.println("Componentes: " + componenteService.getComponentes());
-			Usuario user1 = new Usuario();
-			user1.setNombre("usuario1");
-			user1.setFechaRegistro(LocalDate.now());
-			user1.setPassword("usuario1234");
-			user1.setEmail("usuario1@gmail.com");
-			user1.setRol(Rol.COSTUMER);
-			user1.setSaved(new ArrayList<>());
-
-			Usuario user2 = new Usuario();
-			user2.setNombre("admin1");
-			user2.setFechaRegistro(LocalDate.now());
-			user2.setPassword("admin1234");
-			user2.setEmail("admin1@gmail.com");
-			user2.setRol(Rol.ADMIN);
-			user2.setSaved(new ArrayList<>());
-
-			Usuario user3 = new Usuario();
-			user3.setNombre("editor1");
-			user3.setFechaRegistro(LocalDate.now());
-			user3.setPassword("editor1234");
-			user3.setEmail("editor1@gmail.com");
-			user3.setRol(Rol.EDITOR);
-			user3.setSaved(new ArrayList<>());
-
-			usuarioService.createUsuario(user1);
+			UsuarioNewStandardDto user1 = new UsuarioNewStandardDto("usuario1", "usuario1234", "usuario1@gmail.com");
+			UsuarioNewDto user2 = new UsuarioNewDto("admin1", "admin1234", "admin1@gmail.com", Rol.ADMIN);
+			UsuarioNewDto user3 = new UsuarioNewDto("editor1", "editor1234", "editor1@gmail.com", Rol.EDITOR);
+			usuarioService.createEstandardUsuario(user1);
 			usuarioService.createUsuario(user2);
 			usuarioService.createUsuario(user3);
 
@@ -60,9 +40,11 @@ public class KasproyApplication {
 
 			Ordenador ordenador1 = new Ordenador(1L, "caja1", "placa1", "procesador1", "ram1", "almacenamiento1", "fuente1", "tarjeta1");
 			ordenadorService.createOrdenador(ordenador1);
-			
-			Pedido pedido1 = new Pedido(1L, user1, ordenador1, 2000.0D);
+			Ordenador ordenador2 = new Ordenador(2L, "caja2", "placa2", "procesador2", "ram2", "almacenamiento2", "fuente2", "tarjeta2");
+			Pedido pedido2 = new Pedido(2L, usuarioService.findById(2L), ordenador2, 3000.0D, LocalDateTime.now());
+			Pedido pedido1 = new Pedido(1L, usuarioService.findById(1L), ordenador1, 2000.0D, LocalDateTime.now());
 			pedidoService.createPedido(pedido1);
+			pedidoService.createPedido(pedido2);
 			System.out.println("Pedidos creados: " + pedidoService.getPedidos());
 		};
 	}

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kas.kasproy.dto.UsuarioEditDto;
+import com.kas.kasproy.dto.UsuarioNewDto;
 import com.kas.kasproy.model.user.Usuario;
 import com.kas.kasproy.services.usuario.UsuarioService;
 
@@ -32,8 +33,8 @@ public class UsuariosController {
     }
 
     @PostMapping("/new/submit")
-    public String newUsuarioSubmit(@ModelAttribute Usuario usuario){
-        usuarioService.createUsuario(usuario);
+    public String newUsuarioSubmit(@ModelAttribute UsuarioNewDto usuarioDto){
+        usuarioService.createUsuario(usuarioDto);
         return "redirect:/usuarios/list";
     }
 
@@ -45,6 +46,7 @@ public class UsuariosController {
 
     @PostMapping("/edit/submit")
     public String editUsuarioSubmit(@ModelAttribute UsuarioEditDto usuario){
+        System.out.println(usuario.getNombre());
         usuarioService.updateUsuario(usuario);
         return "redirect:/usuarios/list";
     }

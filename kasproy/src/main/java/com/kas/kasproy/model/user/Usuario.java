@@ -43,5 +43,7 @@ public class Usuario {
     @NotNull
     private Rol rol;
 
+    private String foto;
+
     private ArrayList<OrdenadorNewDto> saved;
 }

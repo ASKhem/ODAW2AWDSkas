@@ -11,10 +11,11 @@
 
 <body>
     <header th:replace="~{/public/fragments/mainFragments.html :: header}"></header>
-    <main>
+    <main class="maint2">
         <h2>Editar Usuario</h2>
         <div class="form-t1">
             <form th:action="@{/usuarios/edit/submit}" th:object="${usuario}" method="post">
+                <input type="text" th:field="*{id}" hidden>
                 <div class="campo">
                     <p for="nombre">Nombre:</p>
                     <input type="text" id="nombre" th:field="*{nombre}">
@@ -30,5 +31,4 @@
         </div>
     </main>
     <footer th:replace="~{/public/fragments/mainFragments.html :: footer}"></footer>
-    <script src="/js/lateral-socials.js"></script>
 </html>

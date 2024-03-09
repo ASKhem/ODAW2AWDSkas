@@ -10,4 +10,5 @@ import com.kas.kasproy.model.product.Componente;
 @Repository
 public interface ComponenteRepository extends JpaRepository<Componente, Long> {
     public List<Componente> findByCategoria(String categoria);
+    public Componente findByNombre(String nombre);
 }

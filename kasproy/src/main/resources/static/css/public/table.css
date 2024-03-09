@@ -1,5 +1,5 @@
 #tableAccounts {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #000c33d3;
     width: 80%;
     margin: 0 auto;
     padding: 50px 20px 30px 20px;
@@ -44,7 +44,7 @@ table a{
 
 thead{
     color: white;
-    background-color: #333333;
+    background-color: #3d3d3d;
 }
 
 tr{
@@ -98,7 +98,7 @@ input[type="submit"], input[type="reset"]{
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 16px;
-    background-color: #333;
+    background-color: #3d3d3d;
     color: #fff;
     cursor: pointer;
 }

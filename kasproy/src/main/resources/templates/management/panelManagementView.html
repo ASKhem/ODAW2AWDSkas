@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel</title>
+    <link rel="icon" href="/img/public/header/icono.png" type="image/jpg">
+    <div th:insert="~{/public/fragments/mainFragments.html :: public-styles}"></div>
+    <link rel="stylesheet" th:href="@{/css/private/panelManagement.css}">
+</head>
+
+<body>
+    <header th:replace="~{/public/fragments/mainFragments.html :: header}"></header>
+    <main>
+        <h2>Panel</h2>
+        <section id="panel">
+            <img src="/img/private/administrador.png">
+            <div id="options">
+                <div class="panel-op">
+                    <a th:href="@{/usuarios/list}">Users</a>
+                </div>
+                <div class="panel-op">
+                      <a th:href="@{/componentes/list/all/0}">Components</a>
+                </div>
+                <div class="panel-op">
+                      
+                </div>
+                <div class="panel-op">
+                      <a th:href="@{/pedido/list}">Orders</a>
+                </div>
+                <div class="panel-op">
+                    <a href="#">Gallery</a>
+                </div>
+                <div class="panel-op">
+                      
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer th:replace="~{/public/fragments/mainFragments.html :: footer}"></footer>
+</html>

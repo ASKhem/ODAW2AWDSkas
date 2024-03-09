@@ -11,7 +11,7 @@
 
 <body>
     <header th:replace="~{/public/fragments/mainFragments.html :: header}"></header>
-    <main>
+    <main class="maint2">
         <h2>Nuevo Usuario</h2>
         <div class="form-t1">
             <form th:action="@{/usuarios/new/submit}" th:object="${usuario}" method="post">

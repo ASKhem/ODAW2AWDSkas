@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <link rel="icon" href="/img/public/header/icono.png" type="image/jpg">
+    <div th:insert="~{/public/fragments/mainFragments.html :: public-styles}"></div>
+    <link rel="stylesheet" th:href="@{/css/private/bill.css}">
+</head>
+
+<body>
+    <header th:replace="~{/public/fragments/mainFragments.html :: header}"></header>
+    <main>
+        <h2>Your Order</h2>
+        <div id="bill">
+            <div>
+                <p>Order ID: </p>
+                <span th:text="${pedido}"></span>
+            </div>
+            <div>
+                <p>PC ID: </p>
+                <span th:text="${ordenador}"></span>
+            </div>
+            <div>
+                <p>Order Date: </p>
+                <span th:text="${fecha}"></span>
+            </div>
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="component: ${componentes}">
+                            <td th:text="${component.nombre}"></td>
+                            <td th:text="${component.precio}"></td>
+                        </tr>
+                    </tbody>
+                    </tfoot>
+                    <tr>
+                        <td>Total:</td>
+                        <td th:text="${precio}"></td>
+                    </tr>
+                </table>
+            </div>
+    </main>
+    <footer th:replace="~{/public/fragments/mainFragments.html :: footer}"></footer>
+
+</html>

@@ -1,0 +1,55 @@
+#panel{
+    margin-top: 80px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+main{
+    background-color: rgba(0, 49, 88, 0.466);
+}
+#panel img {
+    width: 440px;
+    height: 440px;
+    margin: 0;
+    border-radius: 10px;
+}
+
+#options{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 440px;
+    width: 700px;
+    padding: 0;
+    border-radius: 10px;
+}
+
+#options div{
+    width: 325px;
+    height: 125px;
+    margin: 0;
+    background-color: #000c33;
+    border: 2px solid #3b3b3b;
+    border-radius: 10px;
+}
+
+.panel-op a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 25px;
+    border-radius: 10px;
+}
+
+#options div:hover, #options div a:hover{
+    background-color: #003483a1;
+    transition: background-color 0.2s ease-out;
+}

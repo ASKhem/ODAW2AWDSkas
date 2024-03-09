@@ -1,0 +1,24 @@
+#bill{
+    background-color: aliceblue;
+    padding: 20px;
+    margin-top: 50px;
+    font-size: 16px;
+    width: 400px;
+    min-height: 600px;
+}
+
+h3{
+    font-size: 15px;
+}
+
+#bill div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+#bill div p{
+    margin: 5px;
+    padding: 0;
+}

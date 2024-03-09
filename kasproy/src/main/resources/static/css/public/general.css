@@ -36,14 +36,19 @@ body{
 }
 
 main{
-    min-height: 93vh;
+    min-height: 95vh;
     width: 75%;
     min-width: 1100px;
-    /* background-color: #040038a1; */
+    background-color: #000007;
     margin-top: 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 0;
+}
+
+.maint2{
+    background-color: rgba(0, 49, 88, 0.466)!important;
 }
 
 h2 {
