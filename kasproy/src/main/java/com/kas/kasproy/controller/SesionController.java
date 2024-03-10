@@ -12,4 +12,9 @@ public class SesionController {
         return "sesion/logoutView";
     }
 
+    @GetMapping("/accessDenied")
+    public String getAccessDeniedView() {
+        return "error/errorPage";
+    }
+
 }

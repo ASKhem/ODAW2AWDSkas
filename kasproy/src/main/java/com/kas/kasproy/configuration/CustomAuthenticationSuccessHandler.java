@@ -24,6 +24,8 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 
         if (roles.contains("ROLE_ADMIN")) {
             redirectStrategy.sendRedirect(request, response, "/management/panel");
+        }else if (roles.contains("ROLE_EDITOR")) {
+            redirectStrategy.sendRedirect(request, response, "/management/panel");
         } else if (roles.contains("ROLE_USER")) {
             redirectStrategy.sendRedirect(request, response, "/public/home");
         } else {

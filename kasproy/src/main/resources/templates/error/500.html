@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error403</title>
+    <link rel="icon" href="/images/public/header/icono.png" type="image/jpg">
+    <div th:insert="~{/public/fragments/mainFragments.html :: public-styles}"></div>
+    <link rel="stylesheet" th:href="@{/css/public/main.css}">
+    <link rel="stylesheet" th:href="@{/css/public/table.css}">
+</head>
+
+<body>
+    <header th:replace="~{/public/fragments/mainFragments.html :: header}"></header>
+    <aside th:replace="~{/public/fragments/mainFragments.html :: lateral-socials}"></aside>
+    <main>
+        <div class="form-t1">
+            <h2>Error 403</h2>
+            <p>No tienes permisos para acceder a esta página</p>
+            <a th:href="@{/public/home}" style="font-size: 20px;">Volver al inicio</a>
+        </div>
+    </main>
+    <footer th:replace="~{/public/fragments/mainFragments.html :: footer}"></footer>
+    <script src="/js/lateral-socials.js"></script>
+</body>
+
+</html>
+```

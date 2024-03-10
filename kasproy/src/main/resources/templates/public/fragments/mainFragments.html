@@ -31,8 +31,6 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity">
                             <li class="na" id="store">GALLERY</li>
                             <li class="na" id="home">ABOUT US</li>
                             <a th:if="${role} != null"><li class="na" id="userMode" th:if="${role} != '[ROLE_USER]'"><a  th:href="@{/management/panel}">ADMIN MODE</a></li></a>
-                            
-
                         </ul>
                     </nav>
                 <li id="menu2">
@@ -53,7 +51,7 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity">
                             </a>
                         </li>
                         <li class="mo normal" id="nest">
-                            <a th:href="@{/public/home}">
+                            <a th:href="@{/pedido/list/usuario}">
                                 <img th:src="@{/images/public/header/carrito.png}" alt="item-nest" id="carrito" class="small">
                             </a>
                         </li>

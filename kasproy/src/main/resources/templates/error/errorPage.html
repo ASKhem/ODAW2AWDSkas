@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error403</title>
+    <link rel="icon" href="/images/public/header/icono.png" type="image/jpg">
+    <div th:insert="~{/public/fragments/mainFragments.html :: public-styles}"></div>
+    <link rel="stylesheet" th:href="@{/css/public/main.css}">
+    <link rel="stylesheet" th:href="@{/css/public/table.css}">
+</head>
+
+<body>
+    <header th:replace="~{/public/fragments/mainFragments.html :: header}"></header>
+    <aside th:replace="~{/public/fragments/mainFragments.html :: lateral-socials}"></aside>
+    <main >
+        <div id="tableAccounts" style="display:flex; align-items: center; gap:50px">
+            <h2>No tiene los permisos necesarios para accecder</h2>
+            <h2 style="color: red;">Dennied Access</h2>
+            <img id="warning-icon" src="https://cdn-icons-png.flaticon.com/512/3571/3571536.png" width="100px">
+        </div>
+    </main>
+    <footer th:replace="~{/public/fragments/mainFragments.html :: footer}"></footer>
+    <script src="/js/lateral-socials.js"></script>
+</body>
+
+</html>
+```

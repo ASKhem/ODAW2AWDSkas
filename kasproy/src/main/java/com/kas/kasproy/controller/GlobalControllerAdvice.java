@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import com.kas.kasproy.model.user.Usuario;
 import com.kas.kasproy.services.usuario.UsuarioService;
 
 @ControllerAdvice
@@ -19,5 +20,8 @@ public class GlobalControllerAdvice {
         String role = userService.getCurrentUserRole();
         System.out.println("role: " + role);
         model.addAttribute("role", role);
+        Usuario usuario = userService.findUsarioByNombre(username);
+        model.addAttribute("usuarioActivo", usuario);
+        
     }
 }

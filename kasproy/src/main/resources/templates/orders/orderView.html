@@ -14,7 +14,7 @@
     <header th:replace="~{/public/fragments/mainFragments.html :: header}"></header>
     <main>
         <div id="bill">
-            <img src="/img/public/header/logo.png">
+            <img th:src="@{/images/public/header/logo.png}">
             <div>
                 <p>Order ID: </p>
                 <span th:text="${pedido}"></span>

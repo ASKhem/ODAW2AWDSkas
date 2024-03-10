@@ -17,4 +17,5 @@ public interface UsuarioService {
     public String getCurrentUserName();
     public String getCurrentUserRole();
     public boolean isAdmin();
+    public Usuario findUsarioByNombre(String nombre);
 }

@@ -120,4 +120,8 @@ public class UsuarioServiceImplBD implements UsuarioService{
         return getCurrentUserRole().equals("[ROLE_ADMIN]");
     }
 
+    public Usuario findUsarioByNombre(String nombre) {
+        return usuarioRepository.findByNombre(nombre);
+    }
+
 }

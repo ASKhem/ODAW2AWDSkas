@@ -38,7 +38,7 @@ public class PedidoController {
 
     @PostMapping("/order")
     public String submitPedido(@ModelAttribute OrdenadorNewDto ordenadorNewDto, Model model) {
-        Pedido pedido = new Pedido(0L, usuarioService.findById(1L),
+        Pedido pedido = new Pedido(0L, usuarioService.findUsarioByNombre(usuarioService.getCurrentUserName()),
                 ordenadorService.convertToOrdenador(ordenadorNewDto),
                 ordenadorService.calcularPrecio(componenteService.getcomponentesOrdenador(ordenadorNewDto)), null);
         Pedido pedido2 = pedidoService.createPedido(pedido);
@@ -78,6 +78,13 @@ public class PedidoController {
             model.addAttribute("usuario", usuario);
         }
         System.out.println(pedidoService.toDto(pedidos).get(0).getFechaPedido());
+        model.addAttribute("pedidos", pedidoService.toDto(pedidos));
+        return "orders/ordersListView";
+    }
+
+    @GetMapping("/list/usuario")
+    public String listPedidosUsuarioActual(Model model) {
+        List<Pedido> pedidos = pedidoService.getPedidosByUsuarioId(usuarioService.findUsarioByNombre(usuarioService.getCurrentUserName()).getId());
         model.addAttribute("pedidos", pedidoService.toDto(pedidos));
         return "orders/ordersListView";
     }

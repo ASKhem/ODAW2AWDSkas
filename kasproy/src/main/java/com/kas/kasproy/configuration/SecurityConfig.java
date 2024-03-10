@@ -39,9 +39,9 @@ public class SecurityConfig {
                 auth -> auth
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .requestMatchers("/", "/public/**").permitAll()
-                        .requestMatchers("/pedidos/list").hasAnyRole("ADMIN")
-                        .requestMatchers("/pedidos/list/**", "/pedido/order/**").hasAnyRole("USER", "ADMIN")
-                        .requestMatchers("/edit/**", "/delete/**").hasRole("ADMIN")
+                        .requestMatchers("/pedido/list/usuario", "/pedido/order/**").hasAnyRole("USER", "ADMIN", "EDITOR")
+                        .requestMatchers("/usuarios/delete/**", "componentes/delete/**").hasRole("ADMIN")
+                        .requestMatchers("/pedido/**", "/usuarios/**").hasAnyRole("ADMIN", "EDITOR")
                         .requestMatchers("/h2-console/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .formLogin(formLogin -> formLogin
@@ -56,7 +56,7 @@ public class SecurityConfig {
                         .permitAll())
                 // .csrf(csrf -> csrf.disable())
                 .httpBasic(Customizer.withDefaults());
-        http.exceptionHandling(exceptions -> exceptions.accessDeniedPage("/accessError"));
+        http.exceptionHandling(exceptions -> exceptions.accessDeniedPage("/accessDenied"));
         return http.build();
     }
 }
