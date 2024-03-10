@@ -26,7 +26,7 @@ body{
     padding: 0; margin: 0; box-sizing: border-box;
     font: 0.8em 'Roboto', sans-serif, Arial;
     background-color: #0a0b3f; color: #000000;
-    background-image: url("../../img/public/body/body-wallpaper.jpg");
+    background-image: url("../../images/public/body/body-wallpaper.jpg");
     background-size: cover;
     background-attachment: fixed;
     display: flex;

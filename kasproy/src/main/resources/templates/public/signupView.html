@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singup</title>
+    <link rel="icon" href="/img/public/header/icono.png" type="image/jpg">
+    <div th:insert="~{/public/fragments/mainFragments.html :: public-styles}"></div>
+    <link rel="stylesheet" th:href="@{/css/public/login.css}">
+</head>
+
+<body>
+    <header th:replace="~{/public/fragments/mainFragments.html :: header}"></header>
+    <main>
+        <div class="form">
+            <h1>Login</h1>
+            <div th:if="${param.error}" class="form-error">Credenciales incorrectas</div>
+            <div th:if="${param.logout}" class="form-error">Te has desconectado</div>
+            <form th:action="@{/login}" method="post">
+                <div class="form-content">
+                    <p>Username:</p>
+                    <input type="text" name="username" class="form-control" id="username" placeholder="username">
+                </div>
+                <div class="form-content">
+                    <p>Password:</p>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="password">
+                </div>
+                <div class="form-botton">
+                    <input type="submit" value="Login"/>
+                </div>
+            </form>
+            <a href="#" class="optional-login">
+                <button cvlass="button-option">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png" alt="google">
+                    <p>Login with Google</p>
+                </button>
+            </a>
+            <div class="text">
+                <p>Don't have an account? <a th:href="@{/public/register}">Register</a></p>
+            </div>
+        </div>
+    </main>
+    <footer th:replace="~{/public/fragments/mainFragments.html :: footer}"></footer>
+</html>

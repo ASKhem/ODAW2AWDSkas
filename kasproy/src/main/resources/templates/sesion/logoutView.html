@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" href="/img/public/header/icono.png" type="image/jpg">
+    <div th:insert="~{/public/fragments/mainFragments.html :: public-styles}"></div>
+    <link rel="stylesheet" th:href="@{/css/public/login.css}">
+</head>
+
+<body>
+    <header th:replace="~{/public/fragments/mainFragments.html :: header}"></header>
+    <main class="logoutForm">
+        <h2>Do you want to logout?</h2>
+        <div id="form-t1" >
+            <form th:action="@{/logout}" method="post">
+                <div  class="buttons">
+                    <input type="submit" value="Yes" id="out"/>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer th:replace="~{/public/fragments/mainFragments.html :: footer}"></footer>
+</html>

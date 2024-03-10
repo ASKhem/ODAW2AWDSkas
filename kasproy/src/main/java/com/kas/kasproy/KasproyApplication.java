@@ -11,7 +11,6 @@ import com.kas.kasproy.dto.OrdenadorNewDto;
 import com.kas.kasproy.dto.UsuarioNewDto;
 import com.kas.kasproy.dto.UsuarioNewStandardDto;
 import com.kas.kasproy.model.Pedido;
-import com.kas.kasproy.model.product.Ordenador;
 import com.kas.kasproy.model.user.Rol;
 import com.kas.kasproy.services.componente.ComponenteService;
 import com.kas.kasproy.services.ordenador.OrdenadorService;

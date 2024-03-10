@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOME</title>
-    <link rel="icon" href="/img/public/header/icono.png" type="image/jpg">
+    <link rel="icon" href="/images/public/header/icono.png" type="image/jpg">
     <div th:insert="~{/public/fragments/mainFragments.html :: public-styles}"></div>
     <link rel="stylesheet" th:href="@{/css/public/main.css}">
 </head>
@@ -15,7 +15,7 @@
     <aside th:replace="~{/public/fragments/mainFragments.html :: lateral-socials}"></aside>
     <main>
         <section id="section-1" class="section-main">
-            <video src="/video/video-presentation.mp4"></video>
+            <video th:src="@{/images/video-presentation.mp4}"></video>
             <div>
                 <h2>THE BEST PC BUILDERS</h2>
                 <h2>CHOOSE THE COMPONENTS, WE BUILD IT FOR YOU</h2>

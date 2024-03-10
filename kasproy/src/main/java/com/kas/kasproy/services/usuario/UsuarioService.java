@@ -14,5 +14,7 @@ public interface UsuarioService {
     public Usuario findById(Long id);
     public void deleteUsuario(Long id);
     public Usuario updateUsuario(UsuarioEditDto usuarioDto);
-    // public UsuarioEditDto toEditDto(Usuario usuario);
+    public String getCurrentUserName();
+    public String getCurrentUserRole();
+    public boolean isAdmin();
 }

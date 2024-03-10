@@ -33,7 +33,6 @@ public class Usuario {
     private LocalDate fechaRegistro;
 
     @NotEmpty
-    @Column(length = 20)
     private String password;
 
     @NotEmpty

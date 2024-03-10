@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UsuarioNewDto {
     @NotEmpty(message = "Name is empty", groups = First.class)
-    @Size(min = 10, max = 20, message = "Name must be between 10 and 20 characters" , groups = Second.class)
+    @Size(min = 5, max = 20, message = "Name must be between 5 and 20 characters" , groups = Second.class)
     private String nombre;
 
     @NotEmpty(message = "Password is empty" , groups = First.class)

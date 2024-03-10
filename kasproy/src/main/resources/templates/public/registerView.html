@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRegister</title>
+    <link rel="icon" href="/img/public/header/icono.png" type="image/jpg">
+    <div th:insert="~{/public/fragments/mainFragments.html :: public-styles}"></div>
+    <link rel="stylesheet" th:href="@{/css/public/login.css}">
+</head>
+
+<body>
+    <header th:replace="~{/public/fragments/mainFragments.html :: header}"></header>
+    <main>
+        <div class="form">
+            <h1>Register</h1>
+            <form th:action="@{/public/register/submit}" th:object="${usuario}" method="post">
+                <div class="form-content">
+                    <p>Username:</p>
+                    <input type="text" th:field="*{nombre}" class="form-control" id="username">
+                </div>
+                <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" ></span>
+                <div class="form-content">
+                    <p>Password:</p>
+                    <input type="password" th:field="*{password}" class="form-control" id="password">
+                </div>
+                <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="form-error"></span>
+                <div class="form-content">
+                    <p>Confirm password:</p>
+                    <input type="password" id="confirm_password" class="form-control">
+                </div>
+                <span id="samePassword" class="form-error"></span>
+                <div class="form-content">
+                    <p>Email:</p>
+                    <input type="email" th:field="*{email}" class="form-control" id="email">
+                </div>
+                <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="form-error"></span>
+                <div class="form-botton">
+                    <input type="submit" value="Register"/>
+                </div>
+            </form>
+            <a href="#" class="optional-login">
+                <button cvlass="button-option">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png" alt="google">
+                    <p>Register with Google</p>
+                </button>
+            </a>
+            <div class="text">
+                <p>Have an account? <a th:href="@{/public/signup}">Login</a></p>
+            </div>
+        </div>
+    </main>
+    <footer th:replace="~{/public/fragments/mainFragments.html :: footer}"></footer>
+    <script>
+        window.addEventListener('load', function() {
+            var password = document.getElementById("password");
+            var confirm_password = document.getElementById("confirm_password");
+            let samePassword = document.getElementById("samePassword");
+            let form = document.getElementById("form");
+
+            function validatePassword() {
+                if (password.value != confirm_password.value) {
+                    samePassword.innerHTML = "Passwords do not match";
+                    return false;
+                } else {
+                    samePassword.innerHTML = "";
+                    return true;
+                }
+            }
+
+            confirm_password.addEventListener('input', validatePassword);
+
+            form.addEventListener('submit', function(event) {
+                if (!validatePassword()) {
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
+</html>

@@ -164,7 +164,26 @@ li#userMode{
     background-color: rgba(151, 35, 0, 0.322);
     border: 2px solid rgba(255, 81, 0, 0.699)!important;
 }
+li#login{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+li#login a:first-child{
+    color: rgb(255, 94, 0);
+}
+li#login #register{
+    color: rgb(0, 140, 255)
+}
+li#login #logout{
+    color: red;
+}
 
+li#login a:hover, li#login #logout:hover, li#login #register:hover{
+    color: rgb(255, 255, 255);
+    transition: 0.5s;
+}
 @media  screen and (max-width: 1100px){
     #upper-container{
         width: 100%;

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org"
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity">
 
 <head>
     <meta charset="UTF-8">
@@ -16,7 +17,7 @@
     <main>
         <h2>CHOOSE YOUR COMPONENTS</h2>
         <div id="build-pc-container">
-            <img src="/img/public/pc-build/PC.png" alt="pc" id="pcImage">
+            <img th:src="@{/images/public/pc-build/PC.png}" alt="pc" id="pcImage">
             <form id="pc-form" th:action="@{/pedido/order}" method="post" th:object="${ordenador}">
                 <div class="form-section">
                     <img

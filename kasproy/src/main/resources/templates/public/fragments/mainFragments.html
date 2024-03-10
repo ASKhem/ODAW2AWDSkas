@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html xmlns:th="https://www.thymeleaf.org"
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,35 +22,46 @@
         <div id="upper-container">
             <ul id="header-div">
                 <li id="logo-container">
-                    <img src="/img/public/header/logo.png" alt="logo" id="logo">
+                    <img th:src="@{/images/public/header/logo.png}" alt="logo" id="logo">
                 </li>
                 <li id="movement-text-container">
                     <nav id="header-nav">
                         <ul>
-                            <li class="na" id="pc-maker"><a href="/public/buildPc">BUILD A PC</a></li>
+                            <li class="na" id="pc-maker"><a th:href="@{/public/buildPc}">BUILD A PC</a></li>
                             <li class="na" id="store">GALLERY</li>
                             <li class="na" id="home">ABOUT US</li>
-                            <li class="na" id="userMode"><a href="/management/panel">ADMIN MODE</a></li>
+                            <a th:if="${role} != null"><li class="na" id="userMode" th:if="${role} != '[ROLE_USER]'"><a  th:href="@{/management/panel}">ADMIN MODE</a></li></a>
+                            
+
                         </ul>
                     </nav>
                 <li id="menu2">
                     <ul id="user-option-list">
                         <li class="mo" id="login">
-                            <a href="#" id="login-link">LOGIN</a>
+                            <div th:if="${role} == null">
+                                <a th:href="@{/public/signup}" id="login-link">LOGIN</a>
+                                <a th:href="@{/public/register}" id="register">REGISTER</a>
+                            </div>
+                            <div th:if="${role} != null">
+                                <a  th:href="@{/logout}" id="logout">LOGOUT</a>
+                            </div>
                         </li>
+
                         <li class="mo normal" id="home">
-                            <a href="/public/home">
-                                <img src="/img/public/header/home.png" alt="send-box-logo" id="home" class="smallt2">
+                            <a th:href="@{/public/home}">
+                                <img th:src="@{/images/public/header/home.png}" alt="send-box-logo" id="home" class="smallt2">
                             </a>
                         </li>
                         <li class="mo normal" id="nest">
-                            <img src="/img/public/header/carrito.png" alt="item-nest" id="carrito" class="small">
+                            <a th:href="@{/public/home}">
+                                <img th:src="@{/images/public/header/carrito.png}" alt="item-nest" id="carrito" class="small">
+                            </a>
                         </li>
                         <li class="mo normal" id="help">
-                            <img src="/img/public/header/help.png" alt="help-icon" id="help" class="small">
+                            <img th:src="@{/images/public/header/help.png}" alt="help-icon" id="help" class="small">
                         </li>
-                        <li class="no" id="profile-view"><a href="/public/login.html">
-                            <img src="/img/public/header/profile.png" alt="profile-logo" id="profile"/></a></li>
+                        <li class="no" id="profile-view"><a th:href="@{/public/login.html}">
+                            <img th:src="@{/images/public/header/profile.png}" alt="profile-logo" id="profile"/></a></li>
                         <li>
                             <div id="hamburguer-menu">
                                 <div class="line"></div>
@@ -66,14 +77,14 @@
 
     <aside id="lateral-socials" th:fragment="lateral-socials">
         <div id="lateral-socials1">
-            <a href="#"><img src="/img/public/main/lateral-socials/facebook.png" alt="facebook"></a>
-            <a href="#"><img src="/img/public/main/lateral-socials/instagram.png" alt="instagram"></a>
-            <a href="#"><img src="/img/public/main/lateral-socials/whatsapp.png" alt="whatsapp"></a>
-            <a href="#"><img src="/img/public/main/lateral-socials/youtube.png" alt="youtube"></a>
-            <a href="#"><img src="/img/public/main/lateral-socials/x.png" alt="x"></a>
-            <a href="#"><img src="/img/public/main/lateral-socials/phone.png" alt="youtube"></a>
+            <a href="#"><img th:src="@{/images/public/main/lateral-socials/facebook.png}" alt="facebook"></a>
+            <a href="#"><img th:src="@{/images/public/main/lateral-socials/instagram.png}" alt="instagram"></a>
+            <a href="#"><img th:src="@{/images/public/main/lateral-socials/whatsapp.png}" alt="whatsapp"></a>
+            <a href="#"><img th:src="@{/images/public/main/lateral-socials/youtube.png}" alt="youtube"></a>
+            <a href="#"><img th:src="@{/images/public/main/lateral-socials/x.png}" alt="x"></a>
+            <a href="#"><img th:src="@{/images/public/main/lateral-socials/phone.png}" alt="youtube"></a>
         </div>
-        <div id="lateral-socials2" class="arrow"><a><img id="arrow-image" src="/img/public/main/lateral-socials/arrow2.png" alt="facebook"></a></div>
+        <div id="lateral-socials2" class="arrow"><a><img id="arrow-image" th:src="@{/images/public/main/lateral-socials/arrow2.png}" alt="facebook"></a></div>
     </aside>
 
     <footer th:fragment="footer">
@@ -111,10 +122,10 @@
                 <div class="footer-type2">
                     <h3>PAYMENT METHODS</h3>
                     <div>
-                        <img class="card-icon" src="/img/public/footer/visa.png" alt="visa">
-                        <img class="card-icon" src="/img/public/footer/paypal.png" alt="visa">
-                        <img class="card-icon" src="/img/public/footer/googlepay.png" alt="visa">
-                        <img class="card-icon" src="/img/public/footer/applepay.png" alt="visa">
+                        <img class="card-icon" th:src="@{/images/public/footer/visa.png}" alt="visa">
+                        <img class="card-icon" th:src="@{/images/public/footer/paypal.png}" alt="visa">
+                        <img class="card-icon" th:src="@{/images/public/footer/googlepay.png}" alt="visa">
+                        <img class="card-icon" th:src="@{/images/public/footer/applepay.png}" alt="visa">
                     </div>
                 </div>
             </div>

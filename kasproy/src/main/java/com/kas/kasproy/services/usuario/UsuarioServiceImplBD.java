@@ -5,7 +5,12 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.security.core.Authentication;
 
 import com.kas.kasproy.dto.UsuarioEditDto;
 import com.kas.kasproy.dto.UsuarioNewDto;
@@ -14,16 +19,26 @@ import com.kas.kasproy.model.user.Rol;
 import com.kas.kasproy.model.user.Usuario;
 import com.kas.kasproy.repositories.UsuarioRepository;
 
+
+
 @Service
 public class UsuarioServiceImplBD implements UsuarioService{
     @Autowired
     UsuarioRepository usuarioRepository;
 
     @Autowired
+    PasswordEncoder passwordEncoder;
+
+    @Autowired
     ModelMapper modelMapper;
 
     public Usuario createEstandardUsuario(UsuarioNewStandardDto usuarioDto){
-        Usuario usuario = createUsuario(usuarioDto, Rol.COSTUMER);
+        if(usuarioRepository.findByNombre(usuarioDto.getNombre()) != null) {
+            return null;
+        }
+        String password = passwordEncoder.encode(usuarioDto.getPassword());
+        Usuario usuario = createUsuario(usuarioDto, Rol.USER);
+        usuario.setPassword(password);
         return usuarioRepository.save(usuario);
     }
     
@@ -40,6 +55,8 @@ public class UsuarioServiceImplBD implements UsuarioService{
         if (rol != null) {
             usuario.setRol(rol);
         }
+        String password = passwordEncoder.encode(usuario.getPassword());
+        usuario.setPassword(password);
         return usuario;
     }
 
@@ -62,20 +79,45 @@ public class UsuarioServiceImplBD implements UsuarioService{
             if(userWithSameName != null && !userWithSameName.getId().equals(usuarioDto.getId())) {
                 return null;
             }
-    
+
             Usuario userWithSameEmail = usuarioRepository.findByEmail(usuarioDto.getEmail());
             if(userWithSameEmail != null && !userWithSameEmail.getId().equals(usuarioDto.getId())) {
                 return null;
             }
-    
+
             modelMapper.map(usuarioDto, usuario);
-            return usuarioRepository.save(usuario);
+            
+            String passCrypted = passwordEncoder.encode(usuario.getPassword());
+            usuario.setPassword(passCrypted);
+            
+            try {
+                return usuarioRepository.save(usuario);
+            } catch (DataIntegrityViolationException e) {
+                e.printStackTrace();
+                return null;
+            }
         }
         return null;
     }
 
-    // public UsuarioEditDto toEditDto(Usuario usuario){
-    //     return modelMapper.map(usuario, UsuarioEditDto.class);
-    // }
+        public String getCurrentUserName() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            return authentication.getName();
+        }
+        return null;
+    }
+
+    public String getCurrentUserRole() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            return authentication.getAuthorities().toString();
+        }
+        return null;
+    }
+
+    public boolean isAdmin() {
+        return getCurrentUserRole().equals("[ROLE_ADMIN]");
+    }
 
 }

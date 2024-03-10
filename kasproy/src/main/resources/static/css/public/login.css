@@ -1,0 +1,147 @@
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 92.5vh;
+    background-size: cover;
+    background-color: rgba(0, 25, 94, 0.322);
+}
+.form{
+    background: hsla(226, 87%, 46%, 0.534);
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    min-height: 500px;
+    box-shadow: 0 0 60px rgba(0, 4, 255, 0.774);
+    border: 1px solid rgb(255, 115, 0);
+}
+
+h1{
+    margin-top: 10px;
+    font: 800 2em "Oswald", sans-serif;
+    background: linear-gradient(to right, rgb(255, 162, 99), rgb(255, 81, 0));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.form-content{
+    margin: 10px 0px 10px 0px;
+    width: 325px;
+}
+
+.form-content p{
+    margin: 0;
+    font: 800 1.3em "Oswald", sans-serif;
+    background: linear-gradient(to right, rgb(255, 126, 5), rgb(255, 81, 0));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 5px;
+}
+
+.form-content input{
+    background: linear-gradient(to bottom right, hsla(249, 73%, 46%, 0.1),hsla(226, 76%, 47%, 0.1), hsla(226, 66%, 45%, 0.1));
+    width: 100%;
+    border: none;
+    padding: 10px 0 0px 0;
+    border-bottom: 1px solid rgb(255, 115, 0);
+    outline: none;
+    margin-bottom: 20px;
+    font-size: 1.25em;
+    color:rgb(255, 126, 5);
+}
+
+.form-botton input{
+    background: hsla(231, 100%, 66%, 0.6);
+    width: 100%;
+    height: 40px;
+    outline: none;
+    padding: 10px;
+    color:rgb(255, 126, 5);
+    cursor: pointer;
+    border: 1px solid rgba(14, 14, 14, 0.1);
+}
+
+.form-botton input:hover{
+    color: rgb(255, 143, 37);
+    border-color: rgb(255, 126, 5);
+}
+
+.form-botton input[type="submit"]{
+    font: 800 1.25em "Oswald", sans-serif;
+}
+.optional-login button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 325px;
+    height: 40px;
+    margin-top: 20px;
+   background-color: hsla(0, 0%, 100%, 0.6);
+   border: 1px solid rgba(14, 14, 14, 0.1);
+}
+.optional-login img{
+    margin-left: 25px;
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+
+}
+.optional-login{
+    text-decoration: none;
+}
+
+.optional-login button:hover{
+    border-color: rgb(255, 126, 5);
+}
+
+.optional-login p{
+    margin-right: 80px;
+    color: rgb(0, 0, 0);
+    font: 700 1em "Oswald", sans-serif;
+}
+
+.text{
+    color: rgb(255, 126, 5);
+    font: 700 1em "Oswald", sans-serif;
+    margin-top: 20px;
+}
+
+.text a{
+    color: rgb(228, 233, 255);
+    text-decoration: none;
+}
+
+.form-error{
+    color: rgb(255, 0, 0);
+    font: 700 1.25em ;
+}
+.logoutForm{
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+#out{
+    width: 200px;
+    height: 100px;
+    padding: 10px;
+    font-size: 3em;
+    background: hsla(0, 0%, 100%, 0.767);
+    color: rgb(255, 123, 0);
+    cursor: pointer;
+}
+
+#out:hover
+{
+    background: hsla(214, 100%, 30%, 0.767);
+    color: rgb(255, 143, 37);
+    border: 1px solid rgb(255, 126, 5);
+}
