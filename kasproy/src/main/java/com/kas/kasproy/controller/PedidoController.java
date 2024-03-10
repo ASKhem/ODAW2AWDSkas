@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kas.kasproy.dto.OrdenadorNewDto;
 import com.kas.kasproy.model.Pedido;
@@ -54,9 +55,28 @@ public class PedidoController {
         return "orders/orderView";
     }
 
+    @GetMapping("/order/{id}")
+    public String getPedido(@PathVariable Long id, Model model) {
+        Pedido pedido = pedidoService.getPedidoById(id);
+        model.addAttribute("componentes", componenteService.getcomponentesOrdenador(ordenadorService.convertToOrdenadorNewDto(pedido.getOrdenadorInfo())));
+        model.addAttribute("pedido", pedido.getId());
+        model.addAttribute("ordenador", pedido.getOrdenadorInfo().getId());
+        model.addAttribute("precio", pedido.getPrecio());
+        model.addAttribute("usuario", pedido.getUsuario().getId());
+        LocalDateTime fechaPedido = pedido.getFechaPedido();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        String fechaFormateada = fechaPedido.format(formatter);
+        model.addAttribute("fecha", fechaFormateada);
+        return "orders/orderView";
+    }
+
     @GetMapping("/list")
-    public String listPedidos(Model model) {
+    public String listPedidos(@RequestParam (required = false) Long usuario, Model model){
         List<Pedido> pedidos = pedidoService.getPedidos();
+        if(usuario != null){
+            pedidos = pedidoService.getPedidosByUsuarioId(usuario);
+            model.addAttribute("usuario", usuario);
+        }
         System.out.println(pedidoService.toDto(pedidos).get(0).getFechaPedido());
         model.addAttribute("pedidos", pedidoService.toDto(pedidos));
         return "orders/ordersListView";

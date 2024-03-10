@@ -56,8 +56,8 @@
                         <td th:text="${componente.nombre}"></td>
                         <td th:text="${componente.precio}"></td>
                         <td th:text="${componente.categoria}"></td>
-                        <td><a th:href="@{/components/edit/{id}(id=${componente.id})}">Editar</a></td>
-                        <td><a th:href="@{/components/delete/{id}(id=${componente.id})}">Borrar</a></td>
+                        <td><a th:href="@{/componentes/edit/{id}(id=${componente.id})}">Editar</a></td>
+                        <td><a th:href="@{/componentes/delete/{id}(id=${componente.id})}">Borrar</a></td>
                     </tr>
                 </tbody>
             </table>

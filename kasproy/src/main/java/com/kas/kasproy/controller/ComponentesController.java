@@ -55,4 +55,22 @@ public class ComponentesController {
         componenteService.createComponente(componente);
         return "redirect:/componentes/list/"+componente.getCategoria()+"/0";
     }
+
+    @GetMapping("/edit/{id}")
+    public String editComponente(@PathVariable Long id, Model model) {
+        model.addAttribute("componente", componenteService.getComponenteById(id));
+        return "components/componentsEditFormView";
+    }
+
+    @PostMapping("/edit/submit")
+    public String editComponenteSubmit(@ModelAttribute Componente componente) {
+        componenteService.updateComponente(componente.getId(), componente);
+        return "redirect:/componentes/list/"+componente.getCategoria()+"/0";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteComponente(@PathVariable Long id) {
+        componenteService.deleteComponente(id);
+        return "redirect:/componentes/list/all/0";
+    }
 }

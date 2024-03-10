@@ -12,29 +12,33 @@
 <body>
     <header th:replace="~{/public/fragments/mainFragments.html :: header}"></header>
     <main class="maint2">
-        <h2>Nuevo Usuario</h2>
+        <h2>New User</h2>
         <div class="form-t1">
             <form th:action="@{/usuarios/new/submit}" th:object="${usuario}" method="post">
                 <div class="campo">
-                    <p>USUARIO: </p>
+                    <p>Username: </p>
                     <input type="text" id="nombre" th:field="*{nombre}">
                 </div>
+                <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error"></span>
                 <div class="campo">
-                    <p>EMAIL: </p>
+                    <p>Email: </p>
                     <input type="text" id="correo" th:field="*{email}">
                 </div>
+                <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></span>
                 <div class="campo">
-                    <p>CONTRASEÑA: </p>
+                    <p>Password: </p>
                     <input type="password" id="contrasena" th:field="*{password}">
                 </div>
+                <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></span>
                 <div class="campo">
-                    <p>ROL: </p>
+                    <p>Rol: </p>
                     <select id="rol" th:field="*{rol}">
                         <option value="COSTUMER">COSTUMER</option>
                         <option value="EDITOR">EDITOR</option>
                         <option value="ADMIN">ADMIN</option>
                     </select>
                 </div>
+                <span th:if="${#fields.hasErrors('rol')}" th:errors="*{rol}"></span>
                 <div  class="buttons">
                     <input type="submit" value="Submit">
                 </div>

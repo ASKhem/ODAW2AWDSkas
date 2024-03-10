@@ -48,4 +48,8 @@ public class PedidoServiceImplBD implements PedidoService{
         return pedidoRepository.getPedidosByUsuarioId(id);
     }
 
+    public Pedido getPedidoById(Long id){
+        return pedidoRepository.getPedidoById(id);
+    }
+
 }

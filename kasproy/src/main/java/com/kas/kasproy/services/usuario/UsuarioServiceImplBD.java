@@ -57,7 +57,17 @@ public class UsuarioServiceImplBD implements UsuarioService{
 
     public Usuario updateUsuario(UsuarioEditDto usuarioDto){
         Usuario usuario = usuarioRepository.findById(usuarioDto.getId()).orElse(null);
-        if(usuario != null){
+        if(usuario != null) {
+            Usuario userWithSameName = usuarioRepository.findByNombre(usuarioDto.getNombre());
+            if(userWithSameName != null && !userWithSameName.getId().equals(usuarioDto.getId())) {
+                return null;
+            }
+    
+            Usuario userWithSameEmail = usuarioRepository.findByEmail(usuarioDto.getEmail());
+            if(userWithSameEmail != null && !userWithSameEmail.getId().equals(usuarioDto.getId())) {
+                return null;
+            }
+    
             modelMapper.map(usuarioDto, usuario);
             return usuarioRepository.save(usuario);
         }

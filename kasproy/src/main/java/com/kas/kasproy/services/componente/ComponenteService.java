@@ -15,5 +15,6 @@ public interface ComponenteService {
     public List<Componente> getComponentesPaginados(int pageNum, List<Componente> componentes);
     public int getNumPages(List<Componente> componentes);
     public List<Componente> getcomponentesOrdenador(OrdenadorNewDto ordenador);
+    public Componente getComponenteById(Long id);
 }
 

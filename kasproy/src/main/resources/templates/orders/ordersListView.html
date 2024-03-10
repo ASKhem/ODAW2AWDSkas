@@ -12,7 +12,7 @@
 <body>
     <header th:replace="~{/public/fragments/mainFragments.html :: header}"></header>
     <main class="maint2">
-        <h2>Orders</h2>
+        <h2>Orders <span th:if="${usuario}" th:text="'User: ' + ${usuario}"></span></h2>
         <div id="tableAccounts">
             <table>
                 <thead>
@@ -34,8 +34,8 @@
                         <td th:text="${pedido.ordenadorInfoId}"></td>
                         <td th:text="${pedido.precio}"></td>
                         <td th:text="${pedido.fechaPedido}"></td>
-                        <td><a th:href="@{/pedido/details/{id}(id=${pedido.ordenadorInfoId})}">Details</a></td>
-                        <td><a th:href="@{/pedido/edit/{id}(id=${pedido.id})}">Edit</a></td>
+                        <td><a th:href="@{/pedido/order/{id}(id=${pedido.ordenadorInfoId})}">Details</a></td>
+                        <!-- <td><a th:href="@{/pedido/edit/{id}(id=${pedido.id})}">Edit</a></td> -->
                     </tr>
                 </tbody>
             </table>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Component</title>
+    <link rel="icon" href="/img/public/header/icono.png" type="image/jpg">
+    <div th:insert="~{/public/fragments/mainFragments.html :: public-styles}"></div>
+    <link rel="stylesheet" th:href="@{/css/public/form.css}">
+</head>
+
+<body>
+    <header th:replace="~{/public/fragments/mainFragments.html :: header}"></header>
+    <main class="maint2">
+        <h2>Edit Component</h2>
+        <div class="form-t1">
+            <form th:action="@{/componentes/new/submit}" th:object="${componente}" method="post">
+                <input type="hidden" th:field="*{id}">
+                <div class="campo">
+                    <p>COMPONENT: </p>
+                    <input type="text" id="nombre" th:field="*{nombre}">
+                </div>
+                <div class="campo">
+                    <p>PRICE: </p>
+                    <input type="text" id="correo" th:field="*{precio}">
+                </div>
+                <div class="campo">
+                    <p>CATEGORY: </p>
+                    <select id="rol" th:field="*{categoria}">
+                        <option value="caja">Case</option>
+                        <option value="placa">Motherboard</option>
+                        <option value="procesador">Processor</option>
+                        <option value="ram">RAM</option>
+                        <option value="almacenamiento">Storage</option>
+                        <option value="fuente">PSU</option>
+                        <option value="tarjeta">GPU</option>
+                    </select>
+                </div>
+                <div  class="buttons">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer th:replace="~{/public/fragments/mainFragments.html :: footer}"></footer>
+</html>

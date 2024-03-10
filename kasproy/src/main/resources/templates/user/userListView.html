@@ -34,13 +34,14 @@
                         <td th:text="${usuario.fechaRegistro}"></td>
                         <td th:text="${usuario.email}"></td>
                         <td th:text="${usuario.rol}"></td>
-                        <td><a href="#">Pedidos</a></td>
+                        <td><a th:href="@{/pedido/list(usuario=${usuario.id})}">Pedidos</a></td>
                         <td><a th:href="@{/usuarios/edit/{id}(id=${usuario.id})}">Editar</a></td>
                         <td><a th:href="@{/usuarios/delete/{id}(id=${usuario.id})}">Borrar</a></td>
                     </tr>
                 </tbody>
             </table>
-            
+            <span th:text="${success}" class="success"></span>
+            <span th:text="${error}" class="error"></span>
             <form th:action="@{/usuarios/new}" class="form-t2">
                 <input type="submit" value="Añadir" />
             </form>

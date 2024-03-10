@@ -179,3 +179,23 @@ h2 {
     padding: 40px;
     display: flex;
 }
+
+.success, .error{
+    font-size: 1.25em;
+    font-size: bold;
+    margin: 0;
+    padding: 0;
+    font-family: 'Console', monospace;
+    text-align: center;
+    width: 600px;
+    display: flex;
+    align-items: center;
+}
+
+.success{
+    color: #00ff00;
+}
+
+.error{
+    color: #ff0000;
+}

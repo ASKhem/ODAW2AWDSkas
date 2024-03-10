@@ -65,5 +65,9 @@ public class ComponenteServiceImplBD implements ComponenteService{
         return componentes;
     }
 
+    public Componente getComponenteById(Long id){
+        return componenteRepository.findById(id).get();
+    }
+
 
 }
