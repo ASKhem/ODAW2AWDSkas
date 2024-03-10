@@ -12,9 +12,9 @@ window.onload = function () {
         
     });
     var video = document.querySelector('video');
-    var source = document.querySelector('source');
-
-    video.muted = true;
-    video.play();
-    video.loop = true;
+    if (video) {
+        video.muted = true;
+        video.play();
+        video.loop = true;
+    }
 }

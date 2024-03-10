@@ -1,6 +1,6 @@
 package com.kas.kasproy.model;
 
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
 
 import com.kas.kasproy.model.product.Ordenador;

@@ -11,4 +11,5 @@ public interface PedidoService {
     public Pedido findById(Long id);
     public void deletePedido(Long id);
     public List<PedidoDto> toDto(List<Pedido> pedido);
+    public List<Pedido> getPedidosByUsuarioId(Long id);
 }

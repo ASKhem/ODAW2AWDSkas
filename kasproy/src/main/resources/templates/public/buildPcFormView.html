@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -24,12 +24,18 @@
                     <div class="form-section2">
                         <p>Processor:</p>
                         <div class="selects">
-                            <select name="processor" id="processor">
+                            <!-- <select name="processor" id="marca-procesador">
                                 <option>Select a Brand</option>
-                                <option value="amd">AMD</option>
-                                <option value="intel">Intel</option>
+                                <option value="AMD">AMD</option>
+                                <option value="Intel">Intel</option>
+                            </select> -->
+                            <select name="procesador" id="modelo-procesador" th:object="${ordenador.procesador}" class="modelo">
+                                <option>Select a Model</option>
+                                <option th:each="procesador: ${procesadores}" th:value="${procesador.nombre}"
+                                    th:classappend="${procesador.precio}"
+                                    th:text="${procesador.nombre} + ' - ' + ${procesador.precio} + '€'">
+                                </option>
                             </select>
-                            <select name="procesador" id="processor-model" class="price" th:object="${ordenador.procesador}"></select>
                         </div>
                     </div>
                 </div>
@@ -39,35 +45,39 @@
                     <div class="form-section2">
                         <p>Motherboard</p>
                         <div class="selects">
-                            <select name="motherboard" id="motherboard">
+                            <!-- <select name="motherboard" id="motherboard">
                                 <option>Select a Brand</option>
                                 <option value="asus">ASUS</option>
                                 <option value="msi">MSI</option>
                                 <option value="gigabyte">GIGABYTE</option>
+                            </select> -->
+                            <select name="placa" id="motherboard-model" class="modelo" th:object="${ordenador.placa}">
+                                <option>Select a Model</option>
+                                <option th:each="placa: ${placas}" th:value="${placa.nombre}"
+                                    th:classappend="${placa.precio}"
+                                    th:text="${placa.nombre} + ' - ' + ${placa.precio} + '€'">
+                                </option>
                             </select>
-                            <select name="placa" id="motherboard-model" class="price" th:object="${ordenador.placa}"></select>
                         </div>
                     </div>
                 </div>
                 <div class="form-section">
-                    <img src="https://tm.ibxk.com.br/2014/05/14/14163145206552.jpg"/>
+                    <img src="https://tm.ibxk.com.br/2014/05/14/14163145206552.jpg" />
                     <div class="form-section2">
                         <p>RAM</p>
                         <div class="selects">
-                            <select id="ram">
+                            <!-- <select id="ram" >
                                 <option>Select a Brand</option>
                                 <option value="corsair">Corsair</option>
                                 <option value="kingston">Kingston</option>
                                 <option value="gskill">G.Skill</option>
-                            </select>
-                            <select name="ram" id="ram-model" class="price" th:object="${ordenador.ram}"></select>
-                            <!-- <select name="ram-modules" id="ram-modules">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="4">4</option>
-                                <option value="8">8</option>
-                                <option value="16">16</option>
                             </select> -->
+                            <select name="ram" id="ram-model" class="modelo" th:object="${ordenador.ram}">
+                                <option>Select a Model</option>
+                                <option th:each="ram: ${rams}" th:value="${ram.nombre}" th:classappend="${ram.precio}"
+                                    th:text="${ram.nombre} + ' - ' + ${ram.precio} + '€'">
+                                </option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -77,49 +87,41 @@
                     <div class="form-section2">
                         <p>Storage</p>
                         <div class="selects">
-                            <select name="storage" id="storage">
+                            <!-- <select name="storage" id="storage" class="marca">
                                 <option>Select a Brand</option>
                                 <option value="samsung">Samsung</option>
                                 <option value="western-digital">Western Digital</option>
                                 <option value="kingston">Kingston</option>
-                            </select>
-                            <select name="almacenamiento" id="storage-model" class="price" th:object="${ordenador.almacenamiento}"></select>
-                            <!-- <select name="storage-modules" id="storage-modules">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="4">4</option>
-                                <option value="8">8</option>
-                                <option value="16">16</option>
                             </select> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="form-section">
-                    <img src="https://hardzone.es/app/uploads-hardzone.es/2021/01/Tarjetas-graficas.jpg">
-                    <div class="form-section2">
-                        <p>Graphics Card</p>
-                        <div class="selects">
-                            <select name="graphics-card" id="graphics-card">
-                                <option>Select a Brand</option>
-                                <option value="nvidia">NVIDIA</option>
-                                <option value="amd">AMD</option>
+                            <select name="almacenamiento" id="storage-model" class="modelo"
+                                th:object="${ordenador.almacenamiento}">
+                                <option>Select a Model</option>
+                                <option th:each="almacenamiento: ${almacenamientos}" th:value="${almacenamiento.nombre}"
+                                    th:classappend="${almacenamiento.precio}"
+                                    th:text="${almacenamiento.nombre} + ' - ' + ${almacenamiento.precio} + '€'">
+                                </option>
                             </select>
-                            <select name="tarjeta" id="graphics-card-model" class="price" th:object="${ordenador.tarjeta}"></select>
                         </div>
                     </div>
                 </div>
                 <div class="form-section">
                     <img src="https://storage-asset.msi.com/global/picture/image/feature/power/MPG/A850GF/kv-xs.jpg">
                     <div class="form-section2">
-                        <p>Power Supply</p>
+                        <p>Power supply</p>
                         <div class="selects">
-                            <select name="power-supply" id="power-supply">
-                                <option>Select a Brand</option>
-                                <option value="corsair">Corsair</option>
-                                <option value="evga">EVGA</option>
-                                <option value="seasonic">Seasonic</option>
-                            </select>
-                            <select name="fuente" id="power-supply-model" class="price" th:object="${ordenador.fuente}">
+                            <!-- <select name="power-supply" id="power-supply" class="marca">
+                            <option>Select a Brand</option>
+                            <option value="corsair">Corsair</option>
+                            <option value="evga">EVGA</option>
+                            <option value="seasonic">Seasonic</option>
+                        </select> -->
+                            <select name="fuente" id="power-supply-model" class="modelo"
+                                th:object="${ordenador.fuente}">
+                                <option>Select a Model</option>
+                                <option th:each="fuente: ${fuentes}" th:value="${fuente.nombre}"
+                                    th:classappend="${fuente.precio}"
+                                    th:text="${fuente.nombre} + ' - ' + ${fuente.precio} + '€'">
+                                </option>
                             </select>
                         </div>
                     </div>
@@ -129,107 +131,80 @@
                     <div class="form-section2">
                         <p>Case</p>
                         <div class="selects">
-                            <select name="case" id="case">
+                            <!-- <select name="case" id="case" class="marca">
                                 <option>Select a Brand</option>
                                 <option value="nzxt">NZXT</option>
                                 <option value="corsair">Corsair</option>
                                 <option value="thermaltake">Thermaltake</option>
-                            </select>
-                            <select name="caja" id="case-model" class="price" th:object="${ordenador.caja}">
+                            </select> -->
+                            <select name="caja" id="case-model" class="modelo" th:object="${ordenador.caja}">
+                                <option>Select a Model</option>
+                                <option th:each="caja: ${cajas}" th:value="${caja.nombre}"
+                                    th:classappend="${caja.precio}"
+                                    th:text="${caja.nombre} + ' - ' + ${caja.precio} + '€'">
+                                </option>
                             </select>
                         </div>
                     </div>
                 </div>
+                <div class="form-section">
+                    <img src="https://hardzone.es/app/uploads-hardzone.es/2021/01/Tarjetas-graficas.jpg">
+                    <div class="form-section2">
+                        <p>Graphics Card</p>
+                        <div class="selects">
+                            <!-- <select name="graphics-card" id="graphics-card" class="marca">
+                                <option>Select a Brand</option>
+                                <option value="nvidia">NVIDIA</option>
+                                <option value="amd">AMD</option>
+                            </select> -->
+                            <select name="tarjeta" id="graphics-card-model" class="modelo"
+                                th:object="${ordenador.tarjeta}">
+                                <option>Select a Model</option>
+                                <option th:each="tarjeta: ${tarjetas}" th:value="${tarjeta.nombre}"
+                                    th:classappend="${tarjeta.precio}"
+                                    th:text="${tarjeta.nombre} + ' - ' + ${tarjeta.precio} + '€'">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
                 <hr>
                 <div class="buttons">
                     <button type="submit" id="submit">ORDER</button>
                     <button type="button" id="save">SAVE</button>
                     <button type="reset" id="reset">RESET</button>
                     <div id="info">
-                        <div>
-                            <label for="total-price">Total Price</label>
-                            <input type="text" name="total-price" id="total-price" readonly>€
+                        <div id="total">
+                            <label for="total-modelo">Total modelo</label>
+                            <p id="total-modelo">   </p>€
                         </div>
                     </div>
                 </div>
-
             </form>
         </div>
     </main>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const totalPriceInput = document.getElementById('total-price');
-            const form = document.getElementById('pc-form');
-            const selects = document.querySelectorAll('.selects select');
-            const selects2 = document.querySelectorAll('select')
-            fetch('/js/data/componentesData.json')
-                .then(response => response.json())
-                .then(data => {
-                    init(data);
-                })
-                .catch(error => console.error('Error fetching data:', error));
-
-            function init(data) {
-                selects.forEach(select => {
-                    select.addEventListener('change', () => {
-                        const selectedOption = select.value;
-                        const selectId = select.id;
-                        const modelSelect = document.getElementById(`${selectId}-model`);
-                        const brandData = data[selectId].brands[selectedOption];
-
-                        modelSelect.innerHTML = '';
-
-                        if (brandData) {
-                            for (const model in brandData.models) {
-                                const option = document.createElement('option');
-                                option.value = model;
-                                console.log(option.value);
-                                option.textContent = model + ' - ' + brandData.models[model].price + '€';
-                                modelSelect.appendChild(option);
-                            }
-                            modelSelect.addEventListener('click', () => {
-                                const price = brandData.models[modelSelect.value].price;
-                                
-                                modelSelect.classList.add('price');
-                                modelSelect.setAttribute('data-price', price);
-                                calculateTotalPrice();
-                            });
-                        }
-                    });
-                });
-
-                form.addEventListener('reset', () => {
-                    totalPriceInput.value = '';
-                });
-            }
-            function updatePriceAndCalculate() {
-                const price = brandData.models[modelSelect.value].price;
-                modelSelect.classList.add('price');
-                modelSelect.setAttribute('data-price', price);
-                calculateTotalPrice();
-            }
-            function calculateTotalPrice() {
-                const prices = document.querySelectorAll('.price');
-                let totalPrice = 0;
-
-                prices.forEach(price => {
-                    const priceAttribute = price.getAttribute('data-price');
-
-                    if (price.value && priceAttribute) {
-                        totalPrice += parseFloat(priceAttribute);
-                    }
-                });
-
-                totalPriceInput.value = totalPrice;
-                // document.getElementById('progress').textContent = totalPrice + '€';
-            }
-
-
-        });
-    </script>
 
     <footer th:replace="~{/public/fragments/mainFragments.html :: footer}"></footer>
-    <script src="/js/pc-form.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            const selects = document.querySelectorAll('.modelo');
+            const totalModelo = document.getElementById('total-modelo');
+            console.log(totalModelo);
+            totalModelo.textContent = 0;
+            selects.forEach(select => {
+                select.addEventListener('change', () => {
+                    let total = 0;
+                    selects.forEach(select => {
+                        let precio = select.options[select.selectedIndex].className;
+                        total += Number(precio);
+                    });
+                    totalModelo.textContent = total;
+                });
+            });
+        });
+    </script>
     <script src="/js/lateral-socials.js"></script>
+
 
 </html>

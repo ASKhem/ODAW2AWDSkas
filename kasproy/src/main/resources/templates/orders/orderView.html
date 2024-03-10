@@ -13,11 +13,13 @@
 <body>
     <header th:replace="~{/public/fragments/mainFragments.html :: header}"></header>
     <main>
-        <h2>Your Order</h2>
         <div id="bill">
+            <img src="/img/public/header/logo.png">
             <div>
                 <p>Order ID: </p>
                 <span th:text="${pedido}"></span>
+                <p>Client ID: </p>
+                <span th:text="${usuario}"></span>
             </div>
             <div>
                 <p>PC ID: </p>
@@ -38,14 +40,15 @@
                     <tbody>
                         <tr th:each="component: ${componentes}">
                             <td th:text="${component.nombre}"></td>
-                            <td th:text="${component.precio}"></td>
+                            <td th:text="${component.precio}+€"></td>
                         </tr>
                     </tbody>
                     </tfoot>
-                    <tr>
-                        <td>Total:</td>
-                        <td th:text="${precio}"></td>
-                    </tr>
+                        <tr>
+                            <td class="price">Total:</td>
+                            <td class="price" th:text="${precio}+€"></td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
     </main>

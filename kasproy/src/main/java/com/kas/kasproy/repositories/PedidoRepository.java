@@ -11,5 +11,6 @@ import com.kas.kasproy.model.Pedido;
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
     //que ordene por el precio en orden descendente
     public List<Pedido> findAllByOrderByPrecioDesc();
+    public List<Pedido> getPedidosByUsuarioId(Long id);
 
 }

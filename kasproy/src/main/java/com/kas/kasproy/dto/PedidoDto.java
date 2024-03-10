@@ -1,7 +1,6 @@
 package com.kas.kasproy.dto;
 
-import java.time.LocalDate;
-
+import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,5 +19,5 @@ public class PedidoDto {
 
     private Double precio;
 
-    private LocalDate fechaPedido;
+    private LocalDateTime fechaPedido;
 }

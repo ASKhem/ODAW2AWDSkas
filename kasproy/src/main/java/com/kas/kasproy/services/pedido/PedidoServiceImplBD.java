@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
 import com.kas.kasproy.dto.PedidoDto;
@@ -43,6 +42,10 @@ public class PedidoServiceImplBD implements PedidoService{
             pedidoDto.get(pedidoDto.size()-1).setOrdenadorInfoId(p.getOrdenadorInfo().getId());
         }
         return pedidoDto;
+    }
+
+    public List<Pedido> getPedidosByUsuarioId(Long id){
+        return pedidoRepository.getPedidosByUsuarioId(id);
     }
 
 }

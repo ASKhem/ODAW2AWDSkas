@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -36,8 +37,6 @@ public class PedidoController {
 
     @PostMapping("/order")
     public String submitPedido(@ModelAttribute OrdenadorNewDto ordenadorNewDto, Model model) {
-        System.out.println("precio:"
-                + ordenadorService.calcularPrecio(componenteService.getcomponentesOrdenador(ordenadorNewDto)));
         Pedido pedido = new Pedido(0L, usuarioService.findById(1L),
                 ordenadorService.convertToOrdenador(ordenadorNewDto),
                 ordenadorService.calcularPrecio(componenteService.getcomponentesOrdenador(ordenadorNewDto)), null);
@@ -47,6 +46,7 @@ public class PedidoController {
         model.addAttribute("pedido", pedido2.getId());
         model.addAttribute("ordenador", pedido2.getOrdenadorInfo().getId());
         model.addAttribute("precio", pedido2.getPrecio());
+        model.addAttribute("usuario", pedido2.getUsuario().getId());
         LocalDateTime fechaPedido = pedido2.getFechaPedido();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         String fechaFormateada = fechaPedido.format(formatter);
@@ -57,8 +57,14 @@ public class PedidoController {
     @GetMapping("/list")
     public String listPedidos(Model model) {
         List<Pedido> pedidos = pedidoService.getPedidos();
-        System.out.println(pedidos);
-        System.out.println(pedidoService.toDto(pedidos));
+        System.out.println(pedidoService.toDto(pedidos).get(0).getFechaPedido());
+        model.addAttribute("pedidos", pedidoService.toDto(pedidos));
+        return "orders/ordersListView";
+    }
+
+    @GetMapping("/order/list/{usuario}")
+    public String listPedidosUsuario(@PathVariable Long usuario, Model model) {
+        List<Pedido> pedidos = pedidoService.getPedidosByUsuarioId(usuario);
         model.addAttribute("pedidos", pedidoService.toDto(pedidos));
         return "orders/ordersListView";
     }

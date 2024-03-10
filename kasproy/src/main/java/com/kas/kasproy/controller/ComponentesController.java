@@ -5,7 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kas.kasproy.model.product.Componente;
@@ -17,7 +20,7 @@ public class ComponentesController {
     @Autowired
     ComponenteService componenteService;
 
-    @RequestMapping("/list/{categoria}/{page}")
+    @GetMapping("/list/{categoria}/{page}")
     public String listComponentes(@PathVariable String categoria, @PathVariable Integer page, Model model) {
         int ultPag = 0;
         List<Componente> componentes;
@@ -39,5 +42,17 @@ public class ComponentesController {
         model.addAttribute("pagFinal", ultPag);
         model.addAttribute("categoria", categoria);
         return "components/componentsListView";
+    }
+
+    @GetMapping("/new")
+    public String newComponente(Model model) {
+        model.addAttribute("componente", new Componente());
+        return "components/componentsFormView";
+    }
+
+    @PostMapping("/new/submit")
+    public String newComponenteSubmit(@ModelAttribute Componente componente) {
+        componenteService.createComponente(componente);
+        return "redirect:/componentes/list/"+componente.getCategoria()+"/0";
     }
 }

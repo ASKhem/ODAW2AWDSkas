@@ -42,10 +42,15 @@ main {
     align-items: center;
     gap: 20px;
 }
-
-#total-price {
+#total{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+#total-modelo {
     border: none;
     border-bottom: 1px solid #474747;
+    color:white!important;
     background-color: transparent;
     outline: none;
     width: 60px;
@@ -63,12 +68,16 @@ main {
 }
 
 .form-section2 select{
-    min-width: 100px;
+    width: 250px;
     height: 30px;
     border: none;
     border-radius: 10px;
     background-color: #00095a;
     color: white;
+}
+
+.form-section2 select:nth-child(2){
+    width: 200px;
 }
 
 .form-section2{

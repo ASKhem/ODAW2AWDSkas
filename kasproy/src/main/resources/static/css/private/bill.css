@@ -14,11 +14,44 @@ h3{
 #bill div{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 50px;
+    gap: 20px;
 }
 
 #bill div p{
     margin: 5px;
+    width: 100px;
     padding: 0;
+}
+
+#bill table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#bill table th{
+    background-color: rgb(0, 8, 80);
+    padding: 10px;
+    text-align: left;
+    color:white;
+}
+
+#bill table td{
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid rgb(0, 8, 80);
+}
+
+#bill .price{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+
+}
+
+#bill img{
+    width: 75px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: rgb(0, 8, 80);
 }

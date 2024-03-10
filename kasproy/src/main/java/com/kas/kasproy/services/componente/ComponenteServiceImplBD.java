@@ -55,12 +55,13 @@ public class ComponenteServiceImplBD implements ComponenteService{
 
     public List<Componente> getcomponentesOrdenador(OrdenadorNewDto ordenador){
         List<Componente> componentes = new ArrayList<>();
-        componentes.add(componenteRepository.findByNombre(ordenador.getPlaca()));
-        componentes.add(componenteRepository.findByNombre(ordenador.getRam()));
-        componentes.add(componenteRepository.findByNombre(ordenador.getTarjeta()));
-        componentes.add(componenteRepository.findByNombre(ordenador.getFuente()));
-        componentes.add(componenteRepository.findByNombre(ordenador.getAlmacenamiento()));
         componentes.add(componenteRepository.findByNombre(ordenador.getCaja()));
+        componentes.add(componenteRepository.findByNombre(ordenador.getPlaca()));
+        componentes.add(componenteRepository.findByNombre(ordenador.getProcesador()));
+        componentes.add(componenteRepository.findByNombre(ordenador.getRam()));
+        componentes.add(componenteRepository.findByNombre(ordenador.getAlmacenamiento()));
+        componentes.add(componenteRepository.findByNombre(ordenador.getFuente()));
+        componentes.add(componenteRepository.findByNombre(ordenador.getTarjeta()));
         return componentes;
     }
 
